@@ -119,16 +119,16 @@ TODO
   * [x] contract ERC20
 * [x] [code-review/AIX.md](code-review/AIX.md)
   * [x] contract AIX is MiniMeToken 
-* [ ] [code-review/CommunityTokenHolder.md](code-review/CommunityTokenHolder.md)
-  * [ ] contract CommunityTokenHolder is Controlled 
+* [x] [code-review/CommunityTokenHolder.md](code-review/CommunityTokenHolder.md)
+  * [x] contract CommunityTokenHolder is Controlled 
+* [x] [code-review/DevTokensHolder.md](code-review/DevTokensHolder.md)
+  * [x] contract DevTokensHolder is Controlled 
+* [x] [code-review/RemainderTokenHolder.md](code-review/RemainderTokenHolder.md)
+  * [x] contract RemainderTokenHolder is Controlled 
+* [x] [code-review/Exchanger.md](code-review/Exchanger.md)
+  * [x] contract Exchanger is Controlled 
 * [ ] [code-review/Contribution.md](code-review/Contribution.md)
   * [ ] contract Contribution is Controlled, TokenController 
-* [ ] [code-review/DevTokensHolder.md](code-review/DevTokensHolder.md)
-  * [ ] contract DevTokensHolder is Controlled 
-* [ ] [code-review/Exchanger.md](code-review/Exchanger.md)
-  * [ ] contract Exchanger is Controlled 
-* [ ] [code-review/Migrations.md](code-review/Migrations.md)
-  * [ ] contract Migrations 
 * [ ] [code-review/MiniMeToken.md](code-review/MiniMeToken.md)
   * [ ] contract TokenController 
   * [x] contract Controlled 
@@ -137,8 +137,6 @@ TODO
   * [ ] contract MiniMeTokenFactory 
 * [ ] [code-review/PlaceHolder.md](code-review/PlaceHolder.md)
   * [ ] contract PlaceHolder is Controlled, TokenController 
-* [ ] [code-review/RemainderTokenHolder.md](code-review/RemainderTokenHolder.md)
-  * [ ] contract RemainderTokenHolder is Controlled 
 
 
 
@@ -169,6 +167,10 @@ audit:
   ---
   > pragma solidity 0.4.11;
   ```
+
+* [ ] [../contracts/Migrations.sol](../contracts/Migrations.sol)
+
+  This is a part of the Truffles testing
 
 <br />
 
