@@ -116,11 +116,11 @@ function printTxData(name, txId) {
   var gasCostETH = tx.gasPrice.mul(txReceipt.gasUsed).div(1e18);
   var gasCostUSD = gasCostETH.mul(ethPriceUSD);
   var block = eth.getBlock(txReceipt.blockNumber);
-  console.log("RESULT: " + name + " status=" + txReceipt.status + " gas=" + tx.gas +
-      " gasUsed=" + txReceipt.gasUsed + " costETH=" + gasCostETH + " costUSD=" + gasCostUSD +
-      " @ ETH/USD=" + ethPriceUSD + " gasPrice=" + gasPrice + " block=" + 
-      txReceipt.blockNumber + " txIx=" + tx.transactionIndex + " txId=" + txId +
-      " @ " + block.timestamp + " " + new Date(block.timestamp * 1000).toUTCString());
+  console.log("RESULT: " + name + " status=" + txReceipt.status + (txReceipt.status == 0 ? " Failure" : " Success") + " gas=" + tx.gas +
+    " gasUsed=" + txReceipt.gasUsed + " costETH=" + gasCostETH + " costUSD=" + gasCostUSD +
+    " @ ETH/USD=" + ethPriceUSD + " gasPrice=" + web3.fromWei(gasPrice, "gwei") + " gwei block=" + 
+    txReceipt.blockNumber + " txIx=" + tx.transactionIndex + " txId=" + txId +
+    " @ " + block.timestamp + " " + new Date(block.timestamp * 1000).toUTCString());
 }
 
 function assertEtherBalance(account, expectedBalance) {

@@ -12,32 +12,40 @@ PASSWORD=`grep ^PASSWORD= settings.txt | sed "s/^.*=//"`
 
 CONTRACTSDIR=`grep ^CONTRACTSDIR= settings.txt | sed "s/^.*=//"`
 
+AIXSOL=`grep ^AIXSOL= settings.txt | sed "s/^.*=//"`
+AIXJS=`grep ^AIXJS= settings.txt | sed "s/^.*=//"`
+
 APTSOL=`grep ^APTSOL= settings.txt | sed "s/^.*=//"`
-APTTEMPSOL=`grep ^APTTEMPSOL= settings.txt | sed "s/^.*=//"`
 APTJS=`grep ^APTJS= settings.txt | sed "s/^.*=//"`
 
+CONTRIBUTIONSOL=`grep ^CONTRIBUTIONSOL= settings.txt | sed "s/^.*=//"`
+CONTRIBUTIONJS=`grep ^CONTRIBUTIONJS= settings.txt | sed "s/^.*=//"`
+
+EXCHANGERSOL=`grep ^EXCHANGERSOL= settings.txt | sed "s/^.*=//"`
+EXCHANGERJS=`grep ^EXCHANGERJS= settings.txt | sed "s/^.*=//"`
+
+CTHSOL=`grep ^CTHSOL= settings.txt | sed "s/^.*=//"`
+CTHJS=`grep ^CTHJS= settings.txt | sed "s/^.*=//"`
+
+DTHSOL=`grep ^DTHSOL= settings.txt | sed "s/^.*=//"`
+DTHJS=`grep ^DTHJS= settings.txt | sed "s/^.*=//"`
+
+RTHSOL=`grep ^RTHSOL= settings.txt | sed "s/^.*=//"`
+RTHJS=`grep ^RTHJS= settings.txt | sed "s/^.*=//"`
+
 ERC20SOL=`grep ^ERC20SOL= settings.txt | sed "s/^.*=//"`
-ERC20TEMPSOL=`grep ^ERC20TEMPSOL= settings.txt | sed "s/^.*=//"`
 ERC20JS=`grep ^ERC20JS= settings.txt | sed "s/^.*=//"`
 
-MIGRATIONSSOL=`grep ^MIGRATIONSSOL= settings.txt | sed "s/^.*=//"`
-MIGRATIONSTEMPSOL=`grep ^MIGRATIONSTEMPSOL= settings.txt | sed "s/^.*=//"`
-MIGRATIONSJS=`grep ^MIGRATIONSJS= settings.txt | sed "s/^.*=//"`
-
 MINIMETOKENSOL=`grep ^MINIMETOKENSOL= settings.txt | sed "s/^.*=//"`
-MINIMETOKENTEMPSOL=`grep ^MINIMETOKENTEMPSOL= settings.txt | sed "s/^.*=//"`
 MINIMETOKENJS=`grep ^MINIMETOKENJS= settings.txt | sed "s/^.*=//"`
 
 PLACEHOLDERSOL=`grep ^PLACEHOLDERSOL= settings.txt | sed "s/^.*=//"`
-PLACEHOLDERTEMPSOL=`grep ^PLACEHOLDERTEMPSOL= settings.txt | sed "s/^.*=//"`
 PLACEHOLDERJS=`grep ^PLACEHOLDERJS= settings.txt | sed "s/^.*=//"`
 
 PRESALESOL=`grep ^PRESALESOL= settings.txt | sed "s/^.*=//"`
-PRESALETEMPSOL=`grep ^PRESALETEMPSOL= settings.txt | sed "s/^.*=//"`
 PRESALEJS=`grep ^PRESALEJS= settings.txt | sed "s/^.*=//"`
 
 SAFEMATHSOL=`grep ^SAFEMATHSOL= settings.txt | sed "s/^.*=//"`
-SAFEMATHTEMPSOL=`grep ^SAFEMATHTEMPSOL= settings.txt | sed "s/^.*=//"`
 
 DEPLOYMENTDATA=`grep ^DEPLOYMENTDATA= settings.txt | sed "s/^.*=//"`
 
@@ -68,32 +76,40 @@ printf "PASSWORD             = '$PASSWORD'\n" | tee -a $TEST1OUTPUT
 
 printf "CONTRACTSDIR         = '$CONTRACTSDIR'\n" | tee -a $TEST1OUTPUT
 
+printf "AIXSOL               = '$AIXSOL'\n" | tee -a $TEST1OUTPUT
+printf "AIXJS                = '$AIXJS'\n" | tee -a $TEST1OUTPUT
+
 printf "APTSOL               = '$APTSOL'\n" | tee -a $TEST1OUTPUT
-printf "APTTEMPSOL           = '$APTTEMPSOL'\n" | tee -a $TEST1OUTPUT
 printf "APTJS                = '$APTJS'\n" | tee -a $TEST1OUTPUT
 
+printf "CONTRIBUTIONSOL      = '$CONTRIBUTIONSOL'\n" | tee -a $TEST1OUTPUT
+printf "CONTRIBUTIONJS       = '$CONTRIBUTIONJS'\n" | tee -a $TEST1OUTPUT
+
+printf "EXCHANGERSOL         = '$EXCHANGERSOL'\n" | tee -a $TEST1OUTPUT
+printf "EXCHANGERJS          = '$EXCHANGERJS'\n" | tee -a $TEST1OUTPUT
+
+printf "CTHSOL               = '$CTHSOL'\n" | tee -a $TEST1OUTPUT
+printf "CTHJS                = '$CTHJS'\n" | tee -a $TEST1OUTPUT
+
+printf "DTHSOL               = '$DTHSOL'\n" | tee -a $TEST1OUTPUT
+printf "DTHJS                = '$DTHJS'\n" | tee -a $TEST1OUTPUT
+
+printf "RTHSOL               = '$RTHSOL'\n" | tee -a $TEST1OUTPUT
+printf "RTHJS                = '$RTHJS'\n" | tee -a $TEST1OUTPUT
+
 printf "ERC20SOL             = '$ERC20SOL'\n" | tee -a $TEST1OUTPUT
-printf "ERC20TEMPSOL         = '$ERC20TEMPSOL'\n" | tee -a $TEST1OUTPUT
 printf "ERC20JS              = '$ERC20JS'\n" | tee -a $TEST1OUTPUT
 
-printf "MIGRATIONSSOL        = '$MIGRATIONSSOL'\n" | tee -a $TEST1OUTPUT
-printf "MIGRATIONSTEMPSOL    = '$MIGRATIONSTEMPSOL'\n" | tee -a $TEST1OUTPUT
-printf "MIGRATIONSJS         = '$MIGRATIONSJS'\n" | tee -a $TEST1OUTPUT
-
 printf "MINIMETOKENSOL       = '$MINIMETOKENSOL'\n" | tee -a $TEST1OUTPUT
-printf "MINIMETOKENTEMPSOL   = '$MINIMETOKENTEMPSOL'\n" | tee -a $TEST1OUTPUT
 printf "MINIMETOKENJS        = '$MINIMETOKENJS'\n" | tee -a $TEST1OUTPUT
 
 printf "PLACEHOLDERSOL       = '$PLACEHOLDERSOL'\n" | tee -a $TEST1OUTPUT
-printf "PLACEHOLDERTEMPSOL   = '$PLACEHOLDERTEMPSOL'\n" | tee -a $TEST1OUTPUT
 printf "PLACEHOLDERJS        = '$PLACEHOLDERJS'\n" | tee -a $TEST1OUTPUT
 
 printf "PRESALESOL           = '$PRESALESOL'\n" | tee -a $TEST1OUTPUT
-printf "PRESALETEMPSOL       = '$PRESALETEMPSOL'\n" | tee -a $TEST1OUTPUT
 printf "PRESALEJS            = '$PRESALEJS'\n" | tee -a $TEST1OUTPUT
 
 printf "SAFEMATHSOL          = '$SAFEMATHSOL'\n" | tee -a $TEST1OUTPUT
-printf "SAFEMATHTEMPSOL      = '$SAFEMATHTEMPSOL'\n" | tee -a $TEST1OUTPUT
 
 printf "DEPLOYMENTDATA       = '$DEPLOYMENTDATA'\n" | tee -a $TEST1OUTPUT
 printf "INCLUDEJS            = '$INCLUDEJS'\n" | tee -a $TEST1OUTPUT
@@ -104,14 +120,18 @@ printf "STARTTIME            = '$STARTTIME' '$STARTTIME_S'\n" | tee -a $TEST1OUT
 printf "ENDTIME              = '$ENDTIME' '$ENDTIME_S'\n" | tee -a $TEST1OUTPUT
 
 # Make copy of SOL file and modify start and end times ---
-`cp $CONTRACTSDIR/$APTSOL $APTTEMPSOL`
-`cp $CONTRACTSDIR/$ERC20SOL $ERC20TEMPSOL`
-`cp $CONTRACTSDIR/$MIGRATIONSSOL $MIGRATIONSTEMPSOL`
-# `cp $CONTRACTSDIR/$MINIMETOKENSOL $MINIMETOKENTEMPSOL`
-`cp modifiedContracts/$MINIMETOKENSOL $MINIMETOKENTEMPSOL`
-`cp $CONTRACTSDIR/$PLACEHOLDERSOL $PLACEHOLDERTEMPSOL`
-`cp $CONTRACTSDIR/$PRESALESOL $PRESALETEMPSOL`
-`cp $CONTRACTSDIR/$SAFEMATHSOL $SAFEMATHTEMPSOL`
+`cp $CONTRACTSDIR/$AIXSOL $AIXSOL`
+`cp $CONTRACTSDIR/$APTSOL $APTSOL`
+`cp $CONTRACTSDIR/$CONTRIBUTIONSOL $CONTRIBUTIONSOL`
+`cp $CONTRACTSDIR/$EXCHANGERSOL $EXCHANGERSOL`
+`cp $CONTRACTSDIR/$CTHSOL $CTHSOL`
+`cp $CONTRACTSDIR/$DTHSOL $DTHSOL`
+`cp $CONTRACTSDIR/$RTHSOL $RTHSOL`
+`cp $CONTRACTSDIR/$ERC20SOL $ERC20SOL`
+`cp $CONTRACTSDIR/$MINIMETOKENSOL $MINIMETOKENSOL`
+`cp $CONTRACTSDIR/$PLACEHOLDERSOL $PLACEHOLDERSOL`
+`cp $CONTRACTSDIR/$PRESALESOL $PRESALESOL`
+`cp $CONTRACTSDIR/$SAFEMATHSOL $SAFEMATHSOL`
 
 # --- Modify dates ---
 #`perl -pi -e "s/startTime \= 1498140000;.*$/startTime = $STARTTIME; \/\/ $STARTTIME_S/" $FUNFAIRSALETEMPSOL`
@@ -119,70 +139,107 @@ printf "ENDTIME              = '$ENDTIME' '$ENDTIME_S'\n" | tee -a $TEST1OUTPUT
 #`perl -pi -e "s/\/\/\/ \@return total amount of tokens.*$/function overloadedTotalSupply() constant returns (uint256) \{ return totalSupply; \}/" $DAOCASINOICOTEMPSOL`
 #`perl -pi -e "s/BLOCKS_IN_DAY \= 5256;*$/BLOCKS_IN_DAY \= $BLOCKSINDAY;/" $DAOCASINOICOTEMPSOL`
 
-DIFFS1=`diff $CONTRACTSDIR/$APTSOL $APTTEMPSOL`
-echo "--- Differences $CONTRACTSDIR/$APTSOL $APTTEMPSOL ---" | tee -a $TEST1OUTPUT
-echo "$DIFFS1" | tee -a $TEST1OUTPUT
+#DIFFS1=`diff $CONTRACTSDIR/$APTSOL $APTTEMPSOL`
+#echo "--- Differences $CONTRACTSDIR/$APTSOL $APTTEMPSOL ---" | tee -a $TEST1OUTPUT
+#echo "$DIFFS1" | tee -a $TEST1OUTPUT
 
-DIFFS1=`diff $CONTRACTSDIR/$ERC20SOL $ERC20TEMPSOL`
-echo "--- Differences $CONTRACTSDIR/$ERC20SOL $ERC20TEMPSOL ---" | tee -a $TEST1OUTPUT
-echo "$DIFFS1" | tee -a $TEST1OUTPUT
+#DIFFS1=`diff $CONTRACTSDIR/$ERC20SOL $ERC20TEMPSOL`
+#echo "--- Differences $CONTRACTSDIR/$ERC20SOL $ERC20TEMPSOL ---" | tee -a $TEST1OUTPUT
+#echo "$DIFFS1" | tee -a $TEST1OUTPUT
 
-DIFFS1=`diff $CONTRACTSDIR/$MIGRATIONSSOL $MIGRATIONSTEMPSOL`
-echo "--- Differences $CONTRACTSDIR/$MIGRATIONSSOL $MIGRATIONSTEMPSOL ---" | tee -a $TEST1OUTPUT
-echo "$DIFFS1" | tee -a $TEST1OUTPUT
+#DIFFS1=`diff $CONTRACTSDIR/$MIGRATIONSSOL $MIGRATIONSTEMPSOL`
+#echo "--- Differences $CONTRACTSDIR/$MIGRATIONSSOL $MIGRATIONSTEMPSOL ---" | tee -a $TEST1OUTPUT
+#echo "$DIFFS1" | tee -a $TEST1OUTPUT
 
-DIFFS1=`diff $CONTRACTSDIR/$MINIMETOKENSOL $MINIMETOKENTEMPSOL`
-echo "--- Differences $CONTRACTSDIR/$MINIMETOKENSOL $MINIMETOKENTEMPSOL ---" | tee -a $TEST1OUTPUT
-echo "$DIFFS1" | tee -a $TEST1OUTPUT
+#DIFFS1=`diff $CONTRACTSDIR/$MINIMETOKENSOL $MINIMETOKENTEMPSOL`
+#echo "--- Differences $CONTRACTSDIR/$MINIMETOKENSOL $MINIMETOKENTEMPSOL ---" | tee -a $TEST1OUTPUT
+#echo "$DIFFS1" | tee -a $TEST1OUTPUT
 
-DIFFS1=`diff $CONTRACTSDIR/$PLACEHOLDERSOL $PLACEHOLDERTEMPSOL`
-echo "--- Differences $CONTRACTSDIR/$PLACEHOLDERSOL $PLACEHOLDERTEMPSOL ---" | tee -a $TEST1OUTPUT
-echo "$DIFFS1" | tee -a $TEST1OUTPUT
+#DIFFS1=`diff $CONTRACTSDIR/$PLACEHOLDERSOL $PLACEHOLDERTEMPSOL`
+#echo "--- Differences $CONTRACTSDIR/$PLACEHOLDERSOL $PLACEHOLDERTEMPSOL ---" | tee -a $TEST1OUTPUT
+#echo "$DIFFS1" | tee -a $TEST1OUTPUT
 
-DIFFS1=`diff $CONTRACTSDIR/$PRESALESOL $PRESALETEMPSOL`
-echo "--- Differences $CONTRACTSDIR/$PRESALESOL $PRESALETEMPSOL ---" | tee -a $TEST1OUTPUT
-echo "$DIFFS1" | tee -a $TEST1OUTPUT
+#DIFFS1=`diff $CONTRACTSDIR/$PRESALESOL $PRESALETEMPSOL`
+#echo "--- Differences $CONTRACTSDIR/$PRESALESOL $PRESALETEMPSOL ---" | tee -a $TEST1OUTPUT
+#echo "$DIFFS1" | tee -a $TEST1OUTPUT
 
-echo "var aptOutput=`solc --optimize --combined-json abi,bin,interface $APTTEMPSOL`;" > $APTJS
+solc_0.4.16 --version | tee -a $TEST1OUTPUT
 
-echo "var migOutput=`solc --optimize --combined-json abi,bin,interface $MIGRATIONSTEMPSOL`;" > $MIGRATIONSJS
+echo "var aixOutput=`solc_0.4.16 --optimize --combined-json abi,bin,interface $AIXSOL`;" > $AIXJS
 
-echo "var mmOutput=`solc --optimize --combined-json abi,bin,interface $MINIMETOKENSOL`;" > $MINIMETOKENJS
+echo "var aptOutput=`solc_0.4.16 --optimize --combined-json abi,bin,interface $APTSOL`;" > $APTJS
 
-echo "var phOutput=`solc --optimize --combined-json abi,bin,interface $PLACEHOLDERTEMPSOL`;" > $PLACEHOLDERJS
+echo "var contribOutput=`solc_0.4.16 --optimize --combined-json abi,bin,interface $CONTRIBUTIONSOL`;" > $CONTRIBUTIONJS
 
-echo "var psOutput=`solc --optimize --combined-json abi,bin,interface $PRESALETEMPSOL`;" > $PRESALEJS
+echo "var exchangerOutput=`solc_0.4.16 --optimize --combined-json abi,bin,interface $EXCHANGERSOL`;" > $EXCHANGERJS
 
+echo "var cthOutput=`solc_0.4.16 --optimize --combined-json abi,bin,interface $CTHSOL`;" > $CTHJS
+
+echo "var dthOutput=`solc_0.4.16 --optimize --combined-json abi,bin,interface $DTHSOL`;" > $DTHJS
+
+echo "var rthOutput=`solc_0.4.16 --optimize --combined-json abi,bin,interface $RTHSOL`;" > $RTHJS
+
+echo "var mmOutput=`solc_0.4.16 --optimize --combined-json abi,bin,interface $MINIMETOKENSOL`;" > $MINIMETOKENJS
+
+echo "var phOutput=`solc_0.4.16 --optimize --combined-json abi,bin,interface $PLACEHOLDERSOL`;" > $PLACEHOLDERJS
+
+echo "var psOutput=`solc_0.4.16 --optimize --combined-json abi,bin,interface $PRESALESOL`;" > $PRESALEJS
 
 geth --verbosity 3 attach $GETHATTACHPOINT << EOF | tee -a $TEST1OUTPUT
+loadScript("$AIXJS");
 loadScript("$APTJS");
-loadScript("$MIGRATIONSJS");
+loadScript("$CONTRIBUTIONJS");
+loadScript("$EXCHANGERJS");
+loadScript("$CTHJS");
+loadScript("$DTHJS");
+loadScript("$RTHJS");
 loadScript("$MINIMETOKENJS");
 loadScript("$PLACEHOLDERJS");
 loadScript("$PRESALEJS");
 loadScript("functions.js");
 
-var aptAbi = JSON.parse(aptOutput.contracts["$APTTEMPSOL:APT"].abi);
-var aptBin = "0x" + aptOutput.contracts["$APTTEMPSOL:APT"].bin;
+var aixAbi = JSON.parse(aixOutput.contracts["$AIXSOL:AIX"].abi);
+var aixBin = "0x" + aixOutput.contracts["$AIXSOL:AIX"].bin;
 
-var migAbi = JSON.parse(migOutput.contracts["$MIGRATIONSTEMPSOL:Migrations"].abi);
-var migBin = "0x" + migOutput.contracts["$MIGRATIONSTEMPSOL:Migrations"].bin;
+var aptAbi = JSON.parse(aptOutput.contracts["$APTSOL:APT"].abi);
+var aptBin = "0x" + aptOutput.contracts["$APTSOL:APT"].bin;
+
+var contribAbi = JSON.parse(contribOutput.contracts["$CONTRIBUTIONSOL:Contribution"].abi);
+var contribBin = "0x" + contribOutput.contracts["$CONTRIBUTIONSOL:Contribution"].bin;
+
+var exchangerAbi = JSON.parse(exchangerOutput.contracts["$EXCHANGERSOL:Exchanger"].abi);
+var exchangerBin = "0x" + exchangerOutput.contracts["$EXCHANGERSOL:Exchanger"].bin;
+
+var cthAbi = JSON.parse(cthOutput.contracts["$CTHSOL:CommunityTokenHolder"].abi);
+var cthBin = "0x" + cthOutput.contracts["$CTHSOL:CommunityTokenHolder"].bin;
+
+var dthAbi = JSON.parse(dthOutput.contracts["$DTHSOL:DevTokensHolder"].abi);
+var dthBin = "0x" + dthOutput.contracts["$DTHSOL:DevTokensHolder"].bin;
+
+var rthAbi = JSON.parse(rthOutput.contracts["$RTHSOL:RemainderTokenHolder"].abi);
+var rthBin = "0x" + rthOutput.contracts["$RTHSOL:RemainderTokenHolder"].bin;
 
 var mmtfAbi = JSON.parse(mmOutput.contracts["$MINIMETOKENSOL:MiniMeTokenFactory"].abi);
 var mmtfBin = "0x" + mmOutput.contracts["$MINIMETOKENSOL:MiniMeTokenFactory"].bin;
 
-var phAbi = JSON.parse(phOutput.contracts["$PLACEHOLDERTEMPSOL:PlaceHolder"].abi);
-var phBin = "0x" + phOutput.contracts["$PLACEHOLDERTEMPSOL:PlaceHolder"].bin;
+var phAbi = JSON.parse(phOutput.contracts["$PLACEHOLDERSOL:PlaceHolder"].abi);
+var phBin = "0x" + phOutput.contracts["$PLACEHOLDERSOL:PlaceHolder"].bin;
 
-var psAbi = JSON.parse(psOutput.contracts["$PRESALETEMPSOL:PreSale"].abi);
-var psBin = "0x" + psOutput.contracts["$PRESALETEMPSOL:PreSale"].bin;
+var psAbi = JSON.parse(psOutput.contracts["$PRESALESOL:PreSale"].abi);
+var psBin = "0x" + psOutput.contracts["$PRESALESOL:PreSale"].bin;
 
+// console.log("DATA: aixAbi=" + JSON.stringify(aixAbi));
 // console.log("DATA: aptAbi=" + JSON.stringify(aptAbi));
-// console.log("DATA: migAbi=" + JSON.stringify(migAbi));
+// console.log("DATA: contribAbi=" + JSON.stringify(contribAbi));
+// console.log("DATA: exchangerAbi=" + JSON.stringify(exchangerAbi));
+// console.log("DATA: cthAbi=" + JSON.stringify(cthAbi));
+// console.log("DATA: dthAbi=" + JSON.stringify(dthAbi));
+// console.log("DATA: rthAbi=" + JSON.stringify(rthAbi));
 // console.log("DATA: mmtfAbi=" + JSON.stringify(mmtfAbi));
 // console.log("DATA: phAbi=" + JSON.stringify(phAbi));
 // console.log("DATA: psAbi=" + JSON.stringify(psAbi));
 // console.log("DATA: psBin=" + psBin);
+
 
 unlockAccounts("$PASSWORD");
 printBalances();
@@ -211,7 +268,7 @@ var mmtf = mmtfContract.new({from: contractOwnerAccount, data: mmtfBin, gas: 400
 while (txpool.status.pending > 0) {
 }
 printBalances();
-failIfGasEqualsGasUsed(mmtfTx, mmtfMessage);
+failIfTxStatusError(mmtfTx, mmtfMessage);
 console.log("RESULT: ");
 
 
@@ -239,9 +296,30 @@ var apt = aptContract.new(mmtfAddress, {from: contractOwnerAccount, data: aptBin
 while (txpool.status.pending > 0) {
 }
 printBalances();
-failIfGasEqualsGasUsed(aptTx, aptMessage);
+failIfTxStatusError(aptTx, aptMessage);
 printTokenContractDetails();
 console.log("RESULT: ");
+
+
+// -----------------------------------------------------------------------------
+var aptMintMessage = "Mint APT Tokens";
+// -----------------------------------------------------------------------------
+console.log("RESULT: " + aptMintMessage);
+var aptMint_1Tx = apt.generateTokens(account3, "1000000000000000000000", {from: contractOwnerAccount, gas: 2000000});
+var aptMint_2Tx = apt.generateTokens(account4, "2000000000000000000000", {from: contractOwnerAccount, gas: 2000000});
+while (txpool.status.pending > 0) {
+}
+printTxData("aptMint_1Tx", aptMint_1Tx);
+printTxData("aptMint_2Tx", aptMint_2Tx);
+printBalances();
+failIfTxStatusError(aptMint_1Tx, aptMintMessage + " - ac3 1,000 APT");
+failIfTxStatusError(aptMint_2Tx, aptMintMessage + " - ac4 2,000 APT");
+printTokenContractDetails();
+console.log("RESULT: ");
+
+
+exit;
+
 
 
 // -----------------------------------------------------------------------------
@@ -268,7 +346,7 @@ var ph = phContract.new(aptAddress, {from: contractOwnerAccount, data: phBin, ga
 while (txpool.status.pending > 0) {
 }
 printBalances();
-failIfGasEqualsGasUsed(phTx, phMessage);
+failIfTxStatusError(phTx, phMessage);
 printCrowdsaleContractDetails();
 printPlaceHolderContractDetails();
 printTokenContractDetails();
@@ -299,7 +377,7 @@ var ps = psContract.new(aptAddress, phAddress, {from: contractOwnerAccount, data
 while (txpool.status.pending > 0) {
 }
 printBalances();
-failIfGasEqualsGasUsed(psTx, psMessage);
+failIfTxStatusError(psTx, psMessage);
 printCrowdsaleContractDetails();
 printPlaceHolderContractDetails();
 printTokenContractDetails();
@@ -315,7 +393,7 @@ while (txpool.status.pending > 0) {
 }
 printTxData("aptChangeControllerTx", aptChangeControllerTx);
 printBalances();
-failIfGasEqualsGasUsed(aptChangeControllerTx, aptChangeControllerMessage);
+failIfTxStatusError(aptChangeControllerTx, aptChangeControllerMessage);
 printCrowdsaleContractDetails();
 printPlaceHolderContractDetails();
 printTokenContractDetails();
@@ -337,7 +415,7 @@ while (txpool.status.pending > 0) {
 }
 printTxData("initialisePresaleTx", initialisePresaleTx);
 printBalances();
-failIfGasEqualsGasUsed(initialisePresaleTx, initialisePresaleMessage);
+failIfTxStatusError(initialisePresaleTx, initialisePresaleMessage);
 printCrowdsaleContractDetails();
 printPlaceHolderContractDetails();
 printTokenContractDetails();
@@ -365,8 +443,8 @@ while (txpool.status.pending > 0) {
 printTxData("validContribution1Tx", validContribution1Tx);
 printTxData("validContribution2Tx", validContribution2Tx);
 printBalances();
-failIfGasEqualsGasUsed(validContribution1Tx, validContribution1Message + " ac3->ps 100 ETH");
-failIfGasEqualsGasUsed(validContribution2Tx, validContribution1Message + " ac4->apt 10 ETH");
+failIfTxStatusError(validContribution1Tx, validContribution1Message + " ac3->ps 100 ETH");
+failIfTxStatusError(validContribution2Tx, validContribution1Message + " ac4->apt 10 ETH");
 printCrowdsaleContractDetails();
 printPlaceHolderContractDetails();
 printTokenContractDetails();
@@ -382,7 +460,7 @@ while (txpool.status.pending > 0) {
 }
 printTxData("validContribution3Tx", validContribution3Tx);
 printBalances();
-failIfGasEqualsGasUsed(validContribution3Tx, validContribution2Message + " ac3->ps 1 ETH");
+failIfTxStatusError(validContribution3Tx, validContribution2Message + " ac3->ps 1 ETH");
 printCrowdsaleContractDetails();
 printPlaceHolderContractDetails();
 printTokenContractDetails();
@@ -398,7 +476,7 @@ while (txpool.status.pending > 0) {
 }
 printTxData("validContribution4Tx", validContribution4Tx);
 printBalances();
-failIfGasEqualsGasUsed(validContribution4Tx, validContribution3Message + " ac3->ps 3 ETH");
+failIfTxStatusError(validContribution4Tx, validContribution3Message + " ac3->ps 3 ETH");
 printCrowdsaleContractDetails();
 printPlaceHolderContractDetails();
 printTokenContractDetails();
@@ -424,7 +502,7 @@ while (txpool.status.pending > 0) {
 }
 printTxData("claimEthersTx", claimEthersTx);
 printBalances();
-passIfGasEqualsGasUsed(claimEthersTx, claimEthersMessage);
+passIfTxStatusError(claimEthersTx, claimEthersMessage);
 printCrowdsaleContractDetails();
 printPlaceHolderContractDetails();
 printTokenContractDetails();
@@ -440,7 +518,7 @@ while (txpool.status.pending > 0) {
 }
 printTxData("finalisePresaleTx", finalisePresaleTx);
 printBalances();
-failIfGasEqualsGasUsed(finalisePresaleTx, finalisePresaleMessage);
+failIfTxStatusError(finalisePresaleTx, finalisePresaleMessage);
 printCrowdsaleContractDetails();
 printPlaceHolderContractDetails();
 printTokenContractDetails();
@@ -456,7 +534,7 @@ while (txpool.status.pending > 0) {
 }
 printTxData("generateTokensTx", generateTokensTx);
 printBalances();
-failIfGasEqualsGasUsed(generateTokensTx, generateTokensMessage);
+failIfTxStatusError(generateTokensTx, generateTokensMessage);
 printCrowdsaleContractDetails();
 printPlaceHolderContractDetails();
 printTokenContractDetails();
@@ -478,9 +556,9 @@ printTxData("cannotTransfer1Tx", cannotTransfer1Tx);
 printTxData("cannotTransfer2Tx", cannotTransfer2Tx);
 printTxData("cannotTransfer3Tx", cannotTransfer3Tx);
 printBalances();
-passIfGasEqualsGasUsed(cannotTransfer1Tx, cannotTransferMessage + " - transfer 0.000001 tokens ac4 -> ac6. CHECK no movement");
-passIfGasEqualsGasUsed(cannotTransfer2Tx, cannotTransferMessage + " - approve 0.03 tokens ac5 -> ac7");
-failIfGasEqualsGasUsed(cannotTransfer3Tx, cannotTransferMessage + " - transferFrom 0.03 tokens ac5 -> ac7. CHECK no movement");
+passIfTxStatusError(cannotTransfer1Tx, cannotTransferMessage + " - transfer 0.000001 tokens ac4 -> ac6. CHECK no movement");
+passIfTxStatusError(cannotTransfer2Tx, cannotTransferMessage + " - approve 0.03 tokens ac5 -> ac7");
+failIfTxStatusError(cannotTransfer3Tx, cannotTransferMessage + " - transferFrom 0.03 tokens ac5 -> ac7. CHECK no movement");
 printCrowdsaleContractDetails();
 printPlaceHolderContractDetails();
 printTokenContractDetails();
@@ -496,7 +574,7 @@ while (txpool.status.pending > 0) {
 }
 printTxData("allowTransfersTx", allowTransfersTx);
 printBalances();
-failIfGasEqualsGasUsed(allowTransfersTx, allowTransfersMessage);
+failIfTxStatusError(allowTransfersTx, allowTransfersMessage);
 printCrowdsaleContractDetails();
 printPlaceHolderContractDetails();
 printTokenContractDetails();
@@ -518,9 +596,9 @@ printTxData("canTransfer1Tx", canTransfer1Tx);
 printTxData("canTransfer2Tx", canTransfer2Tx);
 printTxData("canTransfer3Tx", canTransfer3Tx);
 printBalances();
-failIfGasEqualsGasUsed(canTransfer1Tx, canTransferMessage + " - transfer 0.000001 tokens ac4 -> ac6. CHECK for movement");
-failIfGasEqualsGasUsed(canTransfer2Tx, canTransferMessage + " - approve 0.03 tokens ac5 -> ac7");
-failIfGasEqualsGasUsed(canTransfer3Tx, canTransferMessage + " - transferFrom 0.03 tokens ac5 -> ac7. CHECK for movement");
+failIfTxStatusError(canTransfer1Tx, canTransferMessage + " - transfer 0.000001 tokens ac4 -> ac6. CHECK for movement");
+failIfTxStatusError(canTransfer2Tx, canTransferMessage + " - approve 0.03 tokens ac5 -> ac7");
+failIfTxStatusError(canTransfer3Tx, canTransferMessage + " - transferFrom 0.03 tokens ac5 -> ac7. CHECK for movement");
 printCrowdsaleContractDetails();
 printPlaceHolderContractDetails();
 printTokenContractDetails();
@@ -536,7 +614,7 @@ while (txpool.status.pending > 0) {
 }
 printTxData("changeControllerTx", changeControllerTx);
 printBalances();
-failIfGasEqualsGasUsed(changeControllerTx, changeControllerMessage);
+failIfTxStatusError(changeControllerTx, changeControllerMessage);
 printCrowdsaleContractDetails();
 printPlaceHolderContractDetails();
 printTokenContractDetails();
@@ -558,9 +636,9 @@ printTxData("canTransfer4Tx", canTransfer4Tx);
 printTxData("canTransfer5Tx", canTransfer5Tx);
 printTxData("canTransfer6Tx", canTransfer6Tx);
 printBalances();
-failIfGasEqualsGasUsed(canTransfer4Tx, canTransfer2Message + " - transfer 0.000001 tokens ac4 -> ac6. CHECK for movement");
-failIfGasEqualsGasUsed(canTransfer5Tx, canTransfer2Message + " - approve 0.03 tokens ac5 -> ac7");
-failIfGasEqualsGasUsed(canTransfer6Tx, canTransfer2Message + " - transferFrom 0.03 tokens ac5 -> ac7. CHECK for movement");
+failIfTxStatusError(canTransfer4Tx, canTransfer2Message + " - transfer 0.000001 tokens ac4 -> ac6. CHECK for movement");
+failIfTxStatusError(canTransfer5Tx, canTransfer2Message + " - approve 0.03 tokens ac5 -> ac7");
+failIfTxStatusError(canTransfer6Tx, canTransfer2Message + " - transferFrom 0.03 tokens ac5 -> ac7. CHECK for movement");
 printCrowdsaleContractDetails();
 printPlaceHolderContractDetails();
 printTokenContractDetails();
@@ -576,7 +654,7 @@ while (txpool.status.pending > 0) {
 }
 printTxData("canBurnTx", canBurnTx);
 printBalances();
-failIfGasEqualsGasUsed(canBurnTx, canBurnMessage);
+failIfTxStatusError(canBurnTx, canBurnMessage);
 printCrowdsaleContractDetails();
 printPlaceHolderContractDetails();
 printTokenContractDetails();

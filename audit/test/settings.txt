@@ -3,28 +3,37 @@ PASSWORD=testtest
 
 CONTRACTSDIR=../../contracts
 
+AIXSOL=AIX.sol
+AIXJS=AIX.js
+
 APTSOL=APT.sol
-APTTEMPSOL=APT.sol
 APTJS=APT.js
 
+CONTRIBUTIONSOL=Contribution.sol
+CONTRIBUTIONJS=Contribution.js
+
+EXCHANGERSOL=Exchanger.sol
+EXCHANGERJS=Exchanger.js
+
+CTHSOL=CommunityTokenHolder.sol
+CTHJS=CommunityTokenHolder.js
+
+DTHSOL=DevTokensHolder.sol
+DTHJS=DevTokensHolder.js
+
+RTHSOL=RemainderTokenHolder.sol
+RTHJS=RemainderTokenHolder.js
+
 ERC20SOL=ERC20.sol
-ERC20TEMPSOL=ERC20.sol
 ERC20JS=ERC20.js
 
-MIGRATIONSSOL=Migrations.sol
-MIGRATIONSTEMPSOL=Migrations.sol
-MIGRATIONSJS=Migrations.js
-
 MINIMETOKENSOL=MiniMeToken.sol
-MINIMETOKENTEMPSOL=MiniMeToken.sol
 MINIMETOKENJS=MiniMeToken.js
 
 PLACEHOLDERSOL=PlaceHolder.sol
-PLACEHOLDERTEMPSOL=PlaceHolder.sol
 PLACEHOLDERJS=PlaceHolder.js
 
 PRESALESOL=PreSale.sol
-PRESALETEMPSOL=PreSale.sol
 PRESALEJS=PreSale.js
 
 SAFEMATHSOL=SafeMath.sol
