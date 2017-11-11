@@ -118,25 +118,23 @@ TODO
 * [x] [code-review/ERC20.md](code-review/ERC20.md)
   * [x] contract ERC20
 * [x] [code-review/AIX.md](code-review/AIX.md)
-  * [x] contract AIX is MiniMeToken 
+  * [x] contract AIX is MiniMeToken
 * [x] [code-review/CommunityTokenHolder.md](code-review/CommunityTokenHolder.md)
-  * [x] contract CommunityTokenHolder is Controlled 
+  * [x] contract CommunityTokenHolder is Controlled
 * [x] [code-review/DevTokensHolder.md](code-review/DevTokensHolder.md)
-  * [x] contract DevTokensHolder is Controlled 
+  * [x] contract DevTokensHolder is Controlled
 * [x] [code-review/RemainderTokenHolder.md](code-review/RemainderTokenHolder.md)
-  * [x] contract RemainderTokenHolder is Controlled 
+  * [x] contract RemainderTokenHolder is Controlled
 * [x] [code-review/Exchanger.md](code-review/Exchanger.md)
-  * [x] contract Exchanger is Controlled 
+  * [x] contract Exchanger is Controlled
 * [ ] [code-review/Contribution.md](code-review/Contribution.md)
-  * [ ] contract Contribution is Controlled, TokenController 
+  * [ ] contract Contribution is Controlled, TokenController
 * [ ] [code-review/MiniMeToken.md](code-review/MiniMeToken.md)
-  * [ ] contract TokenController 
-  * [x] contract Controlled 
-  * [ ] contract ApproveAndCallFallBack 
-  * [ ] contract MiniMeToken is Controlled 
-  * [ ] contract MiniMeTokenFactory 
-* [ ] [code-review/PlaceHolder.md](code-review/PlaceHolder.md)
-  * [ ] contract PlaceHolder is Controlled, TokenController 
+  * [x] contract TokenController
+  * [x] contract Controlled
+  * [x] contract ApproveAndCallFallBack 
+  * [ ] contract MiniMeToken is Controlled
+  * [x] contract MiniMeTokenFactory
 
 
 
@@ -145,10 +143,12 @@ TODO
 The following code was reviewed in the [Aigang Presale](https://github.com/bokkypoobah/AigangPresaleContractAudit/blob/master/contracts/MultiSigWallet.sol)
 audit:
 
+* [x] [code-review/APT.md](code-review/APT.md)
+  * [x] contract APT is MiniMeToken
+* [ ] [code-review/PlaceHolder.md](code-review/PlaceHolder.md)
+  * [ ] contract PlaceHolder is Controlled, TokenController
 * [ ] [code-review/PreSale.md](code-review/PreSale.md)
   * [ ] contract PreSale is Controlled, TokenController 
-* [x] [code-review/APT.md](code-review/APT.md)
-  * [x] contract APT is MiniMeToken 
 
 <br />
 
@@ -290,4 +290,4 @@ $ diff -w ../../AigangPresaleContractAudit/contracts/MiniMeToken.sol MiniMeToken
 
 <br />
 
-(c) BokkyPooBah / Bok Consulting Pty Ltd for indaHash - Nov 8 2017. The MIT Licence.
+(c) BokkyPooBah / Bok Consulting Pty Ltd for Aigang - Nov 11 2017. The MIT Licence.

@@ -7,6 +7,7 @@ Source file [../../contracts/Contribution.sol](../../contracts/Contribution.sol)
 <hr />
 
 ```javascript
+// BK Ok
 pragma solidity ^0.4.15;
 
 /**
@@ -17,13 +18,17 @@ pragma solidity ^0.4.15;
  *
  */
 
+// BK Next 3 Ok
 import "./SafeMath.sol";
 import "./ERC20.sol";
 import "./MiniMeToken.sol";
 
+// BK Ok
 contract Contribution is Controlled, TokenController {
+  // BK Ok
   using SafeMath for uint256;
 
+  // BK Next 7 Ok
   MiniMeToken public aix;
   bool public transferable;
   address public contributionWallet;
@@ -32,10 +37,12 @@ contract Contribution is Controlled, TokenController {
   address public communityHolder;
   address public exchanger;
 
+  // BK Next 3 Ok
   address public collector;
   uint256 public collectorWeiCap;
   uint256 public collectorWeiCollected;
 
+  // BK Next 6 Ok
   uint256 public totalWeiCap;             // Total Wei to be collected
   uint256 public totalWeiCollected;       // How much Wei has been collected
   uint256 public weiPreCollected;
@@ -43,28 +50,38 @@ contract Contribution is Controlled, TokenController {
   uint256 public twentyPercentWithBonus;
   uint256 public thirtyPercentWithBonus;
 
+  // BK Ok
   uint256 public minimumPerTransaction = 0.01 ether;
 
+  // BK Next 3 Ok
   uint256 public numWhitelistedInvestors;
   mapping (address => bool) public canPurchase;
   mapping (address => uint256) public individualWeiCollected;
 
+  // BK Next 2 Ok
   uint256 public startTime;
   uint256 public endTime;
 
+  // BK Next 2 Ok
   uint256 public initializedTime;
   uint256 public finalizedTime;
 
+  // BK Next 2 Ok
   uint256 public initializedBlock;
   uint256 public finalizedBlock;
 
+  // BK Ok
   bool public paused;
 
+  // BK Ok
   modifier initialized() {
+    // BK Ok
     assert(initializedBlock != 0);
+    // BK Ok
     _;
   }
 
+  // BK TODO
   modifier contributionOpen() {
     // collector can start depositing 2 days prior
     if (msg.sender == collector) {
@@ -77,16 +94,23 @@ contract Contribution is Controlled, TokenController {
     _;
   }
 
+  // BK Ok
   modifier notPaused() {
+    // BK Ok
     require(!paused);
+    // BK Ok
     _;
   }
 
+  // BK Ok - Constructor
   function Contribution(address _aix) {
+    // BK Ok
     require(_aix != 0x0);
+    // BK Ok
     aix = MiniMeToken(_aix);
   }
 
+  // BK TODO
   function initialize(
       address _apt,
       address _exchanger,
@@ -151,33 +175,48 @@ contract Contribution is Controlled, TokenController {
 
   /// @notice interface for founders to blacklist investors
   /// @param _investors array of investors
+  // BK Ok - Only controller can execute
   function blacklistAddresses(address[] _investors) public onlyController {
+    // BK Ok
     for (uint256 i = 0; i < _investors.length; i++) {
+      // BK Ok
       blacklist(_investors[i]);
     }
   }
 
   /// @notice interface for founders to whitelist investors
   /// @param _investors array of investors
+  // BK Ok - Only controller can execute
   function whitelistAddresses(address[] _investors) public onlyController {
+    // BK Ok
     for (uint256 i = 0; i < _investors.length; i++) {
+      // BK Ok
       whitelist(_investors[i]);
     }
   }
 
+  // BK Ok - Only controller can execute
   function whitelist(address investor) public onlyController {
+    // BK Ok
     if (canPurchase[investor]) return;
+    // BK Ok
     numWhitelistedInvestors++;
+    // BK Ok
     canPurchase[investor] = true;
   }
 
+  // BK Ok - Only controller can execute
   function blacklist(address investor) public onlyController {
+    // BK Ok
     if (!canPurchase[investor]) return;
+    // BK Ok
     numWhitelistedInvestors--;
+    // BK Ok
     canPurchase[investor] = false;
   }
 
   // ETH-AIX exchange rate
+  // BK TODO
   function exchangeRate() constant public initialized returns (uint256) {
     if (getBlockTimestamp() <= startTime + 1 hours) {
       // 15% Bonus
@@ -208,6 +247,7 @@ contract Contribution is Controlled, TokenController {
     return 2000;
   }
 
+  // BK TODO
   function tokensToGenerate(uint256 toFund) constant public returns (uint256) {
     // collector gets 15% bonus
     if (msg.sender == collector) {
@@ -219,7 +259,9 @@ contract Contribution is Controlled, TokenController {
 
   /// @notice If anybody sends Ether directly to this contract, consider he is
   /// getting AIXs.
+  // BK Ok
   function () public payable notPaused {
+    // BK Ok
     proxyPayment(msg.sender);
   }
 
@@ -231,30 +273,45 @@ contract Contribution is Controlled, TokenController {
   ///  acquire AIXs. Or directly from third parties that want to acquire AIXs in
   ///  behalf of a token holder.
   /// @param _th AIX holder where the AIXs will be minted.
+  // BK Ok
   function proxyPayment(address _th) public payable notPaused initialized contributionOpen returns (bool) {
+    // BK Ok
     require(_th != 0x0);
+    // BK Ok
     doBuy(_th);
+    // BK Ok
     return true;
   }
 
+  // BK Ok
   function onTransfer(address _from, address, uint256) public returns (bool) {
+    // BK Ok
     if (_from == exchanger) {
+      // BK Ok
       return true;
     }
+    // BK Ok
     return transferable;
   }
 
+  // BK Ok
   function onApprove(address _from, address, uint256) public returns (bool) {
+    // BK Ok
     if (_from == exchanger) {
+      // BK Ok
       return true;
     }
+    // BK Ok
     return transferable;
   }
 
+  // BK Ok - Only controller can execute
   function allowTransfers(bool _transferable) onlyController {
+    // BK Ok
     transferable = _transferable;
   }
 
+  // BK TODO
   function doBuy(address _th) internal {
     // whitelisting only during the first day
     if (getBlockTimestamp() <= startTime + 1 days) {
@@ -265,6 +322,7 @@ contract Contribution is Controlled, TokenController {
       thirtyPercentWithBonus = notCollectedAmountAfter24Hours.mul(30).div(100);
     }
 
+    // BK Ok
     require(msg.value >= minimumPerTransaction);
     uint256 toFund = msg.value;
     uint256 toCollect = weiToCollectByInvestor(_th);
@@ -296,6 +354,7 @@ contract Contribution is Controlled, TokenController {
   ///  end or by anybody after the `endTime`. This method finalizes the contribution period
   ///  by creating the remaining tokens and transferring the controller to the configured
   ///  controller.
+  // BK TODO
   function finalize() public initialized {
     require(finalizedBlock == 0);
     require(finalizedTime == 0);
@@ -322,11 +381,13 @@ contract Contribution is Controlled, TokenController {
   //////////
 
   /// @return Total eth that still available for collection in weis.
+  // BK TODO
   function weiToCollect() public constant returns(uint256) {
     return totalWeiCap > totalWeiCollected ? totalWeiCap.sub(totalWeiCollected) : 0;
   }
 
   /// @return Total eth that still available for collection in weis.
+  // BK TODO
   function weiToCollectByInvestor(address investor) public constant returns(uint256) {
     uint256 cap;
     uint256 collected;
@@ -350,11 +411,15 @@ contract Contribution is Controlled, TokenController {
   //////////
 
   /// @notice This function is overridden by the test Mocks.
+  // BK Ok - Constant function
   function getBlockNumber() internal constant returns (uint256) {
+    // BK Ok
     return block.number;
   }
 
+  // BK Ok - Constant function
   function getBlockTimestamp() internal constant returns (uint256) {
+    // BK Ok
     return block.timestamp;
   }
 
@@ -366,27 +431,40 @@ contract Contribution is Controlled, TokenController {
   ///  sent tokens to this contract.
   /// @param _token The address of the token contract that you want to recover
   ///  set to 0 in case you want to extract ether.
+  // BK Ok - Only controller can execute
   function claimTokens(address _token) public onlyController {
+    // BK Ok
     if (aix.controller() == address(this)) {
+      // BK Ok
       aix.claimTokens(_token);
     }
 
+    // BK Ok - Claim ETH
     if (_token == 0x0) {
+      // BK Ok
       controller.transfer(this.balance);
+      // BK Ok
       return;
     }
 
+    // BK Ok
     ERC20 token = ERC20(_token);
+    // BK Ok
     uint256 balance = token.balanceOf(this);
+    // BK Ok
     token.transfer(controller, balance);
+    // BK Ok - Log event
     ClaimedTokens(_token, controller, balance);
   }
 
   /// @notice Pauses the contribution if there is any issue
+  // BK Ok - Only controller can execute
   function pauseContribution(bool _paused) onlyController {
+    // BK Ok
     paused = _paused;
   }
 
+  // BK Next 4 Ok
   event ClaimedTokens(address indexed _token, address indexed _controller, uint256 _amount);
   event NewSale(address indexed _th, uint256 _amount, uint256 _tokens);
   event Initialized(uint _now);
