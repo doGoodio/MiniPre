@@ -81,16 +81,23 @@ contract Contribution is Controlled, TokenController {
     _;
   }
 
-  // BK TODO
+  // BK Ok
   modifier contributionOpen() {
     // collector can start depositing 2 days prior
+    // BK Ok
     if (msg.sender == collector) {
+      // BK Ok
       assert(getBlockTimestamp().add(2 days) >= startTime);
+    // BK Ok
     } else {
+      // BK Ok
       assert(getBlockTimestamp() >= startTime);
     }
+    // BK Ok
     assert(getBlockTimestamp() <= endTime);
+    // BK Ok
     assert(finalizedTime == 0);
+    // BK Ok
     _;
   }
 

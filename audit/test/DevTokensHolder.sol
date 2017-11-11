@@ -47,7 +47,7 @@ contract DevTokensHolder is Controlled {
       return 75;
     } else if (timePassed > months(6)) {
       return 50;
-    } else if (timePassed > months(3)) {
+    } else if (timePassed > 0) {
       return 25;
     } else {
       return 0;

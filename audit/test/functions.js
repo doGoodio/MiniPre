@@ -250,6 +250,7 @@ function printCrowdsaleContractDetails() {
     var contract = eth.contract(crowdsaleContractAbi).at(crowdsaleContractAddress);
     console.log("RESULT: crowdsale.controller=" + contract.controller());
     console.log("RESULT: crowdsale.aix=" + contract.aix());
+    console.log("RESULT: crowdsale.transferable=" + contract.transferable());
     console.log("RESULT: crowdsale.contributionWallet=" + contract.contributionWallet());
     console.log("RESULT: crowdsale.remainderHolder=" + contract.remainderHolder());
     console.log("RESULT: crowdsale.devHolder=" + contract.devHolder());
@@ -352,8 +353,8 @@ function printTokenContractDetails() {
     console.log("RESULT: token.name=" + contract.name());
     console.log("RESULT: token.decimals=" + decimals);
     console.log("RESULT: token.totalSupply=" + contract.totalSupply().shift(-decimals));
+    console.log("RESULT: token.transfersEnabled=" + contract.transfersEnabled());
     // console.log("RESULT: token.totalSupplyHistory=" + contract.totalSupplyHistory());
-    // console.log("RESULT: token.mintingFinished=" + contract.mintingFinished());
 
     var latestBlock = eth.blockNumber;
     var i;

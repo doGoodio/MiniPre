@@ -133,15 +133,15 @@ printf "ENDTIME              = '$ENDTIME' '$ENDTIME_S'\n" | tee -a $TEST1OUTPUT
 `cp $CONTRACTSDIR/$PRESALESOL $PRESALESOL`
 `cp $CONTRACTSDIR/$SAFEMATHSOL $SAFEMATHSOL`
 
-# --- Modify dates ---
-#`perl -pi -e "s/startTime \= 1498140000;.*$/startTime = $STARTTIME; \/\/ $STARTTIME_S/" $FUNFAIRSALETEMPSOL`
+# --- Modify parameters ---
+`perl -pi -e "s/timePassed \> months\(3\)/timePassed \> 0/" $DTHSOL`
 #`perl -pi -e "s/deadline \=  1499436000;.*$/deadline = $ENDTIME; \/\/ $ENDTIME_S/" $FUNFAIRSALETEMPSOL`
 #`perl -pi -e "s/\/\/\/ \@return total amount of tokens.*$/function overloadedTotalSupply() constant returns (uint256) \{ return totalSupply; \}/" $DAOCASINOICOTEMPSOL`
 #`perl -pi -e "s/BLOCKS_IN_DAY \= 5256;*$/BLOCKS_IN_DAY \= $BLOCKSINDAY;/" $DAOCASINOICOTEMPSOL`
 
-#DIFFS1=`diff $CONTRACTSDIR/$APTSOL $APTTEMPSOL`
-#echo "--- Differences $CONTRACTSDIR/$APTSOL $APTTEMPSOL ---" | tee -a $TEST1OUTPUT
-#echo "$DIFFS1" | tee -a $TEST1OUTPUT
+DIFFS1=`diff $CONTRACTSDIR/$DTHSOL $DTHSOL`
+echo "--- Differences $CONTRACTSDIR/$DTHSOL $DTHSOL ---" | tee -a $TEST1OUTPUT
+echo "$DIFFS1" | tee -a $TEST1OUTPUT
 
 #DIFFS1=`diff $CONTRACTSDIR/$ERC20SOL $ERC20TEMPSOL`
 #echo "--- Differences $CONTRACTSDIR/$ERC20SOL $ERC20TEMPSOL ---" | tee -a $TEST1OUTPUT
@@ -489,9 +489,9 @@ var initialiseContributionTx = contrib.initialize(aptAddress, exchangerAddress, 
   collectorWeiCap, totalWeiCap, startTime, endTime, {from: contractOwnerAccount, gas: 2000000});
 while (txpool.status.pending > 0) {
 }
-printTxData("initialiseContributionTx", initialiseContributionTx + " - 3,000 APT = 3,000 ETH = 7,500,000 AIX");
+printTxData("initialiseContributionTx", initialiseContributionTx);
 printBalances();
-failIfTxStatusError(initialiseContributionTx, initialiseContributionMessage);
+failIfTxStatusError(initialiseContributionTx, initialiseContributionMessage + " - 3,000 APT = 3,000 ETH = 7,500,000 AIX");
 printCrowdsaleContractDetails();
 printTokenContractDetails();
 console.log("RESULT: ");
@@ -555,168 +555,57 @@ console.log("RESULT: ");
 var finaliseMessage = "Finalise Crowdsale";
 // -----------------------------------------------------------------------------
 console.log("RESULT: " + finaliseMessage);
-var finaliseTx = contrib.finalize({from: contractOwnerAccount, gas: 2000000});
+var finalise_1Tx = contrib.finalize({from: contractOwnerAccount, gas: 2000000});
+var finalise_2Tx = contrib.allowTransfers(true, {from: contractOwnerAccount, gas: 2000000});
 while (txpool.status.pending > 0) {
 }
-printTxData("finaliseTx", finaliseTx);
+printTxData("finalise_1Tx", finalise_1Tx);
+printTxData("finalise_2Tx", finalise_2Tx);
 printBalances();
-failIfTxStatusError(finaliseTx, finaliseMessage);
+failIfTxStatusError(finalise_1Tx, finaliseMessage + " - Remainder 8,000,000; Dev 11,490,196.078431372549019607; Community 16,660,784.313725490196078431");
+failIfTxStatusError(finalise_2Tx, finaliseMessage + " - contrib.allowTransfers(true)");
 printCrowdsaleContractDetails();
 printTokenContractDetails();
 console.log("RESULT: ");
 
 
-exit;
-
-
 // -----------------------------------------------------------------------------
-var claimEthersMessage = "Claim Ethers But No Ethers";
+var transfersMessage = "Move Tokens";
 // -----------------------------------------------------------------------------
-console.log("RESULT: " + claimEthersMessage);
-var claimEthersTx = ps.claimTokens(0, {from: contractOwnerAccount, gas: 2000000});
+console.log("RESULT: " + transfersMessage);
+var transfers1Tx = aix.transfer(account6, "1000000000000", {from: account3, gas: 100000});
+var transfers2Tx = aix.approve(account7,  "30000000000000000", {from: account4, gas: 100000});
 while (txpool.status.pending > 0) {
 }
-printTxData("claimEthersTx", claimEthersTx);
+var transfers3Tx = aix.transferFrom(account4, account8, "30000000000000000", {from: account7, gas: 200000});
+while (txpool.status.pending > 0) {
+}
+printTxData("transfers1Tx", transfers1Tx);
+printTxData("transfers2Tx", transfers2Tx);
+printTxData("transfers3Tx", transfers3Tx);
 printBalances();
-passIfTxStatusError(claimEthersTx, claimEthersMessage);
+failIfTxStatusError(transfers1Tx, transfersMessage + " - transfer 0.000001 tokens ac4 -> ac6. CHECK for movement");
+failIfTxStatusError(transfers2Tx, transfersMessage + " - approve 0.03 tokens ac5 -> ac7");
+failIfTxStatusError(transfers3Tx, transfersMessage + " - transferFrom 0.03 tokens ac5 -> ac7. CHECK for movement");
 printCrowdsaleContractDetails();
-printPlaceHolderContractDetails();
 printTokenContractDetails();
 console.log("RESULT: ");
 
 
 // -----------------------------------------------------------------------------
-var generateTokensMessage = "Generate Tokens After Finalisation";
+var collectTokensMessage = "Collect Tokens";
 // -----------------------------------------------------------------------------
-console.log("RESULT: " + generateTokensMessage);
-var generateTokensTx = ph.generateTokens(account5, "1000000000000000000000000", {from: contractOwnerAccount, gas: 2000000});
+console.log("RESULT: " + collectTokensMessage);
+var collectTokens1Tx = cth.collectTokens({from: contractOwnerAccount, gas: 1000000});
+var collectTokens2Tx = dth.collectTokens({from: contractOwnerAccount, gas: 1000000});
 while (txpool.status.pending > 0) {
 }
-printTxData("generateTokensTx", generateTokensTx);
+printTxData("collectTokens1Tx", collectTokens1Tx);
+printTxData("collectTokens2Tx", collectTokens2Tx);
 printBalances();
-failIfTxStatusError(generateTokensTx, generateTokensMessage);
+failIfTxStatusError(collectTokens1Tx, collectTokensMessage + " - CommunityTokenHolder.collectTokens() = 16,660,784.313725490196078431 x 7/29 = 4,021,568.627450980392157");
+failIfTxStatusError(collectTokens2Tx, collectTokensMessage + " - DevTokensHolder.collectTokens() = 11,490,196.078431372549019607 x .25 = 2,872,549.019607843137254901");
 printCrowdsaleContractDetails();
-printPlaceHolderContractDetails();
-printTokenContractDetails();
-console.log("RESULT: ");
-
-
-// -----------------------------------------------------------------------------
-var cannotTransferMessage = "Cannot Move Tokens Before allowTransfers(...)";
-// -----------------------------------------------------------------------------
-console.log("RESULT: " + cannotTransferMessage);
-var cannotTransfer1Tx = apt.transfer(account6, "1000000000000", {from: account4, gas: 100000});
-var cannotTransfer2Tx = apt.approve(account7,  "30000000000000000", {from: account5, gas: 100000});
-while (txpool.status.pending > 0) {
-}
-var cannotTransfer3Tx = apt.transferFrom(account5, account7, "30000000000000000", {from: account7, gas: 200000});
-while (txpool.status.pending > 0) {
-}
-printTxData("cannotTransfer1Tx", cannotTransfer1Tx);
-printTxData("cannotTransfer2Tx", cannotTransfer2Tx);
-printTxData("cannotTransfer3Tx", cannotTransfer3Tx);
-printBalances();
-passIfTxStatusError(cannotTransfer1Tx, cannotTransferMessage + " - transfer 0.000001 tokens ac4 -> ac6. CHECK no movement");
-passIfTxStatusError(cannotTransfer2Tx, cannotTransferMessage + " - approve 0.03 tokens ac5 -> ac7");
-failIfTxStatusError(cannotTransfer3Tx, cannotTransferMessage + " - transferFrom 0.03 tokens ac5 -> ac7. CHECK no movement");
-printCrowdsaleContractDetails();
-printPlaceHolderContractDetails();
-printTokenContractDetails();
-console.log("RESULT: ");
-
-
-// -----------------------------------------------------------------------------
-var allowTransfersMessage = "Allow Transfers";
-// -----------------------------------------------------------------------------
-console.log("RESULT: " + generateTokensMessage);
-var allowTransfersTx = ph.allowTransfers(true, {from: contractOwnerAccount, gas: 2000000});
-while (txpool.status.pending > 0) {
-}
-printTxData("allowTransfersTx", allowTransfersTx);
-printBalances();
-failIfTxStatusError(allowTransfersTx, allowTransfersMessage);
-printCrowdsaleContractDetails();
-printPlaceHolderContractDetails();
-printTokenContractDetails();
-console.log("RESULT: ");
-
-
-// -----------------------------------------------------------------------------
-var canTransferMessage = "Can Move Tokens After allowTransfers(...)";
-// -----------------------------------------------------------------------------
-console.log("RESULT: " + canTransferMessage);
-var canTransfer1Tx = apt.transfer(account6, "1000000000000", {from: account4, gas: 100000});
-var canTransfer2Tx = apt.approve(account7,  "30000000000000000", {from: account5, gas: 100000});
-while (txpool.status.pending > 0) {
-}
-var canTransfer3Tx = apt.transferFrom(account5, account7, "30000000000000000", {from: account7, gas: 200000});
-while (txpool.status.pending > 0) {
-}
-printTxData("canTransfer1Tx", canTransfer1Tx);
-printTxData("canTransfer2Tx", canTransfer2Tx);
-printTxData("canTransfer3Tx", canTransfer3Tx);
-printBalances();
-failIfTxStatusError(canTransfer1Tx, canTransferMessage + " - transfer 0.000001 tokens ac4 -> ac6. CHECK for movement");
-failIfTxStatusError(canTransfer2Tx, canTransferMessage + " - approve 0.03 tokens ac5 -> ac7");
-failIfTxStatusError(canTransfer3Tx, canTransferMessage + " - transferFrom 0.03 tokens ac5 -> ac7. CHECK for movement");
-printCrowdsaleContractDetails();
-printPlaceHolderContractDetails();
-printTokenContractDetails();
-console.log("RESULT: ");
-
-
-// -----------------------------------------------------------------------------
-var changeControllerMessage = "Change Controller";
-// -----------------------------------------------------------------------------
-console.log("RESULT: " + changeControllerMessage);
-var changeControllerTx = ph.changeAPTController(contractOwnerAccount, {from: contractOwnerAccount, gas: 2000000});
-while (txpool.status.pending > 0) {
-}
-printTxData("changeControllerTx", changeControllerTx);
-printBalances();
-failIfTxStatusError(changeControllerTx, changeControllerMessage);
-printCrowdsaleContractDetails();
-printPlaceHolderContractDetails();
-printTokenContractDetails();
-console.log("RESULT: ");
-
-
-// -----------------------------------------------------------------------------
-var canTransfer2Message = "Can Move Tokens After Change Controller";
-// -----------------------------------------------------------------------------
-console.log("RESULT: " + canTransferMessage);
-var canTransfer4Tx = apt.transfer(account6, "1000000000000", {from: account4, gas: 100000});
-var canTransfer5Tx = apt.approve(account7,  "30000000000000000", {from: account5, gas: 100000});
-while (txpool.status.pending > 0) {
-}
-var canTransfer6Tx = apt.transferFrom(account5, account7, "30000000000000000", {from: account7, gas: 200000});
-while (txpool.status.pending > 0) {
-}
-printTxData("canTransfer4Tx", canTransfer4Tx);
-printTxData("canTransfer5Tx", canTransfer5Tx);
-printTxData("canTransfer6Tx", canTransfer6Tx);
-printBalances();
-failIfTxStatusError(canTransfer4Tx, canTransfer2Message + " - transfer 0.000001 tokens ac4 -> ac6. CHECK for movement");
-failIfTxStatusError(canTransfer5Tx, canTransfer2Message + " - approve 0.03 tokens ac5 -> ac7");
-failIfTxStatusError(canTransfer6Tx, canTransfer2Message + " - transferFrom 0.03 tokens ac5 -> ac7. CHECK for movement");
-printCrowdsaleContractDetails();
-printPlaceHolderContractDetails();
-printTokenContractDetails();
-console.log("RESULT: ");
-
-
-// -----------------------------------------------------------------------------
-var canBurnMessage = "Owner Can Burn Tokens";
-// -----------------------------------------------------------------------------
-console.log("RESULT: " + canBurnMessage);
-var canBurnTx = apt.destroyTokens(account5, "100000000000000000000000", {from: contractOwnerAccount, gas: 200000});
-while (txpool.status.pending > 0) {
-}
-printTxData("canBurnTx", canBurnTx);
-printBalances();
-failIfTxStatusError(canBurnTx, canBurnMessage);
-printCrowdsaleContractDetails();
-printPlaceHolderContractDetails();
 printTokenContractDetails();
 console.log("RESULT: ");
 

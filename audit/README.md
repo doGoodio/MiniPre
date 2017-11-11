@@ -8,7 +8,7 @@ Status: Work in progress
 
 Bok Consulting Pty Ltd was commissioned to perform an audit on the Aigang's crowdsale and token Ethereum smart contract.
 
-This audit has been conducted on indaHash's source code in commits
+This audit has been conducted on Aigang's source code in commits
 [8200037](https://github.com/AigangNetwork/aigang-crowdsale-contracts/commit/8200037ab9d51b70723a97449363aa8269adf9ff).
 
 TODO: Check - No potential vulnerabilities have been identified in the crowdsale and token contract.
@@ -45,6 +45,10 @@ TODO: Check - No potential vulnerabilities have been identified in the crowdsale
 <hr />
 
 ## Recommendations
+
+* **LOW IMPORTANCE** The modifiers `Contribution.initialized()` and `Contribution.contributionOpen()` use the `assert(...)` keyword rather than the
+  `require(...)` keyword. Using the `require(...)` keyword instead of `assert(...)` will result in lower gas cost for participants when there is 
+  an error (e.g. sending ETH outside contribution period)
 
 <br />
 
@@ -107,6 +111,25 @@ TODO
 
 ## Testing
 
+### Test 1
+
+The following functions were tested using the script [test/01_test1.sh](test/01_test1.sh) with the summary results saved
+in [test/test1results.txt](test/test1results.txt) and the detailed output saved in [test/test1output.txt](test/test1output.txt):
+
+* [x] Deploy APT token contract
+* [x] Mint APT tokens
+* [x] Deploy AIX token contract
+* [x] Deploy Contribution contract
+* [x] Set Contribution contract to be AIX controller
+* [x] Deploy CommunityTokenHolder, DevTokensHolder, RemainderTokenHolder and Exchanger contracts
+* [x] Initialise Contribution contract
+* [x] Exchange Presale APT for AIX
+* [x] Whitelist accounts for Contribution contract
+* [x] Send contributions for whitelisted addresses and non-whitelisted address (expecting failure)
+* [x] Finalise crowdsale and enable transfers
+* [x] `transfer(...)`, `approve(...)` and `transferFrom(...)` some tokens
+* [x] Collect tokens from CommunityTokenHolder and DevTokensHolder (with modified withdrawal schedule)
+
 <br />
 
 <hr />
@@ -136,26 +159,32 @@ TODO
   * [ ] contract MiniMeToken is Controlled
   * [x] contract MiniMeTokenFactory
 
+<br />
 
+### Presale Contracts
 
-### Presale
+The Presale contracts were audited in [Aigang Presale audit](https://github.com/bokkypoobah/AigangPresaleContractAudit/tree/master/audit).
 
-The following code was reviewed in the [Aigang Presale](https://github.com/bokkypoobah/AigangPresaleContractAudit/blob/master/contracts/MultiSigWallet.sol)
-audit:
+Following are the main components of the Presale contracts:
 
-* [x] [code-review/APT.md](code-review/APT.md)
-  * [x] contract APT is MiniMeToken
-* [ ] [code-review/PlaceHolder.md](code-review/PlaceHolder.md)
-  * [ ] contract PlaceHolder is Controlled, TokenController
-* [ ] [code-review/PreSale.md](code-review/PreSale.md)
-  * [ ] contract PreSale is Controlled, TokenController 
+* [../contracts/APT.sol](../contracts/APT.sol) is exactly the same as in the Presale version and has been deployed to
+  [0x23ae3c5b39b12f0693e05435eeaa1e51d8c61530](https://etherscan.io/address/0x23ae3c5b39b12f0693e05435eeaa1e51d8c61530#code).
+* [../contracts/PlaceHolder.sol](../contracts/PlaceHolder.sol) is slightly different to the Presale version. The differences are insignificant:
+
+  ```diff
+  $ diff PlaceHolder.sol ../../AigangPresaleContractAudit/contracts/PlaceHolder.sol 
+  3d2
+  < import './ERC20.sol';
+  ```
+
+* [../contracts/PreSale.sol](../contracts/PreSale.sol) is exactly the same as in the Presale version. The Presale version has been deployed to
+  [0x2d68a9a9dd9fcffb070ea1d8218c67863bfc55ff](https://etherscan.io/address/0x2d68a9a9dd9fcffb070ea1d8218c67863bfc55ff#code).
 
 <br />
 
 ### Not Reviewed
 
-* [ ] [../contracts/MultiSigWallet.sol](../contracts/MultiSigWallet.sol)
-
+* [../contracts/MultiSigWallet.sol](../contracts/MultiSigWallet.sol)
   The ConsenSys/Gnosis multisig wallet is the same as used in the [Aigang Presale](https://github.com/bokkypoobah/AigangPresaleContractAudit/blob/master/contracts/MultiSigWallet.sol).
 
   The only difference is in the Solidity version number:
@@ -168,13 +197,16 @@ audit:
   > pragma solidity 0.4.11;
   ```
 
-* [ ] [../contracts/Migrations.sol](../contracts/Migrations.sol)
+* [../contracts/Migrations.sol](../contracts/Migrations.sol)
 
   This is a part of the Truffles testing
 
 <br />
 
 ### Differences In MiniMeToken.sol Between The Aigang Presale And Crowdsale Contracts
+
+There are some small changes to the MiniMeToken contract between the Presale and Crowdsale versions. These changes were made to account for the
+differences in the compiler version.
 
 ```diff
 $ diff -w ../../AigangPresaleContractAudit/contracts/MiniMeToken.sol MiniMeToken.sol 
@@ -290,4 +322,4 @@ $ diff -w ../../AigangPresaleContractAudit/contracts/MiniMeToken.sol MiniMeToken
 
 <br />
 
-(c) BokkyPooBah / Bok Consulting Pty Ltd for Aigang - Nov 11 2017. The MIT Licence.
+(c) BokkyPooBah / Bok Consulting Pty Ltd for Aigang - Nov 12 2017. The MIT Licence.
