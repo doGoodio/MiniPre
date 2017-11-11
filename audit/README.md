@@ -116,11 +116,9 @@ TODO
 * [x] [code-review/SafeMath.md](code-review/SafeMath.md)
   * [x] library SafeMath
 * [x] [code-review/ERC20.md](code-review/ERC20.md)
-  * [x] contract ERC20 
+  * [x] contract ERC20
 * [x] [code-review/AIX.md](code-review/AIX.md)
   * [x] contract AIX is MiniMeToken 
-* [x] [code-review/APT.md](code-review/APT.md)
-  * [x] contract APT is MiniMeToken 
 * [ ] [code-review/CommunityTokenHolder.md](code-review/CommunityTokenHolder.md)
   * [ ] contract CommunityTokenHolder is Controlled 
 * [ ] [code-review/Contribution.md](code-review/Contribution.md)
@@ -133,16 +131,26 @@ TODO
   * [ ] contract Migrations 
 * [ ] [code-review/MiniMeToken.md](code-review/MiniMeToken.md)
   * [ ] contract TokenController 
-  * [ ] contract Controlled 
+  * [x] contract Controlled 
   * [ ] contract ApproveAndCallFallBack 
   * [ ] contract MiniMeToken is Controlled 
   * [ ] contract MiniMeTokenFactory 
 * [ ] [code-review/PlaceHolder.md](code-review/PlaceHolder.md)
   * [ ] contract PlaceHolder is Controlled, TokenController 
-* [ ] [code-review/PreSale.md](code-review/PreSale.md)
-  * [ ] contract PreSale is Controlled, TokenController 
 * [ ] [code-review/RemainderTokenHolder.md](code-review/RemainderTokenHolder.md)
   * [ ] contract RemainderTokenHolder is Controlled 
+
+
+
+### Presale
+
+The following code was reviewed in the [Aigang Presale](https://github.com/bokkypoobah/AigangPresaleContractAudit/blob/master/contracts/MultiSigWallet.sol)
+audit:
+
+* [ ] [code-review/PreSale.md](code-review/PreSale.md)
+  * [ ] contract PreSale is Controlled, TokenController 
+* [x] [code-review/APT.md](code-review/APT.md)
+  * [x] contract APT is MiniMeToken 
 
 <br />
 

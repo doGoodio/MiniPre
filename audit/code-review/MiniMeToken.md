@@ -60,18 +60,24 @@ contract TokenController {
         returns(bool);
 }
 
+// BK Ok
 contract Controlled {
     /// @notice The address of the controller is the only address that can call
     ///  a function with this modifier
+    // BK Ok
     modifier onlyController { require(msg.sender == controller); _; }
 
+    // BK Ok
     address public controller;
 
+    // BK Ok - Constructor
     function Controlled() { controller = msg.sender;}
 
     /// @notice Changes the controller of the contract
     /// @param _newController The new controller of the contract
+    // BK Ok - Only controller can execute
     function changeController(address _newController) onlyController {
+        // BK Ok
         controller = _newController;
     }
 }
