@@ -1,6 +1,6 @@
  # Account                                             EtherBalanceChange                          Token Name
 -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
- 0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e        6.000000000000000000           0.000000000000000000 Account #0 - Miner
+ 0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e        3.000000000000000000           0.000000000000000000 Account #0 - Miner
  1 0xa11aae29840fbb5c86e6fd4cf809eba183aef433        0.000000000000000000           0.000000000000000000 Account #1 - Contract Owner
  2 0xa22ab8a9d641ce77e06d98b7d7065d324d3d6976        0.000000000000000000           0.000000000000000000 Account #2 - Multisig
  3 0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0        0.000000000000000000           0.000000000000000000 Account #3
@@ -17,10 +17,10 @@
 
 
 Deploy MiniMeTokenFactory
-mmtfAddress=0x3529089fbacf865e6771ddb8a76ac997963a5393 status=0x1 Success gas=4000000 gasUsed=2270449 costETH=0.040868082 costUSD=8.396429183064 @ ETH/USD=205.452 gasPrice=18 gwei block=1615 txIx=0 txId=0x76460d9dbbd4216ecb69cc49412e4fb3f53aa9be025b9ff0198f0a25f768f6df @ 1510416218 Sat, 11 Nov 2017 16:03:38 UTC
+mmtfAddress=0x7b41d3c2494ed063d5555a1e3269cff3bc41f16a status=0x1 Success gas=4000000 gasUsed=2270449 costETH=0.040868082 costUSD=8.396429183064 @ ETH/USD=205.452 gasPrice=18 gwei block=2190 txIx=0 txId=0xacb90673c6cd915b472d5a4c2b2eca6860c395beef70248fb410c16bc638ba62 @ 1510419404 Sat, 11 Nov 2017 16:56:44 UTC
  # Account                                             EtherBalanceChange                          Token Name
 -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
- 0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e       12.040868082000000000           0.000000000000000000 Account #0 - Miner
+ 0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e        9.040868082000000000           0.000000000000000000 Account #0 - Miner
  1 0xa11aae29840fbb5c86e6fd4cf809eba183aef433       -0.040868082000000000           0.000000000000000000 Account #1 - Contract Owner
  2 0xa22ab8a9d641ce77e06d98b7d7065d324d3d6976        0.000000000000000000           0.000000000000000000 Account #2 - Multisig
  3 0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0        0.000000000000000000           0.000000000000000000 Account #3
@@ -31,7 +31,7 @@ mmtfAddress=0x3529089fbacf865e6771ddb8a76ac997963a5393 status=0x1 Success gas=40
  8 0xa88a05d2b88283ce84c8325760b72a64591279a2        0.000000000000000000           0.000000000000000000 Account #8
  9 0xa99a0ae3354c06b1459fd441a32a3f71005d7da0        0.000000000000000000           0.000000000000000000 Account #9
 10 0xaaaa9de1e6c564446ebca0fd102d8bd92093c756        0.000000000000000000           0.000000000000000000 Account #10 - Collector
-11 0x3529089fbacf865e6771ddb8a76ac997963a5393        0.000000000000000000           0.000000000000000000 MiniMeTokenFactory
+11 0x7b41d3c2494ed063d5555a1e3269cff3bc41f16a        0.000000000000000000           0.000000000000000000 MiniMeTokenFactory
 -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
                                                                                     0.000000000000000000 Total Token Balances
 -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
@@ -39,10 +39,10 @@ mmtfAddress=0x3529089fbacf865e6771ddb8a76ac997963a5393 status=0x1 Success gas=40
 PASS Deploy MiniMeTokenFactory
 
 Deploy APT
-aptAddress=0xee0ec07598ed3d84fc4ff0ad4a6d70300f79d812 status=0x1 Success gas=4000000 gasUsed=2100768 costETH=0.037813824 costUSD=7.768925768448 @ ETH/USD=205.452 gasPrice=18 gwei block=1617 txIx=0 txId=0x3a896d8751dc17db1dc8757722067c6b50d65b7142824be5e3f581369b0bd4c1 @ 1510416225 Sat, 11 Nov 2017 16:03:45 UTC
+aptAddress=0xe8af831517db90d180bd9e05928a9b3577b2a19d status=0x1 Success gas=4000000 gasUsed=2100768 costETH=0.037813824 costUSD=7.768925768448 @ ETH/USD=205.452 gasPrice=18 gwei block=2192 txIx=0 txId=0x80879c0c61dc0f50eaa554fd5e795e4871fe7c25c34e5d7f895df5c9b05cff79 @ 1510419417 Sat, 11 Nov 2017 16:56:57 UTC
  # Account                                             EtherBalanceChange                          Token Name
 -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
- 0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e       18.078681906000000000           0.000000000000000000 Account #0 - Miner
+ 0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e       15.078681906000000000           0.000000000000000000 Account #0 - Miner
  1 0xa11aae29840fbb5c86e6fd4cf809eba183aef433       -0.078681906000000000           0.000000000000000000 Account #1 - Contract Owner
  2 0xa22ab8a9d641ce77e06d98b7d7065d324d3d6976        0.000000000000000000           0.000000000000000000 Account #2 - Multisig
  3 0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0        0.000000000000000000           0.000000000000000000 Account #3
@@ -53,14 +53,14 @@ aptAddress=0xee0ec07598ed3d84fc4ff0ad4a6d70300f79d812 status=0x1 Success gas=400
  8 0xa88a05d2b88283ce84c8325760b72a64591279a2        0.000000000000000000           0.000000000000000000 Account #8
  9 0xa99a0ae3354c06b1459fd441a32a3f71005d7da0        0.000000000000000000           0.000000000000000000 Account #9
 10 0xaaaa9de1e6c564446ebca0fd102d8bd92093c756        0.000000000000000000           0.000000000000000000 Account #10 - Collector
-11 0x3529089fbacf865e6771ddb8a76ac997963a5393        0.000000000000000000           0.000000000000000000 MiniMeTokenFactory
-12 0xee0ec07598ed3d84fc4ff0ad4a6d70300f79d812        0.000000000000000000           0.000000000000000000 APT
+11 0x7b41d3c2494ed063d5555a1e3269cff3bc41f16a        0.000000000000000000           0.000000000000000000 MiniMeTokenFactory
+12 0xe8af831517db90d180bd9e05928a9b3577b2a19d        0.000000000000000000           0.000000000000000000 APT
 -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
                                                                                     0.000000000000000000 Total Token Balances
 -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
 
 PASS Deploy APT
-tokenContractAddress=0xee0ec07598ed3d84fc4ff0ad4a6d70300f79d812
+tokenContractAddress=0xe8af831517db90d180bd9e05928a9b3577b2a19d
 token.controller=0xa11aae29840fbb5c86e6fd4cf809eba183aef433
 token.symbol=APT
 token.name=Aigang Pre-Launch Token
@@ -68,8 +68,8 @@ token.decimals=18
 token.totalSupply=0
 
 Mint APT Tokens
-aptMint_1Tx status=0x1 Success gas=2000000 gasUsed=108192 costETH=0.001947456 costUSD=0.400108730112 @ ETH/USD=205.452 gasPrice=18 gwei block=1619 txIx=0 txId=0x801bce19df32d1dd47e54744a75a1fe4ad7563e107de92d30109d3cccfc7f7c5 @ 1510416241 Sat, 11 Nov 2017 16:04:01 UTC
-aptMint_2Tx status=0x1 Success gas=2000000 gasUsed=73898 costETH=0.001330164 costUSD=0.273284854128 @ ETH/USD=205.452 gasPrice=18 gwei block=1619 txIx=1 txId=0xf7ecef8c490437459fe134c34b7caea9f1526acb1349b42b7e65ce39ef0a2ff0 @ 1510416241 Sat, 11 Nov 2017 16:04:01 UTC
+aptMint_1Tx status=0x1 Success gas=2000000 gasUsed=108192 costETH=0.001947456 costUSD=0.400108730112 @ ETH/USD=205.452 gasPrice=18 gwei block=2195 txIx=0 txId=0xbeb9cf2c6cab379cb3626992392952b679164753b13d319759c4dee791f9c082 @ 1510419428 Sat, 11 Nov 2017 16:57:08 UTC
+aptMint_2Tx status=0x1 Success gas=2000000 gasUsed=73898 costETH=0.001330164 costUSD=0.273284854128 @ ETH/USD=205.452 gasPrice=18 gwei block=2195 txIx=1 txId=0x86d7dbb8529480383486ca342851da51c99ebd0fcdb3a5d132528a8a747eba92 @ 1510419428 Sat, 11 Nov 2017 16:57:08 UTC
  # Account                                             EtherBalanceChange                          Token Name
 -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
  0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e       24.081959526000000000           0.000000000000000000 Account #0 - Miner
@@ -83,25 +83,25 @@ aptMint_2Tx status=0x1 Success gas=2000000 gasUsed=73898 costETH=0.001330164 cos
  8 0xa88a05d2b88283ce84c8325760b72a64591279a2        0.000000000000000000           0.000000000000000000 Account #8
  9 0xa99a0ae3354c06b1459fd441a32a3f71005d7da0        0.000000000000000000           0.000000000000000000 Account #9
 10 0xaaaa9de1e6c564446ebca0fd102d8bd92093c756        0.000000000000000000           0.000000000000000000 Account #10 - Collector
-11 0x3529089fbacf865e6771ddb8a76ac997963a5393        0.000000000000000000           0.000000000000000000 MiniMeTokenFactory
-12 0xee0ec07598ed3d84fc4ff0ad4a6d70300f79d812        0.000000000000000000           0.000000000000000000 APT
+11 0x7b41d3c2494ed063d5555a1e3269cff3bc41f16a        0.000000000000000000           0.000000000000000000 MiniMeTokenFactory
+12 0xe8af831517db90d180bd9e05928a9b3577b2a19d        0.000000000000000000           0.000000000000000000 APT
 -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
                                                                                  3000.000000000000000000 Total Token Balances
 -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
 
 PASS Mint APT Tokens - ac3 1,000 APT
 PASS Mint APT Tokens - ac4 2,000 APT
-tokenContractAddress=0xee0ec07598ed3d84fc4ff0ad4a6d70300f79d812
+tokenContractAddress=0xe8af831517db90d180bd9e05928a9b3577b2a19d
 token.controller=0xa11aae29840fbb5c86e6fd4cf809eba183aef433
 token.symbol=APT
 token.name=Aigang Pre-Launch Token
 token.decimals=18
 token.totalSupply=3000
-Transfer 0 #1619: _from=0x0000000000000000000000000000000000000000 _to=0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0 _amount=1000
-Transfer 1 #1619: _from=0x0000000000000000000000000000000000000000 _to=0xa44a08d3f6933c69212114bb66e2df1813651844 _amount=2000
+Transfer 0 #2195: _from=0x0000000000000000000000000000000000000000 _to=0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0 _amount=1000
+Transfer 1 #2195: _from=0x0000000000000000000000000000000000000000 _to=0xa44a08d3f6933c69212114bb66e2df1813651844 _amount=2000
 
 Deploy AIX
-aixAddress=0x44f3bfeccc26c26313d1b5d4448a0b84e45a391b status=0x1 Success gas=4000000 gasUsed=2058454 costETH=0.037052172 costUSD=7.612442841744 @ ETH/USD=205.452 gasPrice=18 gwei block=1621 txIx=0 txId=0xff2aa2857a11ac0b3f93e263f0e55903da671b39ff39e9fafb8119edf5a02a8c @ 1510416250 Sat, 11 Nov 2017 16:04:10 UTC
+aixAddress=0x701ef640d12387f1c9a154037b3354a5a4f6c4f9 status=0x1 Success gas=4000000 gasUsed=2058454 costETH=0.037052172 costUSD=7.612442841744 @ ETH/USD=205.452 gasPrice=18 gwei block=2197 txIx=0 txId=0x601efe2b96076e59828ceaa5f8fb034830680bcfed0c7b59e55b3a1153e17e94 @ 1510419431 Sat, 11 Nov 2017 16:57:11 UTC
  # Account                                             EtherBalanceChange                          Token Name
 -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
  0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e       30.119011698000000000           0.000000000000000000 Account #0 - Miner
@@ -115,15 +115,15 @@ aixAddress=0x44f3bfeccc26c26313d1b5d4448a0b84e45a391b status=0x1 Success gas=400
  8 0xa88a05d2b88283ce84c8325760b72a64591279a2        0.000000000000000000           0.000000000000000000 Account #8
  9 0xa99a0ae3354c06b1459fd441a32a3f71005d7da0        0.000000000000000000           0.000000000000000000 Account #9
 10 0xaaaa9de1e6c564446ebca0fd102d8bd92093c756        0.000000000000000000           0.000000000000000000 Account #10 - Collector
-11 0x3529089fbacf865e6771ddb8a76ac997963a5393        0.000000000000000000           0.000000000000000000 MiniMeTokenFactory
-12 0xee0ec07598ed3d84fc4ff0ad4a6d70300f79d812        0.000000000000000000           0.000000000000000000 APT
-13 0x44f3bfeccc26c26313d1b5d4448a0b84e45a391b        0.000000000000000000           0.000000000000000000 AIX
+11 0x7b41d3c2494ed063d5555a1e3269cff3bc41f16a        0.000000000000000000           0.000000000000000000 MiniMeTokenFactory
+12 0xe8af831517db90d180bd9e05928a9b3577b2a19d        0.000000000000000000           0.000000000000000000 APT
+13 0x701ef640d12387f1c9a154037b3354a5a4f6c4f9        0.000000000000000000           0.000000000000000000 AIX
 -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
                                                                                     0.000000000000000000 Total Token Balances
 -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
 
 PASS Deploy AIX
-tokenContractAddress=0x44f3bfeccc26c26313d1b5d4448a0b84e45a391b
+tokenContractAddress=0x701ef640d12387f1c9a154037b3354a5a4f6c4f9
 token.controller=0xa11aae29840fbb5c86e6fd4cf809eba183aef433
 token.symbol=AIX
 token.name=Aigang Network Token
@@ -131,10 +131,10 @@ token.decimals=18
 token.totalSupply=0
 
 Deploy Contribution
-contribAddress=0xcc8461036413b0fb03a632e408781b40dcd630b4 status=0x1 Success gas=4000000 gasUsed=2157469 costETH=0.038834442 costUSD=7.978613777784 @ ETH/USD=205.452 gasPrice=18 gwei block=1623 txIx=0 txId=0x30cf51e78cbf17531728afc4d4009c1f65d00b846477d1c31c708986f1fd6844 @ 1510416267 Sat, 11 Nov 2017 16:04:27 UTC
+contribAddress=0x4ca30c1f86d076a119fab1d61606ced1a99a8b32 status=0x1 Success gas=4000000 gasUsed=2157469 costETH=0.038834442 costUSD=7.978613777784 @ ETH/USD=205.452 gasPrice=18 gwei block=2200 txIx=0 txId=0x9dcf2a7360deb76668ce83544b48b5519de9d72e5aa7fef64a1cbfc750cdba42 @ 1510419442 Sat, 11 Nov 2017 16:57:22 UTC
  # Account                                             EtherBalanceChange                          Token Name
 -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
- 0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e       36.157846140000000000           0.000000000000000000 Account #0 - Miner
+ 0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e       39.157846140000000000           0.000000000000000000 Account #0 - Miner
  1 0xa11aae29840fbb5c86e6fd4cf809eba183aef433       -0.157846140000000000           0.000000000000000000 Account #1 - Contract Owner
  2 0xa22ab8a9d641ce77e06d98b7d7065d324d3d6976        0.000000000000000000           0.000000000000000000 Account #2 - Multisig
  3 0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0        0.000000000000000000           0.000000000000000000 Account #3
@@ -145,18 +145,18 @@ contribAddress=0xcc8461036413b0fb03a632e408781b40dcd630b4 status=0x1 Success gas
  8 0xa88a05d2b88283ce84c8325760b72a64591279a2        0.000000000000000000           0.000000000000000000 Account #8
  9 0xa99a0ae3354c06b1459fd441a32a3f71005d7da0        0.000000000000000000           0.000000000000000000 Account #9
 10 0xaaaa9de1e6c564446ebca0fd102d8bd92093c756        0.000000000000000000           0.000000000000000000 Account #10 - Collector
-11 0x3529089fbacf865e6771ddb8a76ac997963a5393        0.000000000000000000           0.000000000000000000 MiniMeTokenFactory
-12 0xee0ec07598ed3d84fc4ff0ad4a6d70300f79d812        0.000000000000000000           0.000000000000000000 APT
-13 0x44f3bfeccc26c26313d1b5d4448a0b84e45a391b        0.000000000000000000           0.000000000000000000 AIX
-14 0xcc8461036413b0fb03a632e408781b40dcd630b4        0.000000000000000000           0.000000000000000000 Contribution
+11 0x7b41d3c2494ed063d5555a1e3269cff3bc41f16a        0.000000000000000000           0.000000000000000000 MiniMeTokenFactory
+12 0xe8af831517db90d180bd9e05928a9b3577b2a19d        0.000000000000000000           0.000000000000000000 APT
+13 0x701ef640d12387f1c9a154037b3354a5a4f6c4f9        0.000000000000000000           0.000000000000000000 AIX
+14 0x4ca30c1f86d076a119fab1d61606ced1a99a8b32        0.000000000000000000           0.000000000000000000 Contribution
 -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
                                                                                     0.000000000000000000 Total Token Balances
 -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
 
 PASS Deploy Contribution
-crowdsaleContractAddress=0xcc8461036413b0fb03a632e408781b40dcd630b4
+crowdsaleContractAddress=0x4ca30c1f86d076a119fab1d61606ced1a99a8b32
 crowdsale.controller=0xa11aae29840fbb5c86e6fd4cf809eba183aef433
-crowdsale.aix=0x44f3bfeccc26c26313d1b5d4448a0b84e45a391b
+crowdsale.aix=0x701ef640d12387f1c9a154037b3354a5a4f6c4f9
 crowdsale.contributionWallet=0x0000000000000000000000000000000000000000
 crowdsale.remainderHolder=0x0000000000000000000000000000000000000000
 crowdsale.devHolder=0x0000000000000000000000000000000000000000
@@ -180,7 +180,7 @@ crowdsale.finalizedTime=0 Thu, 01 Jan 1970 00:00:00 UTC
 crowdsale.initializedBlock=0
 crowdsale.finalizedBlock=0
 crowdsale.paused=false
-tokenContractAddress=0x44f3bfeccc26c26313d1b5d4448a0b84e45a391b
+tokenContractAddress=0x701ef640d12387f1c9a154037b3354a5a4f6c4f9
 token.controller=0xa11aae29840fbb5c86e6fd4cf809eba183aef433
 token.symbol=AIX
 token.name=Aigang Network Token
@@ -188,10 +188,10 @@ token.decimals=18
 token.totalSupply=0
 
 AIX changeController(Contribution)
-aixChangeControllerTx status=0x1 Success gas=2000000 gasUsed=28231 costETH=0.000508158 costUSD=0.104402077416 @ ETH/USD=205.452 gasPrice=18 gwei block=1626 txIx=0 txId=0x7a1cb896ca5369a0be7eb3202f4cfd4f3832a59464d1f6feb2976ad9ea43f68e @ 1510416285 Sat, 11 Nov 2017 16:04:45 UTC
+aixChangeControllerTx status=0x1 Success gas=2000000 gasUsed=28231 costETH=0.000508158 costUSD=0.104402077416 @ ETH/USD=205.452 gasPrice=18 gwei block=2203 txIx=0 txId=0xbffdcedfd5e50895181ca137ef4e501966ba9d8d3440fbd850c573c8e3322c1b @ 1510419463 Sat, 11 Nov 2017 16:57:43 UTC
  # Account                                             EtherBalanceChange                          Token Name
 -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
- 0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e       45.158354298000000000           0.000000000000000000 Account #0 - Miner
+ 0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e       48.158354298000000000           0.000000000000000000 Account #0 - Miner
  1 0xa11aae29840fbb5c86e6fd4cf809eba183aef433       -0.158354298000000000           0.000000000000000000 Account #1 - Contract Owner
  2 0xa22ab8a9d641ce77e06d98b7d7065d324d3d6976        0.000000000000000000           0.000000000000000000 Account #2 - Multisig
  3 0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0        0.000000000000000000           0.000000000000000000 Account #3
@@ -202,18 +202,18 @@ aixChangeControllerTx status=0x1 Success gas=2000000 gasUsed=28231 costETH=0.000
  8 0xa88a05d2b88283ce84c8325760b72a64591279a2        0.000000000000000000           0.000000000000000000 Account #8
  9 0xa99a0ae3354c06b1459fd441a32a3f71005d7da0        0.000000000000000000           0.000000000000000000 Account #9
 10 0xaaaa9de1e6c564446ebca0fd102d8bd92093c756        0.000000000000000000           0.000000000000000000 Account #10 - Collector
-11 0x3529089fbacf865e6771ddb8a76ac997963a5393        0.000000000000000000           0.000000000000000000 MiniMeTokenFactory
-12 0xee0ec07598ed3d84fc4ff0ad4a6d70300f79d812        0.000000000000000000           0.000000000000000000 APT
-13 0x44f3bfeccc26c26313d1b5d4448a0b84e45a391b        0.000000000000000000           0.000000000000000000 AIX
-14 0xcc8461036413b0fb03a632e408781b40dcd630b4        0.000000000000000000           0.000000000000000000 Contribution
+11 0x7b41d3c2494ed063d5555a1e3269cff3bc41f16a        0.000000000000000000           0.000000000000000000 MiniMeTokenFactory
+12 0xe8af831517db90d180bd9e05928a9b3577b2a19d        0.000000000000000000           0.000000000000000000 APT
+13 0x701ef640d12387f1c9a154037b3354a5a4f6c4f9        0.000000000000000000           0.000000000000000000 AIX
+14 0x4ca30c1f86d076a119fab1d61606ced1a99a8b32        0.000000000000000000           0.000000000000000000 Contribution
 -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
                                                                                     0.000000000000000000 Total Token Balances
 -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
 
 PASS AIX changeController(Contribution)
-crowdsaleContractAddress=0xcc8461036413b0fb03a632e408781b40dcd630b4
+crowdsaleContractAddress=0x4ca30c1f86d076a119fab1d61606ced1a99a8b32
 crowdsale.controller=0xa11aae29840fbb5c86e6fd4cf809eba183aef433
-crowdsale.aix=0x44f3bfeccc26c26313d1b5d4448a0b84e45a391b
+crowdsale.aix=0x701ef640d12387f1c9a154037b3354a5a4f6c4f9
 crowdsale.contributionWallet=0x0000000000000000000000000000000000000000
 crowdsale.remainderHolder=0x0000000000000000000000000000000000000000
 crowdsale.devHolder=0x0000000000000000000000000000000000000000
@@ -237,21 +237,21 @@ crowdsale.finalizedTime=0 Thu, 01 Jan 1970 00:00:00 UTC
 crowdsale.initializedBlock=0
 crowdsale.finalizedBlock=0
 crowdsale.paused=false
-tokenContractAddress=0x44f3bfeccc26c26313d1b5d4448a0b84e45a391b
-token.controller=0xcc8461036413b0fb03a632e408781b40dcd630b4
+tokenContractAddress=0x701ef640d12387f1c9a154037b3354a5a4f6c4f9
+token.controller=0x4ca30c1f86d076a119fab1d61606ced1a99a8b32
 token.symbol=AIX
 token.name=Aigang Network Token
 token.decimals=18
 token.totalSupply=0
 
 Deploy Token Holders & Exchanger
-cthAddress=0x24bd630d92ec6af45c55a4d85ea03acc1c837a71 status=0x1 Success gas=4000000 gasUsed=628986 costETH=0.011321748 costUSD=2.326075770096 @ ETH/USD=205.452 gasPrice=18 gwei block=1628 txIx=0 txId=0x1e09e6f112580613967d36ffdc5cd90691b26b1c4a72976ea4a2b66c752e8edf @ 1510416289 Sat, 11 Nov 2017 16:04:49 UTC
-dthAddress=0x3520573b99148b17fab826d471de872c15767dfb status=0x1 Success gas=4000000 gasUsed=650643 costETH=0.011711574 costUSD=2.406166301448 @ ETH/USD=205.452 gasPrice=18 gwei block=1628 txIx=1 txId=0x1c6c0737242bb68459895fa59d4738b2622c7015443d85716af397fe3db48106 @ 1510416289 Sat, 11 Nov 2017 16:04:49 UTC
-rthAddress=0x28cb44ee47b8e04af0f38170668e96d87e6646de status=0x1 Success gas=4000000 gasUsed=527252 costETH=0.009490536 costUSD=1.949849602272 @ ETH/USD=205.452 gasPrice=18 gwei block=1628 txIx=2 txId=0x3836918c65b1aef8422a74231409174c442c579c7607e7cbc2b7875c9bb7d90a @ 1510416289 Sat, 11 Nov 2017 16:04:49 UTC
-exchangerAddress=0x903c00ee4e4daa2cfd9164006eed6338fa88741c status=0x1 Success gas=4000000 gasUsed=748885 costETH=0.01347993 costUSD=2.76947857836 @ ETH/USD=205.452 gasPrice=18 gwei block=1628 txIx=3 txId=0xdb5e044b690373108b94602f22e9745b4b3244fe6bb85ff72d8b83d40712e5bf @ 1510416289 Sat, 11 Nov 2017 16:04:49 UTC
+cthAddress=0x3526747b4794e2e9200c8e150ecedb735833b047 status=0x1 Success gas=4000000 gasUsed=628986 costETH=0.011321748 costUSD=2.326075770096 @ ETH/USD=205.452 gasPrice=18 gwei block=2206 txIx=0 txId=0xa71453a7d5a893da630907b7586f8608b077c02e9c51f8b484aede4d876e9d25 @ 1510419489 Sat, 11 Nov 2017 16:58:09 UTC
+dthAddress=0xa59f037500bd7666ea5dda3fe6c65e56b5aa6d03 status=0x1 Success gas=4000000 gasUsed=650643 costETH=0.011711574 costUSD=2.406166301448 @ ETH/USD=205.452 gasPrice=18 gwei block=2206 txIx=1 txId=0x5a67d1eed7bc5dcede7a4a941c07d9b3f6ec05f65426b56fb3f161a6cdbaea05 @ 1510419489 Sat, 11 Nov 2017 16:58:09 UTC
+rthAddress=0xa5e1536e89cf7aea3ffcd0861f49ae6f329fda40 status=0x1 Success gas=4000000 gasUsed=527252 costETH=0.009490536 costUSD=1.949849602272 @ ETH/USD=205.452 gasPrice=18 gwei block=2206 txIx=2 txId=0xce89f60a830244bb3669fef80e04736ab778b34227619f15e09e9ab42cdbbb9d @ 1510419489 Sat, 11 Nov 2017 16:58:09 UTC
+exchangerAddress=0x657710d178b1d8f18c3e18df219fdafa75704b3b status=0x1 Success gas=4000000 gasUsed=748885 costETH=0.01347993 costUSD=2.76947857836 @ ETH/USD=205.452 gasPrice=18 gwei block=2206 txIx=3 txId=0x2c102f83fe48d434e20253579bfbbd8365701d972247c5e97992dd9b8a58dae9 @ 1510419489 Sat, 11 Nov 2017 16:58:09 UTC
  # Account                                             EtherBalanceChange                          Token Name
 -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
- 0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e       51.204358086000000000           0.000000000000000000 Account #0 - Miner
+ 0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e       57.204358086000000000           0.000000000000000000 Account #0 - Miner
  1 0xa11aae29840fbb5c86e6fd4cf809eba183aef433       -0.204358086000000000           0.000000000000000000 Account #1 - Contract Owner
  2 0xa22ab8a9d641ce77e06d98b7d7065d324d3d6976        0.000000000000000000           0.000000000000000000 Account #2 - Multisig
  3 0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0        0.000000000000000000           0.000000000000000000 Account #3
@@ -262,14 +262,14 @@ exchangerAddress=0x903c00ee4e4daa2cfd9164006eed6338fa88741c status=0x1 Success g
  8 0xa88a05d2b88283ce84c8325760b72a64591279a2        0.000000000000000000           0.000000000000000000 Account #8
  9 0xa99a0ae3354c06b1459fd441a32a3f71005d7da0        0.000000000000000000           0.000000000000000000 Account #9
 10 0xaaaa9de1e6c564446ebca0fd102d8bd92093c756        0.000000000000000000           0.000000000000000000 Account #10 - Collector
-11 0x3529089fbacf865e6771ddb8a76ac997963a5393        0.000000000000000000           0.000000000000000000 MiniMeTokenFactory
-12 0xee0ec07598ed3d84fc4ff0ad4a6d70300f79d812        0.000000000000000000           0.000000000000000000 APT
-13 0x44f3bfeccc26c26313d1b5d4448a0b84e45a391b        0.000000000000000000           0.000000000000000000 AIX
-14 0xcc8461036413b0fb03a632e408781b40dcd630b4        0.000000000000000000           0.000000000000000000 Contribution
-15 0x24bd630d92ec6af45c55a4d85ea03acc1c837a71        0.000000000000000000           0.000000000000000000 CommunityTokenHolder
-16 0x3520573b99148b17fab826d471de872c15767dfb        0.000000000000000000           0.000000000000000000 DevTokensHolder
-17 0x28cb44ee47b8e04af0f38170668e96d87e6646de        0.000000000000000000           0.000000000000000000 RemainderTokenHolder
-18 0x903c00ee4e4daa2cfd9164006eed6338fa88741c        0.000000000000000000           0.000000000000000000 Exchanger
+11 0x7b41d3c2494ed063d5555a1e3269cff3bc41f16a        0.000000000000000000           0.000000000000000000 MiniMeTokenFactory
+12 0xe8af831517db90d180bd9e05928a9b3577b2a19d        0.000000000000000000           0.000000000000000000 APT
+13 0x701ef640d12387f1c9a154037b3354a5a4f6c4f9        0.000000000000000000           0.000000000000000000 AIX
+14 0x4ca30c1f86d076a119fab1d61606ced1a99a8b32        0.000000000000000000           0.000000000000000000 Contribution
+15 0x3526747b4794e2e9200c8e150ecedb735833b047        0.000000000000000000           0.000000000000000000 CommunityTokenHolder
+16 0xa59f037500bd7666ea5dda3fe6c65e56b5aa6d03        0.000000000000000000           0.000000000000000000 DevTokensHolder
+17 0xa5e1536e89cf7aea3ffcd0861f49ae6f329fda40        0.000000000000000000           0.000000000000000000 RemainderTokenHolder
+18 0x657710d178b1d8f18c3e18df219fdafa75704b3b        0.000000000000000000           0.000000000000000000 Exchanger
 -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
                                                                                     0.000000000000000000 Total Token Balances
 -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
@@ -278,9 +278,9 @@ PASS Deploy Token Holders & Exchanger - CommunityTokenHolder
 PASS Deploy Token Holders & Exchanger - DevTokensHolder
 PASS Deploy Token Holders & Exchanger - RemainderTokenHolder
 PASS Deploy Token Holders & Exchanger - Exchanger
-crowdsaleContractAddress=0xcc8461036413b0fb03a632e408781b40dcd630b4
+crowdsaleContractAddress=0x4ca30c1f86d076a119fab1d61606ced1a99a8b32
 crowdsale.controller=0xa11aae29840fbb5c86e6fd4cf809eba183aef433
-crowdsale.aix=0x44f3bfeccc26c26313d1b5d4448a0b84e45a391b
+crowdsale.aix=0x701ef640d12387f1c9a154037b3354a5a4f6c4f9
 crowdsale.contributionWallet=0x0000000000000000000000000000000000000000
 crowdsale.remainderHolder=0x0000000000000000000000000000000000000000
 crowdsale.devHolder=0x0000000000000000000000000000000000000000
@@ -304,19 +304,18 @@ crowdsale.finalizedTime=0 Thu, 01 Jan 1970 00:00:00 UTC
 crowdsale.initializedBlock=0
 crowdsale.finalizedBlock=0
 crowdsale.paused=false
-tokenContractAddress=0x44f3bfeccc26c26313d1b5d4448a0b84e45a391b
-token.controller=0xcc8461036413b0fb03a632e408781b40dcd630b4
+tokenContractAddress=0x701ef640d12387f1c9a154037b3354a5a4f6c4f9
+token.controller=0x4ca30c1f86d076a119fab1d61606ced1a99a8b32
 token.symbol=AIX
 token.name=Aigang Network Token
 token.decimals=18
 token.totalSupply=0
 
 Initialise Contribution
-initialiseContributionTx status=0x1 Success gas=2000000 gasUsed=387020 costETH=0.00696636 costUSD=1.43125259472 @ ETH/USD=205.452 gasPrice=18 gwei block=1630 txIx=0 txId=0x7dc571e7ca7ae79a3af154776727c7a22f3308020a77067e775b79b318f1789d @ 1510416302 Sat, 11 Nov 2017 16:05:02 UTC
  # Account                                             EtherBalanceChange                          Token Name
 -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
- 0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e       57.211324446000000000           0.000000000000000000 Account #0 - Miner
- 1 0xa11aae29840fbb5c86e6fd4cf809eba183aef433       -0.211324446000000000           0.000000000000000000 Account #1 - Contract Owner
+ 0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e       63.211325598000000000           0.000000000000000000 Account #0 - Miner
+ 1 0xa11aae29840fbb5c86e6fd4cf809eba183aef433       -0.211325598000000000           0.000000000000000000 Account #1 - Contract Owner
  2 0xa22ab8a9d641ce77e06d98b7d7065d324d3d6976        0.000000000000000000           0.000000000000000000 Account #2 - Multisig
  3 0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0        0.000000000000000000           0.000000000000000000 Account #3
  4 0xa44a08d3f6933c69212114bb66e2df1813651844        0.000000000000000000           0.000000000000000000 Account #4
@@ -326,27 +325,27 @@ initialiseContributionTx status=0x1 Success gas=2000000 gasUsed=387020 costETH=0
  8 0xa88a05d2b88283ce84c8325760b72a64591279a2        0.000000000000000000           0.000000000000000000 Account #8
  9 0xa99a0ae3354c06b1459fd441a32a3f71005d7da0        0.000000000000000000           0.000000000000000000 Account #9
 10 0xaaaa9de1e6c564446ebca0fd102d8bd92093c756        0.000000000000000000           0.000000000000000000 Account #10 - Collector
-11 0x3529089fbacf865e6771ddb8a76ac997963a5393        0.000000000000000000           0.000000000000000000 MiniMeTokenFactory
-12 0xee0ec07598ed3d84fc4ff0ad4a6d70300f79d812        0.000000000000000000           0.000000000000000000 APT
-13 0x44f3bfeccc26c26313d1b5d4448a0b84e45a391b        0.000000000000000000           0.000000000000000000 AIX
-14 0xcc8461036413b0fb03a632e408781b40dcd630b4        0.000000000000000000           0.000000000000000000 Contribution
-15 0x24bd630d92ec6af45c55a4d85ea03acc1c837a71        0.000000000000000000           0.000000000000000000 CommunityTokenHolder
-16 0x3520573b99148b17fab826d471de872c15767dfb        0.000000000000000000           0.000000000000000000 DevTokensHolder
-17 0x28cb44ee47b8e04af0f38170668e96d87e6646de        0.000000000000000000           0.000000000000000000 RemainderTokenHolder
-18 0x903c00ee4e4daa2cfd9164006eed6338fa88741c        0.000000000000000000     7500000.000000000000000000 Exchanger
+11 0x7b41d3c2494ed063d5555a1e3269cff3bc41f16a        0.000000000000000000           0.000000000000000000 MiniMeTokenFactory
+12 0xe8af831517db90d180bd9e05928a9b3577b2a19d        0.000000000000000000           0.000000000000000000 APT
+13 0x701ef640d12387f1c9a154037b3354a5a4f6c4f9        0.000000000000000000           0.000000000000000000 AIX
+14 0x4ca30c1f86d076a119fab1d61606ced1a99a8b32        0.000000000000000000           0.000000000000000000 Contribution
+15 0x3526747b4794e2e9200c8e150ecedb735833b047        0.000000000000000000           0.000000000000000000 CommunityTokenHolder
+16 0xa59f037500bd7666ea5dda3fe6c65e56b5aa6d03        0.000000000000000000           0.000000000000000000 DevTokensHolder
+17 0xa5e1536e89cf7aea3ffcd0861f49ae6f329fda40        0.000000000000000000           0.000000000000000000 RemainderTokenHolder
+18 0x657710d178b1d8f18c3e18df219fdafa75704b3b        0.000000000000000000     7500000.000000000000000000 Exchanger
 -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
                                                                               7500000.000000000000000000 Total Token Balances
 -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
 
 PASS Initialise Contribution
-crowdsaleContractAddress=0xcc8461036413b0fb03a632e408781b40dcd630b4
+crowdsaleContractAddress=0x4ca30c1f86d076a119fab1d61606ced1a99a8b32
 crowdsale.controller=0xa11aae29840fbb5c86e6fd4cf809eba183aef433
-crowdsale.aix=0x44f3bfeccc26c26313d1b5d4448a0b84e45a391b
+crowdsale.aix=0x701ef640d12387f1c9a154037b3354a5a4f6c4f9
 crowdsale.contributionWallet=0xa22ab8a9d641ce77e06d98b7d7065d324d3d6976
-crowdsale.remainderHolder=0x28cb44ee47b8e04af0f38170668e96d87e6646de
-crowdsale.devHolder=0x3520573b99148b17fab826d471de872c15767dfb
-crowdsale.communityHolder=0x24bd630d92ec6af45c55a4d85ea03acc1c837a71
-crowdsale.exchanger=0x903c00ee4e4daa2cfd9164006eed6338fa88741c
+crowdsale.remainderHolder=0xa5e1536e89cf7aea3ffcd0861f49ae6f329fda40
+crowdsale.devHolder=0xa59f037500bd7666ea5dda3fe6c65e56b5aa6d03
+crowdsale.communityHolder=0x3526747b4794e2e9200c8e150ecedb735833b047
+crowdsale.exchanger=0x657710d178b1d8f18c3e18df219fdafa75704b3b
 crowdsale.collector=0xaaaa9de1e6c564446ebca0fd102d8bd92093c756
 crowdsale.collectorWeiCap=1e+21 1000
 crowdsale.collectorWeiCollected=0 0
@@ -358,19 +357,231 @@ crowdsale.twentyPercentWithBonus=0
 crowdsale.thirtyPercentWithBonus=0
 crowdsale.minimumPerTransaction=10000000000000000 0.01
 crowdsale.numWhitelistedInvestors=0
-crowdsale.startTime=1510416436 Sat, 11 Nov 2017 16:07:16 UTC
-crowdsale.endTime=1510416496 Sat, 11 Nov 2017 16:08:16 UTC
-crowdsale.initializedTime=1510416302 Sat, 11 Nov 2017 16:05:02 UTC
+crowdsale.startTime=1510419574 Sat, 11 Nov 2017 16:59:34 UTC
+crowdsale.endTime=1510419634 Sat, 11 Nov 2017 17:00:34 UTC
+crowdsale.initializedTime=1510419493 Sat, 11 Nov 2017 16:58:13 UTC
 crowdsale.finalizedTime=0 Thu, 01 Jan 1970 00:00:00 UTC
-crowdsale.initializedBlock=1630
+crowdsale.initializedBlock=2208
 crowdsale.finalizedBlock=0
 crowdsale.paused=false
-Initialized 0 #1630: {"_now":"1630"}
-tokenContractAddress=0x44f3bfeccc26c26313d1b5d4448a0b84e45a391b
-token.controller=0xcc8461036413b0fb03a632e408781b40dcd630b4
+Initialized 0 #2208: {"_now":"2208"}
+tokenContractAddress=0x701ef640d12387f1c9a154037b3354a5a4f6c4f9
+token.controller=0x4ca30c1f86d076a119fab1d61606ced1a99a8b32
 token.symbol=AIX
 token.name=Aigang Network Token
 token.decimals=18
 token.totalSupply=7500000
-Transfer 0 #1630: _from=0x0000000000000000000000000000000000000000 _to=0x903c00ee4e4daa2cfd9164006eed6338fa88741c _amount=7500000
+Transfer 0 #2208: _from=0x0000000000000000000000000000000000000000 _to=0x657710d178b1d8f18c3e18df219fdafa75704b3b _amount=7500000
+
+Waiting until 'startTime' at 1510419574+0s =Sun, 12 Nov 2017 03:59:35 AEDT now=Sun, 12 Nov 2017 03:58:16 AEDT
+Waited until 'startTime' at at 1510419574+0s =Sun, 12 Nov 2017 03:59:35 AEDT now=Sun, 12 Nov 2017 03:59:35 AEDT
+
+Exchange Presale APT to AIX; Whitelist
+exchangePresale_1Tx status=0x1 Success gas=2000000 gasUsed=146244 costETH=0.002632392 costUSD=0.540830201184 @ ETH/USD=205.452 gasPrice=18 gwei block=2228 txIx=0 txId=0xd3c70d9ff7ca05c445c3ffd955a4868e556248212e50a9bae6afb72db2ca78fc @ 1510419581 Sat, 11 Nov 2017 16:59:41 UTC
+exchangePresale_2Tx status=0x1 Success gas=2000000 gasUsed=110888 costETH=0.001995984 costUSD=0.410078904768 @ ETH/USD=205.452 gasPrice=18 gwei block=2228 txIx=4 txId=0x37203a7a7d4eeadbc3b6d54c54878a5ec7ba6d5cfe5243a1b28b79de8face82c @ 1510419581 Sat, 11 Nov 2017 16:59:41 UTC
+whitelist_1Tx status=0x1 Success gas=2000000 gasUsed=63975 costETH=0.00115155 costUSD=0.2365882506 @ ETH/USD=205.452 gasPrice=18 gwei block=2228 txIx=1 txId=0x2360e3de7f9e771a95016170ec72310c3aae5b336345a17ef1b75b403f84c06e @ 1510419581 Sat, 11 Nov 2017 16:59:41 UTC
+whitelist_2Tx status=0x1 Success gas=2000000 gasUsed=48975 costETH=0.00088155 costUSD=0.1811162106 @ ETH/USD=205.452 gasPrice=18 gwei block=2228 txIx=2 txId=0xe1ca266c9bdf377e39bf3a88c0c4ef1fa62d02a50ac072ee390ceaa54934505b @ 1510419581 Sat, 11 Nov 2017 16:59:41 UTC
+whitelist_3Tx status=0x1 Success gas=2000000 gasUsed=48975 costETH=0.00088155 costUSD=0.1811162106 @ ETH/USD=205.452 gasPrice=18 gwei block=2228 txIx=3 txId=0x688d38ef23fb06eda20a40be2244d4f28a64ac54f5276f708314dc2af0250dfa @ 1510419581 Sat, 11 Nov 2017 16:59:41 UTC
+ # Account                                             EtherBalanceChange                          Token Name
+-- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
+ 0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e      126.218868624000000000           0.000000000000000000 Account #0 - Miner
+ 1 0xa11aae29840fbb5c86e6fd4cf809eba183aef433       -0.214240248000000000           0.000000000000000000 Account #1 - Contract Owner
+ 2 0xa22ab8a9d641ce77e06d98b7d7065d324d3d6976        0.000000000000000000           0.000000000000000000 Account #2 - Multisig
+ 3 0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0       -0.002632392000000000     2500000.000000000000000000 Account #3
+ 4 0xa44a08d3f6933c69212114bb66e2df1813651844       -0.001995984000000000     5000000.000000000000000000 Account #4
+ 5 0xa55a151eb00fded1634d27d1127b4be4627079ea        0.000000000000000000           0.000000000000000000 Account #5
+ 6 0xa66a85ede0cbe03694aa9d9de0bb19c99ff55bd9        0.000000000000000000           0.000000000000000000 Account #6
+ 7 0xa77a2b9d4b1c010a22a7c565dc418cef683dbcec        0.000000000000000000           0.000000000000000000 Account #7
+ 8 0xa88a05d2b88283ce84c8325760b72a64591279a2        0.000000000000000000           0.000000000000000000 Account #8
+ 9 0xa99a0ae3354c06b1459fd441a32a3f71005d7da0        0.000000000000000000           0.000000000000000000 Account #9
+10 0xaaaa9de1e6c564446ebca0fd102d8bd92093c756        0.000000000000000000           0.000000000000000000 Account #10 - Collector
+11 0x7b41d3c2494ed063d5555a1e3269cff3bc41f16a        0.000000000000000000           0.000000000000000000 MiniMeTokenFactory
+12 0xe8af831517db90d180bd9e05928a9b3577b2a19d        0.000000000000000000           0.000000000000000000 APT
+13 0x701ef640d12387f1c9a154037b3354a5a4f6c4f9        0.000000000000000000           0.000000000000000000 AIX
+14 0x4ca30c1f86d076a119fab1d61606ced1a99a8b32        0.000000000000000000           0.000000000000000000 Contribution
+15 0x3526747b4794e2e9200c8e150ecedb735833b047        0.000000000000000000           0.000000000000000000 CommunityTokenHolder
+16 0xa59f037500bd7666ea5dda3fe6c65e56b5aa6d03        0.000000000000000000           0.000000000000000000 DevTokensHolder
+17 0xa5e1536e89cf7aea3ffcd0861f49ae6f329fda40        0.000000000000000000           0.000000000000000000 RemainderTokenHolder
+18 0x657710d178b1d8f18c3e18df219fdafa75704b3b        0.000000000000000000           0.000000000000000000 Exchanger
+-- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
+                                                                              7500000.000000000000000000 Total Token Balances
+-- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
+
+PASS Exchange Presale APT to AIX; Whitelist - account3 1,000 APT -> 2,500,000 AIX
+PASS Exchange Presale APT to AIX; Whitelist - account4 2,000 APT -> 5,000,000 AIX
+PASS Exchange Presale APT to AIX; Whitelist - whitelist(account3)
+PASS Exchange Presale APT to AIX; Whitelist - whitelist(account4)
+PASS Exchange Presale APT to AIX; Whitelist - whitelist(account5)
+crowdsaleContractAddress=0x4ca30c1f86d076a119fab1d61606ced1a99a8b32
+crowdsale.controller=0xa11aae29840fbb5c86e6fd4cf809eba183aef433
+crowdsale.aix=0x701ef640d12387f1c9a154037b3354a5a4f6c4f9
+crowdsale.contributionWallet=0xa22ab8a9d641ce77e06d98b7d7065d324d3d6976
+crowdsale.remainderHolder=0xa5e1536e89cf7aea3ffcd0861f49ae6f329fda40
+crowdsale.devHolder=0xa59f037500bd7666ea5dda3fe6c65e56b5aa6d03
+crowdsale.communityHolder=0x3526747b4794e2e9200c8e150ecedb735833b047
+crowdsale.exchanger=0x657710d178b1d8f18c3e18df219fdafa75704b3b
+crowdsale.collector=0xaaaa9de1e6c564446ebca0fd102d8bd92093c756
+crowdsale.collectorWeiCap=1e+21 1000
+crowdsale.collectorWeiCollected=0 0
+crowdsale.totalWeiCap=1e+22 10000
+crowdsale.totalWeiCollected=0 0
+crowdsale.weiPreCollected=3e+21 3000
+crowdsale.notCollectedAmountAfter24Hours=0 0
+crowdsale.twentyPercentWithBonus=0
+crowdsale.thirtyPercentWithBonus=0
+crowdsale.minimumPerTransaction=10000000000000000 0.01
+crowdsale.numWhitelistedInvestors=3
+crowdsale.startTime=1510419574 Sat, 11 Nov 2017 16:59:34 UTC
+crowdsale.endTime=1510419634 Sat, 11 Nov 2017 17:00:34 UTC
+crowdsale.initializedTime=1510419493 Sat, 11 Nov 2017 16:58:13 UTC
+crowdsale.finalizedTime=0 Thu, 01 Jan 1970 00:00:00 UTC
+crowdsale.initializedBlock=2208
+crowdsale.finalizedBlock=0
+crowdsale.paused=false
+tokenContractAddress=0x701ef640d12387f1c9a154037b3354a5a4f6c4f9
+token.controller=0x4ca30c1f86d076a119fab1d61606ced1a99a8b32
+token.symbol=AIX
+token.name=Aigang Network Token
+token.decimals=18
+token.totalSupply=7500000
+Transfer 0 #2228: _from=0x657710d178b1d8f18c3e18df219fdafa75704b3b _to=0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0 _amount=2500000
+Transfer 1 #2228: _from=0x657710d178b1d8f18c3e18df219fdafa75704b3b _to=0xa44a08d3f6933c69212114bb66e2df1813651844 _amount=5000000
+
+Send Contribution
+sendContribution1_1Tx status=0x1 Success gas=400000 gasUsed=130648 costETH=0.002351664 costUSD=0.483154072128 @ ETH/USD=205.452 gasPrice=18 gwei block=2231 txIx=0 txId=0x0f68923bb9c3324dfde87c16377bde24df38abdea001a7574e2baa6050ca35a2 @ 1510419590 Sat, 11 Nov 2017 16:59:50 UTC
+sendContribution1_2Tx status=0x1 Success gas=400000 gasUsed=95292 costETH=0.001715256 costUSD=0.352402775712 @ ETH/USD=205.452 gasPrice=18 gwei block=2231 txIx=3 txId=0x093e7064e039ee51e84d1658ad210912fc1c03bdd7fc2dcd6d49ca4b0778a873 @ 1510419590 Sat, 11 Nov 2017 16:59:50 UTC
+sendContribution1_3Tx status=0x1 Success gas=400000 gasUsed=109022 costETH=0.001962396 costUSD=0.403178182992 @ ETH/USD=205.452 gasPrice=18 gwei block=2231 txIx=2 txId=0x18446b17b32a083a4302e51267257a8f8eedbaee897d3acdd87ee78f362c744a @ 1510419590 Sat, 11 Nov 2017 16:59:50 UTC
+sendContribution1_4Tx status=0x0 Failure gas=400000 gasUsed=22190 costETH=0.00039942 costUSD=0.08206163784 @ ETH/USD=205.452 gasPrice=18 gwei block=2231 txIx=1 txId=0x6cc829a85fa5b16d905350f3f0b5b2bf419b6ee34e41e50b48d927eb81c36d7f @ 1510419590 Sat, 11 Nov 2017 16:59:50 UTC
+ # Account                                             EtherBalanceChange                          Token Name
+-- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
+ 0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e      132.225297360000000000           0.000000000000000000 Account #0 - Miner
+ 1 0xa11aae29840fbb5c86e6fd4cf809eba183aef433       -0.214240248000000000           0.000000000000000000 Account #1 - Contract Owner
+ 2 0xa22ab8a9d641ce77e06d98b7d7065d324d3d6976     6000.000000000000000000           0.000000000000000000 Account #2 - Multisig
+ 3 0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0    -1000.004984056000000000     4800000.000000000000000000 Account #3
+ 4 0xa44a08d3f6933c69212114bb66e2df1813651844    -2000.003711240000000000     9600000.000000000000000000 Account #4
+ 5 0xa55a151eb00fded1634d27d1127b4be4627079ea    -3000.001962396000000000     6900000.000000000000000000 Account #5
+ 6 0xa66a85ede0cbe03694aa9d9de0bb19c99ff55bd9       -0.000399420000000000           0.000000000000000000 Account #6
+ 7 0xa77a2b9d4b1c010a22a7c565dc418cef683dbcec        0.000000000000000000           0.000000000000000000 Account #7
+ 8 0xa88a05d2b88283ce84c8325760b72a64591279a2        0.000000000000000000           0.000000000000000000 Account #8
+ 9 0xa99a0ae3354c06b1459fd441a32a3f71005d7da0        0.000000000000000000           0.000000000000000000 Account #9
+10 0xaaaa9de1e6c564446ebca0fd102d8bd92093c756        0.000000000000000000           0.000000000000000000 Account #10 - Collector
+11 0x7b41d3c2494ed063d5555a1e3269cff3bc41f16a        0.000000000000000000           0.000000000000000000 MiniMeTokenFactory
+12 0xe8af831517db90d180bd9e05928a9b3577b2a19d        0.000000000000000000           0.000000000000000000 APT
+13 0x701ef640d12387f1c9a154037b3354a5a4f6c4f9        0.000000000000000000           0.000000000000000000 AIX
+14 0x4ca30c1f86d076a119fab1d61606ced1a99a8b32        0.000000000000000000           0.000000000000000000 Contribution
+15 0x3526747b4794e2e9200c8e150ecedb735833b047        0.000000000000000000           0.000000000000000000 CommunityTokenHolder
+16 0xa59f037500bd7666ea5dda3fe6c65e56b5aa6d03        0.000000000000000000           0.000000000000000000 DevTokensHolder
+17 0xa5e1536e89cf7aea3ffcd0861f49ae6f329fda40        0.000000000000000000           0.000000000000000000 RemainderTokenHolder
+18 0x657710d178b1d8f18c3e18df219fdafa75704b3b        0.000000000000000000           0.000000000000000000 Exchanger
+-- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
+                                                                             21300000.000000000000000000 Total Token Balances
+-- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
+
+PASS Send Contribution ac3 1000 ETH -> 2,300,000 AIX
+PASS Send Contribution ac4 2000 ETH -> 4,600,000 AIX
+PASS Send Contribution ac5 3000 ETH -> 6,900,000 AIX
+PASS Send Contribution ac6 1000 ETH - Expecting Failure
+crowdsaleContractAddress=0x4ca30c1f86d076a119fab1d61606ced1a99a8b32
+crowdsale.controller=0xa11aae29840fbb5c86e6fd4cf809eba183aef433
+crowdsale.aix=0x701ef640d12387f1c9a154037b3354a5a4f6c4f9
+crowdsale.contributionWallet=0xa22ab8a9d641ce77e06d98b7d7065d324d3d6976
+crowdsale.remainderHolder=0xa5e1536e89cf7aea3ffcd0861f49ae6f329fda40
+crowdsale.devHolder=0xa59f037500bd7666ea5dda3fe6c65e56b5aa6d03
+crowdsale.communityHolder=0x3526747b4794e2e9200c8e150ecedb735833b047
+crowdsale.exchanger=0x657710d178b1d8f18c3e18df219fdafa75704b3b
+crowdsale.collector=0xaaaa9de1e6c564446ebca0fd102d8bd92093c756
+crowdsale.collectorWeiCap=1e+21 1000
+crowdsale.collectorWeiCollected=0 0
+crowdsale.totalWeiCap=1e+22 10000
+crowdsale.totalWeiCollected=6e+21 6000
+crowdsale.weiPreCollected=3e+21 3000
+crowdsale.notCollectedAmountAfter24Hours=0 0
+crowdsale.twentyPercentWithBonus=0
+crowdsale.thirtyPercentWithBonus=0
+crowdsale.minimumPerTransaction=10000000000000000 0.01
+crowdsale.numWhitelistedInvestors=3
+crowdsale.startTime=1510419574 Sat, 11 Nov 2017 16:59:34 UTC
+crowdsale.endTime=1510419634 Sat, 11 Nov 2017 17:00:34 UTC
+crowdsale.initializedTime=1510419493 Sat, 11 Nov 2017 16:58:13 UTC
+crowdsale.finalizedTime=0 Thu, 01 Jan 1970 00:00:00 UTC
+crowdsale.initializedBlock=2208
+crowdsale.finalizedBlock=0
+crowdsale.paused=false
+NewSale 0 #2231: {"_amount":"1e+21","_th":"0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0","_tokens":"2.3e+24"}
+NewSale 1 #2231: {"_amount":"3e+21","_th":"0xa55a151eb00fded1634d27d1127b4be4627079ea","_tokens":"6.9e+24"}
+NewSale 2 #2231: {"_amount":"2e+21","_th":"0xa44a08d3f6933c69212114bb66e2df1813651844","_tokens":"4.6e+24"}
+tokenContractAddress=0x701ef640d12387f1c9a154037b3354a5a4f6c4f9
+token.controller=0x4ca30c1f86d076a119fab1d61606ced1a99a8b32
+token.symbol=AIX
+token.name=Aigang Network Token
+token.decimals=18
+token.totalSupply=21300000
+Transfer 0 #2231: _from=0x0000000000000000000000000000000000000000 _to=0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0 _amount=2300000
+Transfer 1 #2231: _from=0x0000000000000000000000000000000000000000 _to=0xa55a151eb00fded1634d27d1127b4be4627079ea _amount=6900000
+Transfer 2 #2231: _from=0x0000000000000000000000000000000000000000 _to=0xa44a08d3f6933c69212114bb66e2df1813651844 _amount=4600000
+
+Finalise Crowdsale
+finaliseTx status=0x1 Success gas=2000000 gasUsed=239921 costETH=0.004318578 costUSD=0.887260487256 @ ETH/USD=205.452 gasPrice=18 gwei block=2233 txIx=0 txId=0x78b5ff6936a85b9a09cdd0d2e1eae59a7aa27e90eb786d3ca2e6198eda2df97b @ 1510419611 Sat, 11 Nov 2017 17:00:11 UTC
+ # Account                                             EtherBalanceChange                          Token Name
+-- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
+ 0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e      138.229615938000000000           0.000000000000000000 Account #0 - Miner
+ 1 0xa11aae29840fbb5c86e6fd4cf809eba183aef433       -0.218558826000000000           0.000000000000000000 Account #1 - Contract Owner
+ 2 0xa22ab8a9d641ce77e06d98b7d7065d324d3d6976     6000.000000000000000000           0.000000000000000000 Account #2 - Multisig
+ 3 0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0    -1000.004984056000000000     4800000.000000000000000000 Account #3
+ 4 0xa44a08d3f6933c69212114bb66e2df1813651844    -2000.003711240000000000     9600000.000000000000000000 Account #4
+ 5 0xa55a151eb00fded1634d27d1127b4be4627079ea    -3000.001962396000000000     6900000.000000000000000000 Account #5
+ 6 0xa66a85ede0cbe03694aa9d9de0bb19c99ff55bd9       -0.000399420000000000           0.000000000000000000 Account #6
+ 7 0xa77a2b9d4b1c010a22a7c565dc418cef683dbcec        0.000000000000000000           0.000000000000000000 Account #7
+ 8 0xa88a05d2b88283ce84c8325760b72a64591279a2        0.000000000000000000           0.000000000000000000 Account #8
+ 9 0xa99a0ae3354c06b1459fd441a32a3f71005d7da0        0.000000000000000000           0.000000000000000000 Account #9
+10 0xaaaa9de1e6c564446ebca0fd102d8bd92093c756        0.000000000000000000           0.000000000000000000 Account #10 - Collector
+11 0x7b41d3c2494ed063d5555a1e3269cff3bc41f16a        0.000000000000000000           0.000000000000000000 MiniMeTokenFactory
+12 0xe8af831517db90d180bd9e05928a9b3577b2a19d        0.000000000000000000           0.000000000000000000 APT
+13 0x701ef640d12387f1c9a154037b3354a5a4f6c4f9        0.000000000000000000           0.000000000000000000 AIX
+14 0x4ca30c1f86d076a119fab1d61606ced1a99a8b32        0.000000000000000000           0.000000000000000000 Contribution
+15 0x3526747b4794e2e9200c8e150ecedb735833b047        0.000000000000000000    16660784.313725490196078431 CommunityTokenHolder
+16 0xa59f037500bd7666ea5dda3fe6c65e56b5aa6d03        0.000000000000000000    11490196.078431372549019607 DevTokensHolder
+17 0xa5e1536e89cf7aea3ffcd0861f49ae6f329fda40        0.000000000000000000     8000000.000000000000000000 RemainderTokenHolder
+18 0x657710d178b1d8f18c3e18df219fdafa75704b3b        0.000000000000000000           0.000000000000000000 Exchanger
+-- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
+                                                                             57450980.392156862745098038 Total Token Balances
+-- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
+
+PASS Finalise Crowdsale
+crowdsaleContractAddress=0x4ca30c1f86d076a119fab1d61606ced1a99a8b32
+crowdsale.controller=0xa11aae29840fbb5c86e6fd4cf809eba183aef433
+crowdsale.aix=0x701ef640d12387f1c9a154037b3354a5a4f6c4f9
+crowdsale.contributionWallet=0xa22ab8a9d641ce77e06d98b7d7065d324d3d6976
+crowdsale.remainderHolder=0xa5e1536e89cf7aea3ffcd0861f49ae6f329fda40
+crowdsale.devHolder=0xa59f037500bd7666ea5dda3fe6c65e56b5aa6d03
+crowdsale.communityHolder=0x3526747b4794e2e9200c8e150ecedb735833b047
+crowdsale.exchanger=0x657710d178b1d8f18c3e18df219fdafa75704b3b
+crowdsale.collector=0xaaaa9de1e6c564446ebca0fd102d8bd92093c756
+crowdsale.collectorWeiCap=1e+21 1000
+crowdsale.collectorWeiCollected=0 0
+crowdsale.totalWeiCap=1e+22 10000
+crowdsale.totalWeiCollected=6e+21 6000
+crowdsale.weiPreCollected=3e+21 3000
+crowdsale.notCollectedAmountAfter24Hours=0 0
+crowdsale.twentyPercentWithBonus=0
+crowdsale.thirtyPercentWithBonus=0
+crowdsale.minimumPerTransaction=10000000000000000 0.01
+crowdsale.numWhitelistedInvestors=3
+crowdsale.startTime=1510419574 Sat, 11 Nov 2017 16:59:34 UTC
+crowdsale.endTime=1510419634 Sat, 11 Nov 2017 17:00:34 UTC
+crowdsale.initializedTime=1510419493 Sat, 11 Nov 2017 16:58:13 UTC
+crowdsale.finalizedTime=1510419611 Sat, 11 Nov 2017 17:00:11 UTC
+crowdsale.initializedBlock=2208
+crowdsale.finalizedBlock=2233
+crowdsale.paused=false
+Finalized 0 #2233: {"_now":"2233"}
+tokenContractAddress=0x701ef640d12387f1c9a154037b3354a5a4f6c4f9
+token.controller=0x4ca30c1f86d076a119fab1d61606ced1a99a8b32
+token.symbol=AIX
+token.name=Aigang Network Token
+token.decimals=18
+token.totalSupply=57450980.392156862745098038
+Transfer 0 #2233: _from=0x0000000000000000000000000000000000000000 _to=0xa5e1536e89cf7aea3ffcd0861f49ae6f329fda40 _amount=8000000
+Transfer 1 #2233: _from=0x0000000000000000000000000000000000000000 _to=0xa59f037500bd7666ea5dda3fe6c65e56b5aa6d03 _amount=11490196.078431372549019607
+Transfer 2 #2233: _from=0x0000000000000000000000000000000000000000 _to=0x3526747b4794e2e9200c8e150ecedb735833b047 _amount=16660784.313725490196078431
 

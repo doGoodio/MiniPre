@@ -64,10 +64,10 @@ if [ "$MODE" == "dev" ]; then
   STARTTIME=`echo "$CURRENTTIME" | bc`
 else
   # Start time 1m 10s in the future
-  STARTTIME=`echo "$CURRENTTIME+60*4" | bc`
+  STARTTIME=`echo "$CURRENTTIME+60*3+15" | bc`
 fi
 STARTTIME_S=`date -r $STARTTIME -u`
-ENDTIME=`echo "$CURRENTTIME+60*5" | bc`
+ENDTIME=`echo "$CURRENTTIME+60*4+15" | bc`
 ENDTIME_S=`date -r $ENDTIME -u`
 
 printf "MODE                 = '$MODE'\n" | tee $TEST1OUTPUT
@@ -497,179 +497,76 @@ printTokenContractDetails();
 console.log("RESULT: ");
 
 
+waitUntil("startTime", startTime, 0);
+
+
+// -----------------------------------------------------------------------------
+var exchangePresaleMessage = "Exchange Presale APT to AIX; Whitelist";
+// -----------------------------------------------------------------------------
+console.log("RESULT: " + exchangePresaleMessage);
+var exchangePresale_1Tx = exchanger.collect({from: account3, gas: 2000000});
+var exchangePresale_2Tx = exchanger.collect({from: account4, gas: 2000000});
+var whitelist_1Tx = contrib.whitelist(account3, {from: contractOwnerAccount, gas: 2000000});
+var whitelist_2Tx = contrib.whitelist(account4, {from: contractOwnerAccount, gas: 2000000});
+var whitelist_3Tx = contrib.whitelist(account5, {from: contractOwnerAccount, gas: 2000000});
+while (txpool.status.pending > 0) {
+}
+printTxData("exchangePresale_1Tx", exchangePresale_1Tx);
+printTxData("exchangePresale_2Tx", exchangePresale_2Tx);
+printTxData("whitelist_1Tx", whitelist_1Tx);
+printTxData("whitelist_2Tx", whitelist_2Tx);
+printTxData("whitelist_3Tx", whitelist_3Tx);
+printBalances();
+failIfTxStatusError(exchangePresale_1Tx, exchangePresaleMessage + " - account3 1,000 APT -> 2,500,000 AIX");
+failIfTxStatusError(exchangePresale_2Tx, exchangePresaleMessage + " - account4 2,000 APT -> 5,000,000 AIX");
+failIfTxStatusError(whitelist_1Tx, exchangePresaleMessage + " - whitelist(account3)");
+failIfTxStatusError(whitelist_2Tx, exchangePresaleMessage + " - whitelist(account4)");
+failIfTxStatusError(whitelist_3Tx, exchangePresaleMessage + " - whitelist(account5)");
+printCrowdsaleContractDetails();
+printTokenContractDetails();
+console.log("RESULT: ");
+
+
+// -----------------------------------------------------------------------------
+var sendContribution1Message = "Send Contribution";
+// -----------------------------------------------------------------------------
+console.log("RESULT: " + sendContribution1Message);
+var sendContribution1_1Tx = eth.sendTransaction({from: account3, to: contribAddress, gas: 400000, value: web3.toWei("1000", "ether")});
+var sendContribution1_2Tx = eth.sendTransaction({from: account4, to: contribAddress, gas: 400000, value: web3.toWei("2000", "ether")});
+var sendContribution1_3Tx = eth.sendTransaction({from: account5, to: contribAddress, gas: 400000, value: web3.toWei("3000", "ether")});
+var sendContribution1_4Tx = eth.sendTransaction({from: account6, to: contribAddress, gas: 400000, value: web3.toWei("3000", "ether")});
+while (txpool.status.pending > 0) {
+}
+printTxData("sendContribution1_1Tx", sendContribution1_1Tx);
+printTxData("sendContribution1_2Tx", sendContribution1_2Tx);
+printTxData("sendContribution1_3Tx", sendContribution1_3Tx);
+printTxData("sendContribution1_4Tx", sendContribution1_4Tx);
+printBalances();
+failIfTxStatusError(sendContribution1_1Tx, sendContribution1Message + " ac3 1000 ETH -> 2,300,000 AIX");
+failIfTxStatusError(sendContribution1_2Tx, sendContribution1Message + " ac4 2000 ETH -> 4,600,000 AIX");
+failIfTxStatusError(sendContribution1_3Tx, sendContribution1Message + " ac5 3000 ETH -> 6,900,000 AIX");
+passIfTxStatusError(sendContribution1_4Tx, sendContribution1Message + " ac6 1000 ETH - Expecting Failure");
+printCrowdsaleContractDetails();
+printTokenContractDetails();
+console.log("RESULT: ");
+
+
+// -----------------------------------------------------------------------------
+var finaliseMessage = "Finalise Crowdsale";
+// -----------------------------------------------------------------------------
+console.log("RESULT: " + finaliseMessage);
+var finaliseTx = contrib.finalize({from: contractOwnerAccount, gas: 2000000});
+while (txpool.status.pending > 0) {
+}
+printTxData("finaliseTx", finaliseTx);
+printBalances();
+failIfTxStatusError(finaliseTx, finaliseMessage);
+printCrowdsaleContractDetails();
+printTokenContractDetails();
+console.log("RESULT: ");
+
+
 exit;
-
-
-
-// -----------------------------------------------------------------------------
-var phMessage = "Deploy PlaceHolder";
-// -----------------------------------------------------------------------------
-console.log("RESULT: " + phMessage);
-var phContract = web3.eth.contract(phAbi);
-var phTx = null;
-var phAddress = null;
-var ph = phContract.new(aptAddress, {from: contractOwnerAccount, data: phBin, gas: 4000000},
-  function(e, contract) {
-    if (!e) {
-      if (!contract.address) {
-        phTx = contract.transactionHash;
-      } else {
-        phAddress = contract.address;
-        addAccount(phAddress, "PlaceHolder");
-        addPlaceHolderContractAddressAndAbi(phAddress, phAbi);
-        printTxData("phAddress=" + phAddress, phTx);
-      }
-    }
-  }
-);
-while (txpool.status.pending > 0) {
-}
-printBalances();
-failIfTxStatusError(phTx, phMessage);
-printCrowdsaleContractDetails();
-printPlaceHolderContractDetails();
-printTokenContractDetails();
-console.log("RESULT: ");
-
-
-// -----------------------------------------------------------------------------
-var psMessage = "Deploy PreSale";
-// -----------------------------------------------------------------------------
-console.log("RESULT: " + psMessage);
-var psContract = web3.eth.contract(psAbi);
-var psTx = null;
-var psAddress = null;
-var ps = psContract.new(aptAddress, phAddress, {from: contractOwnerAccount, data: psBin, gas: 4000000},
-  function(e, contract) {
-    if (!e) {
-      if (!contract.address) {
-        psTx = contract.transactionHash;
-      } else {
-        psAddress = contract.address;
-        addAccount(psAddress, "PreSale");
-        addCrowdsaleContractAddressAndAbi(psAddress, psAbi);
-        printTxData("psAddress=" + psAddress, psTx);
-      }
-    }
-  }
-);
-while (txpool.status.pending > 0) {
-}
-printBalances();
-failIfTxStatusError(psTx, psMessage);
-printCrowdsaleContractDetails();
-printPlaceHolderContractDetails();
-printTokenContractDetails();
-console.log("RESULT: ");
-
-
-// -----------------------------------------------------------------------------
-var aptChangeControllerMessage = "APT ChangeController To PreSale";
-// -----------------------------------------------------------------------------
-console.log("RESULT: " + aptChangeControllerMessage);
-var aptChangeControllerTx = apt.changeController(psAddress, {from: contractOwnerAccount, gas: 2000000});
-while (txpool.status.pending > 0) {
-}
-printTxData("aptChangeControllerTx", aptChangeControllerTx);
-printBalances();
-failIfTxStatusError(aptChangeControllerTx, aptChangeControllerMessage);
-printCrowdsaleContractDetails();
-printPlaceHolderContractDetails();
-printTokenContractDetails();
-console.log("RESULT: ");
-
-
-// -----------------------------------------------------------------------------
-var initialisePresaleMessage = "Initialise PreSale";
-// -----------------------------------------------------------------------------
-var maxSupply = "1000000000000000000000000";
-// Minimum investment in wei
-var minimumInvestment = 10;
-var startBlock = parseInt(eth.blockNumber) + 5;
-var endBlock = parseInt(eth.blockNumber) + 20;
-console.log("RESULT: " + initialisePresaleMessage);
-var initialisePresaleTx = ps.initialize(multisig, maxSupply, minimumInvestment, startBlock, endBlock,
-  {from: contractOwnerAccount, gas: 2000000});
-while (txpool.status.pending > 0) {
-}
-printTxData("initialisePresaleTx", initialisePresaleTx);
-printBalances();
-failIfTxStatusError(initialisePresaleTx, initialisePresaleMessage);
-printCrowdsaleContractDetails();
-printPlaceHolderContractDetails();
-printTokenContractDetails();
-console.log("RESULT: ");
-
-
-// -----------------------------------------------------------------------------
-// Wait until startBlock 
-// -----------------------------------------------------------------------------
-console.log("RESULT: Waiting until startBlock #" + startBlock + " currentBlock=" + eth.blockNumber);
-while (eth.blockNumber <= startBlock) {
-}
-console.log("RESULT: Waited until startBlock #" + startBlock + " currentBlock=" + eth.blockNumber);
-console.log("RESULT: ");
-
-
-// -----------------------------------------------------------------------------
-var validContribution1Message = "Send Valid Contribution - 100 ETH From Account3";
-// -----------------------------------------------------------------------------
-console.log("RESULT: " + validContribution1Message);
-var validContribution1Tx = eth.sendTransaction({from: account3, to: psAddress, gas: 400000, value: web3.toWei("87", "ether")});
-var validContribution2Tx = eth.sendTransaction({from: account4, to: aptAddress, gas: 400000, value: web3.toWei("10", "ether")});
-while (txpool.status.pending > 0) {
-}
-printTxData("validContribution1Tx", validContribution1Tx);
-printTxData("validContribution2Tx", validContribution2Tx);
-printBalances();
-failIfTxStatusError(validContribution1Tx, validContribution1Message + " ac3->ps 100 ETH");
-failIfTxStatusError(validContribution2Tx, validContribution1Message + " ac4->apt 10 ETH");
-printCrowdsaleContractDetails();
-printPlaceHolderContractDetails();
-printTokenContractDetails();
-console.log("RESULT: ");
-
-
-// -----------------------------------------------------------------------------
-var validContribution2Message = "Send Valid Contribution - 1 ETH From Account3";
-// -----------------------------------------------------------------------------
-console.log("RESULT: " + validContribution2Message);
-var validContribution3Tx = eth.sendTransaction({from: account3, to: psAddress, gas: 400000, value: web3.toWei("1", "ether")});
-while (txpool.status.pending > 0) {
-}
-printTxData("validContribution3Tx", validContribution3Tx);
-printBalances();
-failIfTxStatusError(validContribution3Tx, validContribution2Message + " ac3->ps 1 ETH");
-printCrowdsaleContractDetails();
-printPlaceHolderContractDetails();
-printTokenContractDetails();
-console.log("RESULT: ");
-
-
-// -----------------------------------------------------------------------------
-var validContribution3Message = "Send Valid Contribution - 3 ETH From Account3";
-// -----------------------------------------------------------------------------
-console.log("RESULT: " + validContribution3Message);
-var validContribution4Tx = eth.sendTransaction({from: account3, to: psAddress, gas: 400000, value: web3.toWei("3", "ether")});
-while (txpool.status.pending > 0) {
-}
-printTxData("validContribution4Tx", validContribution4Tx);
-printBalances();
-failIfTxStatusError(validContribution4Tx, validContribution3Message + " ac3->ps 3 ETH");
-printCrowdsaleContractDetails();
-printPlaceHolderContractDetails();
-printTokenContractDetails();
-console.log("RESULT: ");
-
-
-// -----------------------------------------------------------------------------
-// Wait until endBlock 
-// -----------------------------------------------------------------------------
-console.log("RESULT: Waiting until endBlock #" + endBlock + " currentBlock=" + eth.blockNumber);
-while (eth.blockNumber <= endBlock) {
-}
-console.log("RESULT: Waited until endBlock #" + endBlock + " currentBlock=" + eth.blockNumber);
-console.log("RESULT: ");
 
 
 // -----------------------------------------------------------------------------
@@ -682,22 +579,6 @@ while (txpool.status.pending > 0) {
 printTxData("claimEthersTx", claimEthersTx);
 printBalances();
 passIfTxStatusError(claimEthersTx, claimEthersMessage);
-printCrowdsaleContractDetails();
-printPlaceHolderContractDetails();
-printTokenContractDetails();
-console.log("RESULT: ");
-
-
-// -----------------------------------------------------------------------------
-var finalisePresaleMessage = "Finalise PreSale";
-// -----------------------------------------------------------------------------
-console.log("RESULT: " + finalisePresaleMessage);
-var finalisePresaleTx = ps.finalize({from: contractOwnerAccount, gas: 2000000});
-while (txpool.status.pending > 0) {
-}
-printTxData("finalisePresaleTx", finalisePresaleTx);
-printBalances();
-failIfTxStatusError(finalisePresaleTx, finalisePresaleMessage);
 printCrowdsaleContractDetails();
 printPlaceHolderContractDetails();
 printTokenContractDetails();

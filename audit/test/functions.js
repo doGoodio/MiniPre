@@ -205,6 +205,33 @@ function failIfGasEqualsGasUsedOrContractAddressNull(contractAddress, tx, msg) {
 
 
 //-----------------------------------------------------------------------------
+// Wait until some unixTime + additional seconds
+//-----------------------------------------------------------------------------
+function waitUntil(message, unixTime, addSeconds) {
+  var t = parseInt(unixTime) + parseInt(addSeconds) + parseInt(1);
+  var time = new Date(t * 1000);
+  console.log("RESULT: Waiting until '" + message + "' at " + unixTime + "+" + addSeconds + "s =" + time + " now=" + new Date());
+  while ((new Date()).getTime() <= time.getTime()) {
+  }
+  console.log("RESULT: Waited until '" + message + "' at at " + unixTime + "+" + addSeconds + "s =" + time + " now=" + new Date());
+  console.log("RESULT: ");
+}
+
+
+//-----------------------------------------------------------------------------
+// Wait until some block
+//-----------------------------------------------------------------------------
+function waitUntilBlock(message, block, addBlocks) {
+  var b = parseInt(block) + parseInt(addBlocks);
+  console.log("RESULT: Waiting until '" + message + "' #" + block + "+" + addBlocks + " = #" + b + " currentBlock=" + eth.blockNumber);
+  while (eth.blockNumber <= b) {
+  }
+  console.log("RESULT: Waited until '" + message + "' #" + block + "+" + addBlocks + " = #" + b + " currentBlock=" + eth.blockNumber);
+  console.log("RESULT: ");
+}
+
+
+//-----------------------------------------------------------------------------
 // Crowdsale Contract
 //-----------------------------------------------------------------------------
 var crowdsaleContractAddress = null;

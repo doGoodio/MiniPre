@@ -110,7 +110,7 @@ contract Contribution is Controlled, TokenController {
     aix = MiniMeToken(_aix);
   }
 
-  // BK TODO
+  // BK Ok - Only controller can execute
   function initialize(
       address _apt,
       address _exchanger,
@@ -125,42 +125,53 @@ contract Contribution is Controlled, TokenController {
       uint256 _endTime
   ) public onlyController {
     // Initialize only once
+    // BK Next 5 Ok
     require(initializedBlock == 0);
     require(initializedTime == 0);
     assert(aix.totalSupply() == 0);
     assert(aix.controller() == address(this));
     assert(aix.decimals() == 18);  // Same amount of decimals as ETH
 
+    // BK Next 2 Ok
     require(_contributionWallet != 0x0);
     contributionWallet = _contributionWallet;
 
+    // BK Next 2 Ok
     require(_remainderHolder != 0x0);
     remainderHolder = _remainderHolder;
 
+    // BK Next 2 Ok
     require(_devHolder != 0x0);
     devHolder = _devHolder;
 
+    // BK Next 2 Ok
     require(_communityHolder != 0x0);
     communityHolder = _communityHolder;
 
+    // BK Next 2 Ok
     require(_collector != 0x0);
     collector = _collector;
 
+    // BK Next 3 Ok
     require(_collectorWeiCap > 0);
     require(_collectorWeiCap <= _totalWeiCap);
     collectorWeiCap = _collectorWeiCap;
 
+    // BK Next 4 Ok
     assert(_startTime >= getBlockTimestamp());
     require(_startTime < _endTime);
     startTime = _startTime;
     endTime = _endTime;
 
+    // BK Next 2 Ok
     require(_totalWeiCap > 0);
     totalWeiCap = _totalWeiCap;
 
+    // BK Next 2 Ok
     initializedBlock = getBlockNumber();
     initializedTime = getBlockTimestamp();
 
+    // BK Next 2 Ok
     require(_apt != 0x0);
     require(_exchanger != 0x0);
 
@@ -170,9 +181,11 @@ contract Contribution is Controlled, TokenController {
     weiPreCollected = MiniMeToken(_apt).totalSupplyAt(initializedBlock);
 
     // Exchangerate from apt to aix 2500 considering 25% bonus.
+    // BK Next 2 Ok
     require(aix.generateTokens(_exchanger, weiPreCollected.mul(2500)));
     exchanger = _exchanger;
 
+    // BK Ok - Log event
     Initialized(initializedBlock);
   }
 
