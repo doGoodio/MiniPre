@@ -164,6 +164,9 @@ contract Contribution is Controlled, TokenController {
     require(_apt != 0x0);
     require(_exchanger != 0x0);
 
+    // BK NOTE - 1 ETH presale contribution = 1 APT 
+    // BK NOTE - See https://etherscan.io/tx/0xc227db7e64f65b2e3679e9b76e5934f0820ed6e8e5925b5ef2eff79cbcbec894
+    // BK Ok
     weiPreCollected = MiniMeToken(_apt).totalSupplyAt(initializedBlock);
 
     // Exchangerate from apt to aix 2500 considering 25% bonus.

@@ -64,10 +64,10 @@ if [ "$MODE" == "dev" ]; then
   STARTTIME=`echo "$CURRENTTIME" | bc`
 else
   # Start time 1m 10s in the future
-  STARTTIME=`echo "$CURRENTTIME+75" | bc`
+  STARTTIME=`echo "$CURRENTTIME+60*4" | bc`
 fi
 STARTTIME_S=`date -r $STARTTIME -u`
-ENDTIME=`echo "$CURRENTTIME+60*4" | bc`
+ENDTIME=`echo "$CURRENTTIME+60*5" | bc`
 ENDTIME_S=`date -r $ENDTIME -u`
 
 printf "MODE                 = '$MODE'\n" | tee $TEST1OUTPUT
@@ -314,6 +314,185 @@ printTxData("aptMint_2Tx", aptMint_2Tx);
 printBalances();
 failIfTxStatusError(aptMint_1Tx, aptMintMessage + " - ac3 1,000 APT");
 failIfTxStatusError(aptMint_2Tx, aptMintMessage + " - ac4 2,000 APT");
+printTokenContractDetails();
+console.log("RESULT: ");
+
+
+// -----------------------------------------------------------------------------
+var aixMessage = "Deploy AIX";
+// -----------------------------------------------------------------------------
+console.log("RESULT: " + aixMessage);
+var aixContract = web3.eth.contract(aixAbi);
+var aixTx = null;
+var aixAddress = null;
+var aix = aixContract.new(mmtfAddress, {from: contractOwnerAccount, data: aixBin, gas: 4000000},
+  function(e, contract) {
+    if (!e) {
+      if (!contract.address) {
+        aixTx = contract.transactionHash;
+      } else {
+        aixAddress = contract.address;
+        addAccount(aixAddress, "AIX");
+        addTokenContractAddressAndAbi(aixAddress, aixAbi);
+        printTxData("aixAddress=" + aixAddress, aixTx);
+      }
+    }
+  }
+);
+while (txpool.status.pending > 0) {
+}
+printBalances();
+failIfTxStatusError(aixTx, aixMessage);
+printTokenContractDetails();
+console.log("RESULT: ");
+
+
+// -----------------------------------------------------------------------------
+var contribMessage = "Deploy Contribution";
+// -----------------------------------------------------------------------------
+console.log("RESULT: " + contribMessage);
+var contribContract = web3.eth.contract(contribAbi);
+var contribTx = null;
+var contribAddress = null;
+var contrib = contribContract.new(aixAddress, {from: contractOwnerAccount, data: contribBin, gas: 4000000},
+  function(e, contract) {
+    if (!e) {
+      if (!contract.address) {
+        contribTx = contract.transactionHash;
+      } else {
+        contribAddress = contract.address;
+        addAccount(contribAddress, "Contribution");
+        addCrowdsaleContractAddressAndAbi(contribAddress, contribAbi);
+        printTxData("contribAddress=" + contribAddress, contribTx);
+      }
+    }
+  }
+);
+while (txpool.status.pending > 0) {
+}
+printBalances();
+failIfTxStatusError(contribTx, contribMessage);
+printCrowdsaleContractDetails();
+printTokenContractDetails();
+console.log("RESULT: ");
+
+
+// -----------------------------------------------------------------------------
+var aixChangeControllerMessage = "AIX changeController(Contribution)";
+// -----------------------------------------------------------------------------
+console.log("RESULT: " + aixChangeControllerMessage);
+var aixChangeControllerTx = aix.changeController(contribAddress, {from: contractOwnerAccount, gas: 2000000});
+while (txpool.status.pending > 0) {
+}
+printTxData("aixChangeControllerTx", aixChangeControllerTx);
+printBalances();
+failIfTxStatusError(aixChangeControllerTx, aixChangeControllerMessage);
+printCrowdsaleContractDetails();
+printTokenContractDetails();
+console.log("RESULT: ");
+
+
+// -----------------------------------------------------------------------------
+var deployTokenHoldersMessage = "Deploy Token Holders & Exchanger";
+var controller = contractOwnerAccount;
+// -----------------------------------------------------------------------------
+console.log("RESULT: " + deployTokenHoldersMessage);
+var cthContract = web3.eth.contract(cthAbi);
+var cthTx = null;
+var cthAddress = null;
+var cth = cthContract.new(controller, contribAddress, aixAddress, {from: contractOwnerAccount, data: cthBin, gas: 4000000},
+  function(e, contract) {
+    if (!e) {
+      if (!contract.address) {
+        cthTx = contract.transactionHash;
+      } else {
+        cthAddress = contract.address;
+        addAccount(cthAddress, "CommunityTokenHolder");
+        // addPlaceHolderContractAddressAndAbi(cthAddress, cthAbi);
+        printTxData("cthAddress=" + cthAddress, cthTx);
+      }
+    }
+  }
+);
+var dthContract = web3.eth.contract(dthAbi);
+var dthTx = null;
+var dthAddress = null;
+var dth = dthContract.new(controller, contribAddress, aixAddress, {from: contractOwnerAccount, data: dthBin, gas: 4000000},
+  function(e, contract) {
+    if (!e) {
+      if (!contract.address) {
+        dthTx = contract.transactionHash;
+      } else {
+        dthAddress = contract.address;
+        addAccount(dthAddress, "DevTokensHolder");
+        // addPlaceHolderContractAddressAndAbi(dthAddress, dthAbi);
+        printTxData("dthAddress=" + dthAddress, dthTx);
+      }
+    }
+  }
+);
+var rthContract = web3.eth.contract(rthAbi);
+var rthTx = null;
+var rthAddress = null;
+var rth = rthContract.new(controller, contribAddress, aixAddress, {from: contractOwnerAccount, data: rthBin, gas: 4000000},
+  function(e, contract) {
+    if (!e) {
+      if (!contract.address) {
+        rthTx = contract.transactionHash;
+      } else {
+        rthAddress = contract.address;
+        addAccount(rthAddress, "RemainderTokenHolder");
+        // addPlaceHolderContractAddressAndAbi(rthAddress, rthAbi);
+        printTxData("rthAddress=" + rthAddress, rthTx);
+      }
+    }
+  }
+);
+var exchangerContract = web3.eth.contract(exchangerAbi);
+var exchangerTx = null;
+var exchangerAddress = null;
+var exchanger = exchangerContract.new(aptAddress, aixAddress, contribAddress, {from: contractOwnerAccount, data: exchangerBin, gas: 4000000},
+  function(e, contract) {
+    if (!e) {
+      if (!contract.address) {
+        exchangerTx = contract.transactionHash;
+      } else {
+        exchangerAddress = contract.address;
+        addAccount(exchangerAddress, "Exchanger");
+        // addPlaceHolderContractAddressAndAbi(exchangerAddress, exchangerAbi);
+        printTxData("exchangerAddress=" + exchangerAddress, exchangerTx);
+      }
+    }
+  }
+);
+while (txpool.status.pending > 0) {
+}
+printBalances();
+failIfTxStatusError(cthTx, deployTokenHoldersMessage + " - CommunityTokenHolder");
+failIfTxStatusError(dthTx, deployTokenHoldersMessage + " - DevTokensHolder");
+failIfTxStatusError(rthTx, deployTokenHoldersMessage + " - RemainderTokenHolder");
+failIfTxStatusError(exchangerTx, deployTokenHoldersMessage + " - Exchanger");
+printCrowdsaleContractDetails();
+printTokenContractDetails();
+console.log("RESULT: ");
+
+
+// -----------------------------------------------------------------------------
+var initialiseContributionMessage = "Initialise Contribution";
+var collectorWeiCap = web3.toWei("1000", "ether");
+var totalWeiCap = web3.toWei("10000", "ether");
+var startTime = $STARTTIME;
+var endTime = $ENDTIME;
+// -----------------------------------------------------------------------------
+console.log("RESULT: " + initialiseContributionMessage);
+var initialiseContributionTx = contrib.initialize(aptAddress, exchangerAddress, multisig, rthAddress, dthAddress, cthAddress, collector, 
+  collectorWeiCap, totalWeiCap, startTime, endTime, {from: contractOwnerAccount, gas: 2000000});
+while (txpool.status.pending > 0) {
+}
+printTxData("initialiseContributionTx", initialiseContributionTx + " - 3,000 APT = 3,000 ETH = 7,500,000 AIX");
+printBalances();
+failIfTxStatusError(initialiseContributionTx, initialiseContributionMessage);
+printCrowdsaleContractDetails();
 printTokenContractDetails();
 console.log("RESULT: ");
 

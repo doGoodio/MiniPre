@@ -17,6 +17,7 @@ addAccount(eth.accounts[6], "Account #6");
 addAccount(eth.accounts[7], "Account #7");
 addAccount(eth.accounts[8], "Account #8");
 addAccount(eth.accounts[9], "Account #9");
+addAccount(eth.accounts[10], "Account #10 - Collector");
 
 
 var minerAccount = eth.accounts[0];
@@ -29,6 +30,7 @@ var account6 = eth.accounts[6];
 var account7 = eth.accounts[7];
 var account8 = eth.accounts[8];
 var account9 = eth.accounts[9];
+var collector = eth.accounts[10];
 
 var baseBlock = eth.blockNumber;
 
@@ -220,19 +222,31 @@ function printCrowdsaleContractDetails() {
   if (crowdsaleContractAddress != null && crowdsaleContractAbi != null) {
     var contract = eth.contract(crowdsaleContractAbi).at(crowdsaleContractAddress);
     console.log("RESULT: crowdsale.controller=" + contract.controller());
-    console.log("RESULT: crowdsale.exchangeRate=" + contract.exchangeRate());
-    console.log("RESULT: crowdsale.investor_bonus=" + contract.investor_bonus());
-    console.log("RESULT: crowdsale.apt=" + contract.apt());
-    console.log("RESULT: crowdsale.place_holder=" + contract.place_holder());
-    console.log("RESULT: crowdsale.preSaleWallet=" + contract.preSaleWallet());
-    console.log("RESULT: crowdsale.totalSupplyCap=" + contract.totalSupplyCap().shift(-18));
-    console.log("RESULT: crowdsale.totalSold=" + contract.totalSold().shift(-18));
-    console.log("RESULT: crowdsale.minimum_investment=" + contract.minimum_investment().shift(-18));
-    console.log("RESULT: crowdsale.startBlock=" + contract.startBlock());
-    console.log("RESULT: crowdsale.endBlock=" + contract.endBlock());
+    console.log("RESULT: crowdsale.aix=" + contract.aix());
+    console.log("RESULT: crowdsale.contributionWallet=" + contract.contributionWallet());
+    console.log("RESULT: crowdsale.remainderHolder=" + contract.remainderHolder());
+    console.log("RESULT: crowdsale.devHolder=" + contract.devHolder());
+    console.log("RESULT: crowdsale.communityHolder=" + contract.communityHolder());
+    console.log("RESULT: crowdsale.exchanger=" + contract.exchanger());
+    console.log("RESULT: crowdsale.collector=" + contract.collector());
+    console.log("RESULT: crowdsale.collectorWeiCap=" + contract.collectorWeiCap() + " " + contract.collectorWeiCap().shift(-18));
+    console.log("RESULT: crowdsale.collectorWeiCollected=" + contract.collectorWeiCollected() + " " + contract.collectorWeiCollected().shift(-18));
+    console.log("RESULT: crowdsale.totalWeiCap=" + contract.totalWeiCap() + " " + contract.totalWeiCap().shift(-18));
+    console.log("RESULT: crowdsale.totalWeiCollected=" + contract.totalWeiCollected() + " " + contract.totalWeiCollected().shift(-18));
+    console.log("RESULT: crowdsale.weiPreCollected=" + contract.weiPreCollected() + " " + contract.weiPreCollected().shift(-18));
+    console.log("RESULT: crowdsale.notCollectedAmountAfter24Hours=" + contract.notCollectedAmountAfter24Hours() + " " + contract.notCollectedAmountAfter24Hours().shift(-18));
+    console.log("RESULT: crowdsale.twentyPercentWithBonus=" + contract.twentyPercentWithBonus());
+    console.log("RESULT: crowdsale.thirtyPercentWithBonus=" + contract.thirtyPercentWithBonus());
+    console.log("RESULT: crowdsale.minimumPerTransaction=" + contract.minimumPerTransaction() + " " + contract.minimumPerTransaction().shift(-18));
+    console.log("RESULT: crowdsale.numWhitelistedInvestors=" + contract.numWhitelistedInvestors());
+    console.log("RESULT: crowdsale.startTime=" + contract.startTime() + " " + new Date(contract.startTime() * 1000).toUTCString());
+    console.log("RESULT: crowdsale.endTime=" + contract.endTime() + " " + new Date(contract.endTime() * 1000).toUTCString());
+    console.log("RESULT: crowdsale.initializedTime=" + contract.initializedTime() + " " + new Date(contract.initializedTime() * 1000).toUTCString());
+    console.log("RESULT: crowdsale.finalizedTime=" + contract.finalizedTime() + " " + new Date(contract.finalizedTime() * 1000).toUTCString());
     console.log("RESULT: crowdsale.initializedBlock=" + contract.initializedBlock());
     console.log("RESULT: crowdsale.finalizedBlock=" + contract.finalizedBlock());
     console.log("RESULT: crowdsale.paused=" + contract.paused());
+
     var latestBlock = eth.blockNumber;
     var i;
 
@@ -317,6 +331,7 @@ function printTokenContractDetails() {
     var latestBlock = eth.blockNumber;
     var i;
 
+    /*
     var totalSupplyHistoryLength = contract.totalSupplyHistoryLength();
     for (i = 0; i < totalSupplyHistoryLength; i++) {
       var e = contract.totalSupplyHistory(i);
@@ -340,6 +355,7 @@ function printTokenContractDetails() {
       var e = contract.balanceHistory(account5, i);
       console.log("RESULT: balanceHistory(" + account5 + ", " + i + ") = " + e[0] + " => " + e[1].shift(-decimals));
     }
+    */
 
     var approvalEvents = contract.Approval({}, { fromBlock: tokenFromBlock, toBlock: latestBlock });
     i = 0;
