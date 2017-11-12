@@ -239,44 +239,59 @@ contract Contribution is Controlled, TokenController {
   }
 
   // ETH-AIX exchange rate
-  // BK TODO
+  // BK Ok - Constant function
   function exchangeRate() constant public initialized returns (uint256) {
+    // BK Ok
     if (getBlockTimestamp() <= startTime + 1 hours) {
       // 15% Bonus
+      // BK Ok
       return 2300;
     }
 
+    // BK Ok
     if (getBlockTimestamp() <= startTime + 2 hours) {
       // 10% Bonus
+      // BK Ok
       return 2200;
     }
 
+    // BK Ok
     if (getBlockTimestamp() <= startTime + 1 days) {
+      // BK Ok
       return 2000;
     }
 
+    // BK Ok
     uint256 collectedAfter24Hours = notCollectedAmountAfter24Hours.sub(weiToCollect());
 
+    // BK Ok
     if (collectedAfter24Hours <= twentyPercentWithBonus) {
       // 15% Bonus
+      // BK Ok
       return 2300;
     }
 
+    // BK Ok
     if (collectedAfter24Hours <= twentyPercentWithBonus + thirtyPercentWithBonus) {
       // 10% Bonus
+      // BK Ok
       return 2200;
     }
 
+    // BK Ok
     return 2000;
   }
 
-  // BK TODO
+  // BK Ok - Constant function
   function tokensToGenerate(uint256 toFund) constant public returns (uint256) {
     // collector gets 15% bonus
+    // BK Ok
     if (msg.sender == collector) {
+      // BK Ok
       return toFund.mul(2300);
     }
 
+    // BK Ok
     return toFund.mul(exchangeRate());
   }
 
@@ -334,20 +349,28 @@ contract Contribution is Controlled, TokenController {
     transferable = _transferable;
   }
 
-  // BK TODO
+  // BK Ok
   function doBuy(address _th) internal {
     // whitelisting only during the first day
+    // BK Ok
     if (getBlockTimestamp() <= startTime + 1 days) {
+      // BK Ok
       require(canPurchase[_th] || msg.sender == collector);
+    // BK Ok
     } else if (notCollectedAmountAfter24Hours == 0) {
+      // BK Ok
       notCollectedAmountAfter24Hours = weiToCollect();
+      // BK Ok
       twentyPercentWithBonus = notCollectedAmountAfter24Hours.mul(20).div(100);
+      // BK Ok
       thirtyPercentWithBonus = notCollectedAmountAfter24Hours.mul(30).div(100);
     }
 
     // BK Ok
     require(msg.value >= minimumPerTransaction);
+    // BK Ok
     uint256 toFund = msg.value;
+    // BK Ok
     uint256 toCollect = weiToCollectByInvestor(_th);
 
     if (toCollect > 0) {
@@ -377,25 +400,36 @@ contract Contribution is Controlled, TokenController {
   ///  end or by anybody after the `endTime`. This method finalizes the contribution period
   ///  by creating the remaining tokens and transferring the controller to the configured
   ///  controller.
-  // BK TODO
+  // BK Ok - Controller can call this any time, but anyone can call this after end date or cap reached
   function finalize() public initialized {
+    // BK Ok
     require(finalizedBlock == 0);
+    // BK Ok
     require(finalizedTime == 0);
+    // BK Ok
     require(getBlockTimestamp() >= startTime);
+    // BK Ok
     require(msg.sender == controller || getBlockTimestamp() > endTime || weiToCollect() == 0);
 
     // remainder will be minted and locked for 1 year.
+    // BK NOTE - If cap reached, weiToCollect will be 0 and 0 tokens will be generated but there should be no side effects
+    // BK Ok
     aix.generateTokens(remainderHolder, weiToCollect().mul(2000));
     // AIX generated so far is 51% of total
+    // BK Ok
     uint256 tokenCap = aix.totalSupply().mul(100).div(51);
     // dev Wallet will have 20% of the total Tokens and will be able to retrieve quarterly.
+    // BK Ok
     aix.generateTokens(devHolder, tokenCap.mul(20).div(100));
     // community Wallet will have access to 29% of the total Tokens.
+    // BK Ok
     aix.generateTokens(communityHolder, tokenCap.mul(29).div(100));
 
+    // BK Next 2 Ok
     finalizedBlock = getBlockNumber();
     finalizedTime = getBlockTimestamp();
 
+    // BK Ok - Log event
     Finalized(finalizedBlock);
   }
 
@@ -404,28 +438,40 @@ contract Contribution is Controlled, TokenController {
   //////////
 
   /// @return Total eth that still available for collection in weis.
-  // BK TODO
+  // BK Ok - Constant function
   function weiToCollect() public constant returns(uint256) {
+    // BK Ok
     return totalWeiCap > totalWeiCollected ? totalWeiCap.sub(totalWeiCollected) : 0;
   }
 
   /// @return Total eth that still available for collection in weis.
-  // BK TODO
+  // BK Ok
   function weiToCollectByInvestor(address investor) public constant returns(uint256) {
+    // BK Next 2 Ok
     uint256 cap;
     uint256 collected;
     // adding 1 day as a placeholder for X hours.
     // This should change into a variable or coded into the contract.
+    // BK Ok
     if (investor == collector) {
+      // BK Ok
       cap = collectorWeiCap;
+      // BK Ok
       collected = individualWeiCollected[investor];
+    // BK Ok
     } else if (getBlockTimestamp() <= startTime + 1 days) {
+      // BK Ok
       cap = totalWeiCap.div(numWhitelistedInvestors);
+      // BK Ok
       collected = individualWeiCollected[investor];
+    // BK Ok
     } else {
+      // BK Ok
       cap = totalWeiCap;
+      // BK Ok
       collected = totalWeiCollected;
     }
+    // BK Ok
     return cap > collected ? cap.sub(collected) : 0;
   }
 

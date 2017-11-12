@@ -150,8 +150,8 @@ in [test/test1results.txt](test/test1results.txt) and the detailed output saved 
   * [x] contract RemainderTokenHolder is Controlled
 * [x] [code-review/Exchanger.md](code-review/Exchanger.md)
   * [x] contract Exchanger is Controlled
-* [ ] [code-review/Contribution.md](code-review/Contribution.md)
-  * [ ] contract Contribution is Controlled, TokenController
+* [x] [code-review/Contribution.md](code-review/Contribution.md)
+  * [x] contract Contribution is Controlled, TokenController
 * [ ] [code-review/MiniMeToken.md](code-review/MiniMeToken.md)
   * [x] contract TokenController
   * [x] contract Controlled
