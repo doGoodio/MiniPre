@@ -7,11 +7,10 @@
 Bok Consulting Pty Ltd was commissioned to perform an audit on the Aigang's crowdsale and token Ethereum smart contract.
 
 This audit has been conducted on Aigang's source code in commits
-[8200037](https://github.com/AigangNetwork/aigang-crowdsale-contracts/commit/8200037ab9d51b70723a97449363aa8269adf9ff).
+[8200037](https://github.com/AigangNetwork/aigang-crowdsale-contracts/commit/8200037ab9d51b70723a97449363aa8269adf9ff) and
+[fda7866](https://github.com/AigangNetwork/aigang-crowdsale-contracts/commit/fda7866c72932a60b4004d0797b3982f85702a69).
 
 No potential vulnerabilities have been identified in the crowdsale and token contract.
-
-There are some minor improvements as listed in the [Recommendations](#recommendations) section, but these are not important to implement.
 
 <br />
 
@@ -37,7 +36,6 @@ There are some changes in the recently finalised [ERC20 Token Standard](https://
 that the *MiniMeToken* contract has not been updated for:
 
 * `transfer(...)` and `transferFrom(...)` will return false instead of throwing an error
-* `approve(...)` requires non-0 allowances to be set to 0 before being set to a different non-0 allowance
 
 The *MiniMeToken* token contract stores snapshots of an account's token balance and the `totalSupply()` in history. One side effect of
 this snapshot feature is that regular transfer operations consume a little more gas in transaction fees when compared to non-*MiniMeToken*
@@ -71,9 +69,13 @@ The following two recommendations are optional changes to the crowdsale and toke
   `require(...)` keyword. Using the `require(...)` keyword instead of `assert(...)` will result in lower gas cost for participants when there is 
   an error (e.g. sending ETH outside contribution period)
 
+  * [x] Updated in [fda7866](https://github.com/AigangNetwork/aigang-crowdsale-contracts/commit/fda7866c72932a60b4004d0797b3982f85702a69)
+
 * **LOW IMPORTANCE** `MiniMeToken.approve(...)` has a check requiring non-zero approval limits to be set to 0 before being set to a different
   non-zero value. The recently finalised [ERC20 Token Standard](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-20-token-standard.md#approve)
   suggest that the contract should not enforce this requirement
+
+  * [x] Updated in [fda7866](https://github.com/AigangNetwork/aigang-crowdsale-contracts/commit/fda7866c72932a60b4004d0797b3982f85702a69)
 
 <br />
 
@@ -346,4 +348,4 @@ $ diff -w ../../AigangPresaleContractAudit/contracts/MiniMeToken.sol MiniMeToken
 
 <br />
 
-(c) BokkyPooBah / Bok Consulting Pty Ltd for Aigang - Nov 12 2017. The MIT Licence.
+(c) BokkyPooBah / Bok Consulting Pty Ltd for Aigang - Nov 13 2017. The MIT Licence.

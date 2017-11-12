@@ -76,7 +76,7 @@ contract Contribution is Controlled, TokenController {
   // BK Ok
   modifier initialized() {
     // BK Ok
-    assert(initializedBlock != 0);
+    require(initializedBlock != 0);
     // BK Ok
     _;
   }
@@ -87,16 +87,16 @@ contract Contribution is Controlled, TokenController {
     // BK Ok
     if (msg.sender == collector) {
       // BK Ok
-      assert(getBlockTimestamp().add(2 days) >= startTime);
+      require(getBlockTimestamp().add(2 days) >= startTime);
     // BK Ok
     } else {
       // BK Ok
-      assert(getBlockTimestamp() >= startTime);
+      require(getBlockTimestamp() >= startTime);
     }
     // BK Ok
-    assert(getBlockTimestamp() <= endTime);
+    require(getBlockTimestamp() <= endTime);
     // BK Ok
-    assert(finalizedTime == 0);
+    require(finalizedTime == 0);
     // BK Ok
     _;
   }
