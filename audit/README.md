@@ -50,6 +50,10 @@ TODO: Check - No potential vulnerabilities have been identified in the crowdsale
   `require(...)` keyword. Using the `require(...)` keyword instead of `assert(...)` will result in lower gas cost for participants when there is 
   an error (e.g. sending ETH outside contribution period)
 
+* **LOW IMPORTANCE** `MiniMeToken.approve(...)` has a check requiring non-zero approval limits to be set to 0 before being set to a different
+  non-zero value. The recently finalised [ERC20 Token Standard](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-20-token-standard.md#approve)
+  suggest that the contract should not enforce this requirement
+
 <br />
 
 <hr />
