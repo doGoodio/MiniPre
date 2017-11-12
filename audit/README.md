@@ -1,7 +1,5 @@
 # Aigang Crowdsale Contract Audit
 
-Status: Work in progress
-
 ## Summary
 
 [Aigang](https://aigang.network/) intends to run a crowdsale commencing in Nov 2017.
@@ -11,20 +9,41 @@ Bok Consulting Pty Ltd was commissioned to perform an audit on the Aigang's crow
 This audit has been conducted on Aigang's source code in commits
 [8200037](https://github.com/AigangNetwork/aigang-crowdsale-contracts/commit/8200037ab9d51b70723a97449363aa8269adf9ff).
 
-TODO: Check - No potential vulnerabilities have been identified in the crowdsale and token contract.
+No potential vulnerabilities have been identified in the crowdsale and token contract.
+
+There are some minor improvements as listed in the [Recommendations](#recommendations) section, but these are not important to implement.
+
+<br />
 
 ### Mainnet Addresses
+
+`TBA`
 
 <br />
 
 ### Crowdsale Contract
 
+Ethers contributed by participants to the crowdsale contract will result in AIX tokens being allocated to the participant's 
+account in the token contract. The contributed ethers are immediately transferred to the crowdsale multisig wallet, reducing the 
+risk of the loss of ethers in this bespoke smart contract.
+
 <br />
 
 ### Token Contract
 
-* Based on MiniMeToken
-* Has `function approveAndCall(address _spender, uint256 _amount, bytes _extraData) returns (bool success);`
+The *AIX* contract is built on the *MiniMeToken* token contract.
+
+There are some changes in the recently finalised [ERC20 Token Standard](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-20-token-standard.md)
+that the *MiniMeToken* contract has not been updated for:
+
+* `transfer(...)` and `transferFrom(...)` will return false instead of throwing an error
+* `approve(...)` requires non-0 allowances to be set to 0 before being set to a different non-0 allowance
+
+The *MiniMeToken* token contract stores snapshots of an account's token balance and the `totalSupply()` in history. One side effect of
+this snapshot feature is that regular transfer operations consume a little more gas in transaction fees when compared to non-*MiniMeToken*
+token contracts.
+
+Additionally, this token contract implements the `approveAndCall(address _spender, uint256 _amount, bytes _extraData)` function.
 
 <br />
 
@@ -46,6 +65,8 @@ TODO: Check - No potential vulnerabilities have been identified in the crowdsale
 
 ## Recommendations
 
+The following two recommendations are optional changes to the crowdsale and token contract:
+
 * **LOW IMPORTANCE** The modifiers `Contribution.initialized()` and `Contribution.contributionOpen()` use the `assert(...)` keyword rather than the
   `require(...)` keyword. Using the `require(...)` keyword instead of `assert(...)` will result in lower gas cost for participants when there is 
   an error (e.g. sending ETH outside contribution period)
@@ -60,7 +81,7 @@ TODO: Check - No potential vulnerabilities have been identified in the crowdsale
 
 ## Potential Vulnerabilities
 
-TODO: Check - No potential vulnerabilities have been identified in the crowdsale and token contract.
+No potential vulnerabilities have been identified in the crowdsale and token contract.
 
 <br />
 
@@ -107,15 +128,14 @@ matches the audited source code, and that the deployment parameters are correctl
 
 ## Risks
 
-TODO
+* This crowdsale contract has a low risk of having the ETH hacked or stolen, as any contributions by participants are immediately transferred
+  to the crowdsale wallet.
 
 <br />
 
 <hr />
 
 ## Testing
-
-### Test 1
 
 The following functions were tested using the script [test/01_test1.sh](test/01_test1.sh) with the summary results saved
 in [test/test1results.txt](test/test1results.txt) and the detailed output saved in [test/test1output.txt](test/test1output.txt):
@@ -156,11 +176,11 @@ in [test/test1results.txt](test/test1results.txt) and the detailed output saved 
   * [x] contract Exchanger is Controlled
 * [x] [code-review/Contribution.md](code-review/Contribution.md)
   * [x] contract Contribution is Controlled, TokenController
-* [ ] [code-review/MiniMeToken.md](code-review/MiniMeToken.md)
+* [x] [code-review/MiniMeToken.md](code-review/MiniMeToken.md)
   * [x] contract TokenController
   * [x] contract Controlled
   * [x] contract ApproveAndCallFallBack 
-  * [ ] contract MiniMeToken is Controlled
+  * [x] contract MiniMeToken is Controlled
   * [x] contract MiniMeTokenFactory
 
 <br />
@@ -203,14 +223,14 @@ Following are the main components of the Presale contracts:
 
 * [../contracts/Migrations.sol](../contracts/Migrations.sol)
 
-  This is a part of the Truffles testing
+  This is a part of the Truffles testing framework
 
 <br />
 
 ### Differences In MiniMeToken.sol Between The Aigang Presale And Crowdsale Contracts
 
-There are some small changes to the MiniMeToken contract between the Presale and Crowdsale versions. These changes were made to account for the
-differences in the compiler version.
+There are some small changes to the MiniMeToken contract between the Presale and Crowdsale versions. These changes seem to have been made to
+account for the upgrade in the compiler version.
 
 ```diff
 $ diff -w ../../AigangPresaleContractAudit/contracts/MiniMeToken.sol MiniMeToken.sol 
