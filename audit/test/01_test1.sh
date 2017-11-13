@@ -603,7 +603,7 @@ while (txpool.status.pending > 0) {
 printTxData("collectTokens1Tx", collectTokens1Tx);
 printTxData("collectTokens2Tx", collectTokens2Tx);
 printBalances();
-failIfTxStatusError(collectTokens1Tx, collectTokensMessage + " - CommunityTokenHolder.collectTokens() = 16,660,784.313725490196078431 x 7/29 = 4,021,568.627450980392157");
+failIfTxStatusError(collectTokens1Tx, collectTokensMessage + " - CommunityTokenHolder.collectTokens() = 16,660,784.313725490196078431 x 10/29 = 5,745,098.03921568627451");
 failIfTxStatusError(collectTokens2Tx, collectTokensMessage + " - DevTokensHolder.collectTokens() = 11,490,196.078431372549019607 x .25 = 2,872,549.019607843137254901");
 printCrowdsaleContractDetails();
 printTokenContractDetails();

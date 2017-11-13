@@ -7,8 +7,9 @@
 Bok Consulting Pty Ltd was commissioned to perform an audit on the Aigang's crowdsale and token Ethereum smart contract.
 
 This audit has been conducted on Aigang's source code in commits
-[8200037](https://github.com/AigangNetwork/aigang-crowdsale-contracts/commit/8200037ab9d51b70723a97449363aa8269adf9ff) and
-[fda7866](https://github.com/AigangNetwork/aigang-crowdsale-contracts/commit/fda7866c72932a60b4004d0797b3982f85702a69).
+[8200037](https://github.com/AigangNetwork/aigang-crowdsale-contracts/commit/8200037ab9d51b70723a97449363aa8269adf9ff),
+[fda7866](https://github.com/AigangNetwork/aigang-crowdsale-contracts/commit/fda7866c72932a60b4004d0797b3982f85702a69) and
+[fd4e5d7](https://github.com/AigangNetwork/aigang-crowdsale-contracts/commit/fd4e5d73f844e65bc13fa883d22892c8113614db).
 
 No potential vulnerabilities have been identified in the crowdsale and token contract.
 
@@ -348,4 +349,4 @@ $ diff -w ../../AigangPresaleContractAudit/contracts/MiniMeToken.sol MiniMeToken
 
 <br />
 
-(c) BokkyPooBah / Bok Consulting Pty Ltd for Aigang - Nov 13 2017. The MIT Licence.
+(c) BokkyPooBah / Bok Consulting Pty Ltd for Aigang - Nov 14 2017. The MIT Licence.
