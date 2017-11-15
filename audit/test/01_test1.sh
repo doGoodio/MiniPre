@@ -562,7 +562,7 @@ while (txpool.status.pending > 0) {
 printTxData("finalise_1Tx", finalise_1Tx);
 printTxData("finalise_2Tx", finalise_2Tx);
 printBalances();
-failIfTxStatusError(finalise_1Tx, finaliseMessage + " - Remainder 8,000,000; Dev 11,490,196.078431372549019607; Community 16,660,784.313725490196078431");
+failIfTxStatusError(finalise_1Tx, finaliseMessage + " - [removed Remainder 8,000,000;] Dev 11,490,196.078431372549019607; Community 16,660,784.313725490196078431");
 failIfTxStatusError(finalise_2Tx, finaliseMessage + " - contrib.allowTransfers(true)");
 printCrowdsaleContractDetails();
 printTokenContractDetails();
@@ -603,8 +603,8 @@ while (txpool.status.pending > 0) {
 printTxData("collectTokens1Tx", collectTokens1Tx);
 printTxData("collectTokens2Tx", collectTokens2Tx);
 printBalances();
-failIfTxStatusError(collectTokens1Tx, collectTokensMessage + " - CommunityTokenHolder.collectTokens() = 16,660,784.313725490196078431 x 10/29 = 5,745,098.03921568627451");
-failIfTxStatusError(collectTokens2Tx, collectTokensMessage + " - DevTokensHolder.collectTokens() = 11,490,196.078431372549019607 x .25 = 2,872,549.019607843137254901");
+failIfTxStatusError(collectTokens1Tx, collectTokensMessage + " - CommunityTokenHolder.collectTokens() = 12,111,764.705882352941176470 x 10/29 = 4,176,470.588235294117647");
+failIfTxStatusError(collectTokens2Tx, collectTokensMessage + " - DevTokensHolder.collectTokens() = 8,352,941.176470588235294117 x .25 = 2,088,235.294117647058824");
 printCrowdsaleContractDetails();
 printTokenContractDetails();
 console.log("RESULT: ");

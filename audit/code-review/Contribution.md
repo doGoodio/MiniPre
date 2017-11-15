@@ -412,9 +412,10 @@ contract Contribution is Controlled, TokenController {
     require(msg.sender == controller || getBlockTimestamp() > endTime || weiToCollect() == 0);
 
     // remainder will be minted and locked for 1 year.
-    // BK NOTE - If cap reached, weiToCollect will be 0 and 0 tokens will be generated but there should be no side effects
     // BK Ok
-    aix.generateTokens(remainderHolder, weiToCollect().mul(2000));
+    // This was decided to be removed.
+    // aix.generateTokens(remainderHolder, weiToCollect().mul(2000));
+
     // AIX generated so far is 51% of total
     // BK Ok
     uint256 tokenCap = aix.totalSupply().mul(100).div(51);
