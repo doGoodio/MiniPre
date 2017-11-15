@@ -18,7 +18,22 @@ No potential vulnerabilities have been identified in the crowdsale and token con
 
 ### Mainnet Addresses
 
-`TBA`
+* Contributions - [0xeA0c348A297084BFFbddad7f89216F24a2106E58](https://etherscan.io/address/0xeA0c348A297084BFFbddad7f89216F24a2106E58#code) with
+  deployed source code saved in [deployed-contracts/Contribution_deployed_at_0xeA0c348A297084BFFbddad7f89216F24a2106E58.sol](deployed-contracts/Contribution_deployed_at_0xeA0c348A297084BFFbddad7f89216F24a2106E58.sol)
+
+* AIX - [0x1063ce524265d5a3A624f4914acd573dD89ce988](https://etherscan.io/address/0x1063ce524265d5a3A624f4914acd573dD89ce988#code) with
+  deployed source code saved in [deployed-contracts/AIX_deployed_at_0x1063ce524265d5a3A624f4914acd573dD89ce988.sol](deployed-contracts/AIX_deployed_at_0x1063ce524265d5a3A624f4914acd573dD89ce988.sol)
+
+* CommunityTokenHolder - [0x3b025EABf29b05566BDcbd3bCb46801Cb6C6F372](https://etherscan.io/address/0x3b025EABf29b05566BDcbd3bCb46801Cb6C6F372#code) with
+  deployed source code saved in [deployed-contracts/CommunityTokenHolder_deployed_at_0x3b025EABf29b05566BDcbd3bCb46801Cb6C6F372.sol](deployed-contracts/CommunityTokenHolder_deployed_at_0x3b025EABf29b05566BDcbd3bCb46801Cb6C6F372.sol)
+
+* DevTokensHolder - [0xF6A667eeC255EBee62beeD4b725774dE45F9e8DE](https://etherscan.io/address/0xF6A667eeC255EBee62beeD4b725774dE45F9e8DE#code) with
+  deployed source code saved in [deployed-contracts/DevTokensHolder_deployed_at_0xF6A667eeC255EBee62beeD4b725774dE45F9e8DE.sol](deployed-contracts/DevTokensHolder_deployed_at_0xF6A667eeC255EBee62beeD4b725774dE45F9e8DE.sol)
+
+* Exchanger - [0xb02533F3aCf5BEbEdcF6B11a83951Bb80d45B65F](https://etherscan.io/address/0xb02533F3aCf5BEbEdcF6B11a83951Bb80d45B65F#code) with
+  deployed source code saved in [deployed-contracts/Exchanger_deployed_at_0xb02533F3aCf5BEbEdcF6B11a83951Bb80d45B65F.sol](deployed-contracts/Exchanger_deployed_at_0xb02533F3aCf5BEbEdcF6B11a83951Bb80d45B65F.sol)
+
+* ContributionWallet - [0x4Cbb51Ee8611d45FedC37D99D0E05c7D1fC2c49D](https://etherscan.io/address/0x4Cbb51Ee8611d45FedC37D99D0E05c7D1fC2c49D)
 
 <br />
 
