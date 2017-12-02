@@ -11,18 +11,18 @@ import "./MiniMeToken.sol";
  * @dev IMPORTANT NOTE: do not use or deploy this contract as-is. It needs some changes to be
  * production ready.
  */
-contract AIX is MiniMeToken {
+contract MainToken is MiniMeToken {
   /**
     * @dev Constructor
   */
-  function AIX(address _tokenFactory)
+  function MainToken(address _tokenFactory)
     MiniMeToken(
       _tokenFactory,
       0x0,                      // no parent token
       0,                        // no snapshot block number from parent
-      "Aigang",                 // Token name
+      "MainToken",                 // Token name
       18,                       // Decimals
-      "AIX",                    // Symbol
+      "MT",                    // Symbol
       true                      // Enable transfers
     ) {}
 

@@ -1,15 +1,11 @@
-const MiniMeTokenFactory = artifacts.require("MiniMeTokenFactory");
-const AIX = artifacts.require("AIX");
-const PlaceHolder = artifacts.require("PlaceHolder");
-const PreSale = artifacts.require("PreSale");
-const Contribution = artifacts.require("Contribution");
-const MultiSigWallet = artifacts.require("MultiSigWallet");
-const Exchanger = artifacts.require('Exchanger');
-const abiEncoder = require('ethereumjs-abi');
+var MiniMeTokenFactory = artifacts.require("MiniMeTokenFactory");
+var MainToken = artifacts.require("MainToken");
+var PlaceHolder = artifacts.require("PlaceHolder");
+var SafeMath = artifacts.require("SafeMath");
+var PreSale = artifacts.require("PreSale");
 
-function latestTime() {
-  return web3.eth.getBlock('latest').timestamp;
-}
+// function latestBlockNumber () { return web3.eth.getBlock('latest').number; }
+
 const BigNumber = web3.BigNumber;
 
 const duration = {
@@ -21,69 +17,46 @@ const duration = {
   years:   function(val) { return val * this.days(365) }
 };
 
-module.exports = function(deployer, chain, accounts) {
-  return deployer.deploy(MiniMeTokenFactory).then(async () => {
-    const tokenFactory = await MiniMeTokenFactory.deployed();
-    const encodedParamsAIX = abiEncoder.rawEncode(['address'], [tokenFactory.address]);
-    await deployer.deploy(AIX, tokenFactory.address);
-    console.log('ENCODED PARAMS AIX: \n', encodedParamsAIX.toString('hex'));
+module.exports = function (deployer, chain, accounts) {
+  return deployer.deploy(SafeMath).then(async () => {
 
-    const aix = await AIX.deployed();
-    const encodedParamsContribution = abiEncoder.rawEncode(['address'], [aix.address]);
-    await deployer.deploy(Contribution, aix.address);
-    console.log('CONTRIBUTION ENCODED: \n', encodedParamsContribution.toString('hex'));
+    // Parameters
+    const timeFromStart = duration.minutes(8);                 // seconds
+    const presaleDuration = duration.minutes(30);              // seconds
+    const walletAddress = '0xF1F69b62Ba6721bcdc2E6A29DA87991C185a4e9a';
+    const presaleSupplyCap = 100;                              // token major unit (like ether)
+    const minimumInvestment = 0.1;                             // ether
+    const ethereumBlockDuration = 14;                          // seconds
+    const latestBlock = 1279542;                               // latest block number on respective network
 
-    const contribution = await Contribution.deployed();
-    await aix.changeController(contribution.address);
-    await deployMultisig(deployer, accounts);
-    const multiSig = await MultiSigWallet.deployed();
+    // Deployment
+    const startBlock = latestBlock + Math.floor(timeFromStart / ethereumBlockDuration);
+    const endBlock = startBlock + Math.floor(presaleDuration / ethereumBlockDuration);
+    const presaleSupplyCapQuanta = new BigNumber(10**18)       // token quantum unit (like wei)
+          * new BigNumber(presaleSupplyCap);
+    const weiMinimumInvestment = new BigNumber(10**18)         // wei
+          * new BigNumber(minimumInvestment);
+    console.log('Start block- ' + startBlock);
+    console.log('End block- '   + endBlock);
 
-    const APT_TOKEN_ADDRESS = "0x23aE3C5B39B12f0693e05435EeaA1e51d8c61530";
-    const encodedExchangerParams = abiEncoder.rawEncode(['address', 'address', 'address'], [APT_TOKEN_ADDRESS, aix.address, contribution.address]);
-    await deployer.deploy(Exchanger, APT_TOKEN_ADDRESS, aix.address, contribution.address);
-    console.log('EXCHANGER ENCODED: \n', encodedExchangerParams.toString('hex'));
-    const exchanger = await Exchanger.deployed();
+    await deployer.deploy(MiniMeTokenFactory);
+    await deployer.deploy(MainToken, MiniMeTokenFactory.address);
+    await deployer.deploy(PlaceHolder, MainToken.address);
+    deployer.link(SafeMath, PreSale);
+    await deployer.deploy(PreSale, MainToken.address, PlaceHolder.address);
 
-    const totalCap = new BigNumber(10**18 * 1000);
-    const collectorCap = totalCap.div(10);
-    const startTime = latestTime() + duration.minutes(5);
-    const endTime = latestTime() + duration.weeks(5);
+    const mt = await MainToken.deployed();
+    const ps = await PreSale.deployed();
 
-    const _remainderHolder = '0x123';
-    const _devHolder = '0x123431';
-    const _communityHolder = '0x12343112322';
-    const _collector = '0x1234311234322';
-    // address _apt,
-    // address _exchanger,
-    // address _contributionWallet,
-    // address _remainderHolder,
-    // address _devHolder,
-    // address _communityHolder,
-    // uint256 _totalEthCap,
-    // uint256 _startTime,
-    // uint256 _endTime
-    await contribution.initialize(aix.address,
-      exchanger.address,
-      multiSig.address,
-      _remainderHolder,
-      _devHolder,
-      _communityHolder,
-      _collector,
-      collectorCap,
-      totalCap,
-      startTime, endTime
-    )
-  });
+    await mt.changeController(PreSale.address)
+    await ps.initialize(
+      walletAddress,
+      presaleSupplyCapQuanta,
+      weiMinimumInvestment,
+      startBlock,
+      endBlock
+    ); 
+  })
 };
 
 
-async function deployMultisig(deployer, accounts) {
-  const owner1 = accounts[0];
-  const owner2 = accounts[1];
-  const numRequiredSignatures = 1;
-
-  const values = [[owner1, owner2], numRequiredSignatures];
-  const encodedParams = abiEncoder.rawEncode(['address[]', 'uint256'], values);
-  console.log('MULTISIG PARAMS : \n', encodedParams.toString('hex'));
-  return deployer.deploy(MultiSigWallet, [owner1, owner2], 1);
-}

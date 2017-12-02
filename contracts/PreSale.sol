@@ -19,6 +19,9 @@ contract PreSale is Controlled, TokenController {
 
   uint256 public minimum_investment;
 
+  uint256 public numWhitelistedInvestors;
+  mapping (address => bool) public canPurchase;
+
   uint256 public startBlock;
   uint256 public endBlock;
 
@@ -82,6 +85,36 @@ contract PreSale is Controlled, TokenController {
     Initialized(initializedBlock);
   }
 
+  
+  /// @notice interface for founders to blacklist investors
+  /// @param _investors array of investors
+  function blacklistAddresses(address[] _investors) public onlyController {
+    for (uint256 i = 0; i < _investors.length; i++) {
+      blacklist(_investors[i]);
+    }
+  }
+
+  /// @notice interface for founders to whitelist investors
+  /// @param _investors array of investors
+  function whitelistAddresses(address[] _investors) public onlyController {
+    for (uint256 i = 0; i < _investors.length; i++) {
+      whitelist(_investors[i]);
+    }
+  }
+
+  function whitelist(address investor) public onlyController {
+    if (canPurchase[investor]) return;
+    numWhitelistedInvestors++;
+    canPurchase[investor] = true;
+  }
+
+  function blacklist(address investor) public onlyController {
+    if (!canPurchase[investor]) return;
+    numWhitelistedInvestors--;
+    canPurchase[investor] = false;
+  }
+
+
   /// @notice If anybody sends Ether directly to this contract, consider he is
   /// getting APTs.
   function () public payable notPaused {
@@ -112,6 +145,7 @@ contract PreSale is Controlled, TokenController {
 
   function doBuy(address _th) internal {
     require(msg.value >= minimum_investment);
+    require(canPurchase[_th]);
 
     // Antispam mechanism
     address caller;
