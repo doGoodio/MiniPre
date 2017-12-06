@@ -1,9 +1,9 @@
 # aigang-crowdsale-contracts
 
-Aigang Ethereum smart contracts
+Presale smart contracts
 
-Contracts created and reviewed by [BlockchainLabsNZ](https://www.blockchainlabs.nz/): [github](https://github.com/BlockchainLabsNZ/aigang-contracts) 
-Audited by Bok Khoo: [github](https://github.com/bokkypoobah/AigangCrowdsaleContractAudit/tree/master/audit) 
+Original contracts created and reviewed by [BlockchainLabsNZ](https://www.blockchainlabs.nz/): [github](https://github.com/BlockchainLabsNZ/aigang-contracts) 
+Original contracts audited by Bok Khoo: [github](https://github.com/bokkypoobah/AigangCrowdsaleContractAudit/tree/master/audit) 
 
 MainNet addresses: 
 * [APT](https://etherscan.io/address/0x23ae3c5b39b12f0693e05435eeaa1e51d8c61530#code) 
