@@ -8,9 +8,14 @@ contract PreSale is Controlled, TokenController {
   using SafeMath for uint256;
 
   // Parameters
-  function getExchangeRate(uint contribution) public returns (uint256 exchangeRate) { // ETH-GOOD exchange rate
-    return contribution >= 330 ? 4290   // 330+ eth bonus
-                               : 3960;  // 22+  eth bonus
+  function getExchangeRate(uint contributionWei) public returns (uint256 exchangeRate) { // ETH-GOOD exchange rate
+    // 330+ eth bonus
+    if (contributionWei >= 0.3 ether) {
+      return 4290;
+    }
+
+    // 22+  eth bonus
+    return 3969;
   }
 
   MiniMeToken public apt;
