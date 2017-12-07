@@ -21,13 +21,13 @@ module.exports = function (deployer, chain, accounts) {
   return deployer.deploy(SafeMath).then(async () => {
 
     // Parameters
-    const timeFromStart = duration.minutes(10);                // seconds
-    const presaleDuration = duration.minutes(40);              // seconds
-    const walletAddress = '0x7a4baa345548aa30f11ffa61d2a7a685ea4537a9';
-    const presaleSupplyCap = 0.5;                              // token major unit (like ether)
-    const minimumInvestment = 0.2;                             // ether
+    const timeFromStart = duration.hours(8);                // seconds
+    const presaleDuration = duration.days(38);              // seconds
+    const walletAddress = '0x820A5C614847Fb92e91f2E061a85A315d43dC18e';
+    const presaleSupplyCap = 4750000;                              // TOKENS, major unit (like ether, not wei)
+    const minimumInvestment = 22;                           // ether
     const ethereumBlockDuration = 14;                          // seconds
-    const latestBlock = 4960783;                               // latest block number on respective network
+    const latestBlock = 4689675;                               // latest block number on respective network
 
     // Deployment
     const startBlock = latestBlock + Math.floor(timeFromStart / ethereumBlockDuration);
@@ -39,16 +39,20 @@ module.exports = function (deployer, chain, accounts) {
     console.log('Start block- ' + startBlock);
     console.log('End block- '   + endBlock);
 
-    await deployer.deploy(MiniMeTokenFactory);
-    await deployer.deploy(MainToken, MiniMeTokenFactory.address);
-    await deployer.deploy(PlaceHolder, MainToken.address);
-    deployer.link(SafeMath, PreSale);
-    await deployer.deploy(PreSale, MainToken.address, PlaceHolder.address);
+//    await deployer.deploy(MiniMeTokenFactory);
+//    await deployer.deploy(MainToken, MiniMeTokenFactory.address);
+////////
+    const mt = await MainToken.at('0x4ad9C84783fa9512b4a2C5A21e7b88045EB46025');
 
-    const mt = await MainToken.deployed();
+    await deployer.deploy(PlaceHolder, mt.address);
+    const ph = await PlaceHolder.deployed();
+
+    await deployer.link(SafeMath, PreSale);
+    
+    await deployer.deploy(PreSale, mt.address, ph.address);
     const ps = await PreSale.deployed();
 
-    await mt.changeController(PreSale.address)
+    await mt.changeController(ps.address)
     await ps.initialize(
       walletAddress,
       presaleSupplyCapQuanta,
