@@ -27,7 +27,7 @@ module.exports = function (deployer, chain, accounts) {
     const presaleSupplyCap = 4750000;                              // TOKENS, major unit (like ether, not wei)
     const minimumInvestment = 22;                           // ether
     const ethereumBlockDuration = 14;                          // seconds
-    const latestBlock = 4689675;                               // latest block number on respective network
+    const latestBlock = 1371981;                               // latest block number on respective network
 
     // Deployment
     const startBlock = latestBlock + Math.floor(timeFromStart / ethereumBlockDuration);
@@ -39,16 +39,16 @@ module.exports = function (deployer, chain, accounts) {
     console.log('Start block- ' + startBlock);
     console.log('End block- '   + endBlock);
 
-//    await deployer.deploy(MiniMeTokenFactory);
-//    await deployer.deploy(MainToken, MiniMeTokenFactory.address);
-////////
-    const mt = await MainToken.at('0x4ad9C84783fa9512b4a2C5A21e7b88045EB46025');
+    await deployer.deploy(MiniMeTokenFactory);
+    const mmtf = await MiniMeTokenFactory.deployed();
+
+    await deployer.deploy(MainToken, mmtf.address);
+    const mt = await MainToken.deployed();
 
     await deployer.deploy(PlaceHolder, mt.address);
     const ph = await PlaceHolder.deployed();
 
     await deployer.link(SafeMath, PreSale);
-    
     await deployer.deploy(PreSale, mt.address, ph.address);
     const ps = await PreSale.deployed();
 
