@@ -3,7 +3,7 @@ pragma solidity ^0.4.11;
 import "./SafeMath.sol";
 import "./ERC20.sol";
 import "./MiniMeToken.sol";
-import "./oraclizeAPI_0.4.sol";
+import "./usingOraclize.sol";
 
 contract GOODController is Controlled, TokenController, usingOraclize {
   using SafeMath for uint256;
@@ -17,6 +17,7 @@ contract GOODController is Controlled, TokenController, usingOraclize {
   function GOODController (address _good, uint _exchangeRate) {
     good = MiniMeToken(_good);
     exchangeRate = _exchangeRate;
+    require(good.generateTokens(address(good), good.totalSupply / 5));
   }
 
   function () { require(false); }
@@ -30,7 +31,7 @@ contract GOODController is Controlled, TokenController, usingOraclize {
   /// @param _newController The address of the new controller
   function changeController(address _newController) onlyController {
     good.changeController(_newController);
-    selfdestruct(controller);
+    selfdestruct(controller); // Check security of this
   }
 
   function setExchangeRate (uint _exchangeRate) onlyController {
