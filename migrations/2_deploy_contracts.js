@@ -22,12 +22,12 @@ module.exports = function (deployer, chain, accounts) {
 
     // Parameters
     const timeFromStart = duration.minutes(8);                 // seconds
-    const presaleDuration = duration.minutes(30);              // seconds
-    const walletAddress = '0xF1F69b62Ba6721bcdc2E6A29DA87991C185a4e9a';
+    const presaleDuration = duration.days(38);              // seconds
+    const walletAddress = '0x6D2E986f977219C30849c109Bc6B816574CCB507';
     const presaleSupplyCap = 100;                              // token major unit (like ether)
     const minimumInvestment = 0.1;                             // ether
     const ethereumBlockDuration = 14;                          // seconds
-    const latestBlock = 1279542;                               // latest block number on respective network
+    const latestBlock = 2216920;                               // latest block number on respective network
 
     // Deployment
     const startBlock = latestBlock + Math.floor(timeFromStart / ethereumBlockDuration);
@@ -40,15 +40,20 @@ module.exports = function (deployer, chain, accounts) {
     console.log('End block- '   + endBlock);
 
     await deployer.deploy(MiniMeTokenFactory);
-    await deployer.deploy(MainToken, MiniMeTokenFactory.address);
-    await deployer.deploy(PlaceHolder, MainToken.address);
-    deployer.link(SafeMath, PreSale);
-    await deployer.deploy(PreSale, MainToken.address, PlaceHolder.address);
-
+    const mmtf = await MiniMeTokenFactory.deployed();
+    
+    await deployer.deploy(MainToken, mmtf.address);
     const mt = await MainToken.deployed();
+   
+    await deployer.deploy(PlaceHolder, mt.address);
+    const ph = await PlaceHolder.deployed();
+    
+    await deployer.link(SafeMath, PreSale);
+    
+    await deployer.deploy(PreSale, mt.address, ph.address);
     const ps = await PreSale.deployed();
 
-    await mt.changeController(PreSale.address)
+    await mt.changeController(ps.address)
     await ps.initialize(
       walletAddress,
       presaleSupplyCapQuanta,
