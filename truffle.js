@@ -11,9 +11,10 @@ var mnemonic = keys.mnemonic;
 var ropstenProvider = new HDWalletProvider(mnemonic, "https://ropsten.infura.io/" + infura_apikey);
 var rinkebyProvider = new HDWalletProvider(mnemonic, "https://rinkeby.infura.io/" + infura_apikey);
 var kovanProvider   = new HDWalletProvider(mnemonic, "https://kovan.infura.io/" + infura_apikey);
+var liveProvider    = new HDWalletProvider(mnemonic, "https://mainnet.infura.io/" + infura_apikey);
 
-const gasPrice = 1000000000;
-const gas = 4700000;
+const gasPrice = 80 * 1000000000;
+const gas = 4000000;
 
 module.exports = {
   networks: {
@@ -21,6 +22,13 @@ module.exports = {
       host: "localhost",
       port: 8545,
       network_id: "*" // Match any network id
+    },
+    live: {
+      gasPrice: gasPrice, 
+      gas: gas,
+      provider: liveProvider,
+      network_id: 1,
+      from: liveProvider.getAddress() 
     },
     ropsten: {
       gasPrice: gasPrice, 

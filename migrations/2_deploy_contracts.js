@@ -21,13 +21,13 @@ module.exports = function (deployer, chain, accounts) {
   return deployer.deploy(SafeMath).then(async () => {
 
     // Parameters
-    const timeFromStart = duration.minutes(8);                 // seconds
+    const timeFromStart = duration.hours(8);                // seconds
     const presaleDuration = duration.days(38);              // seconds
-    const walletAddress = '0x6D2E986f977219C30849c109Bc6B816574CCB507';
-    const presaleSupplyCap = 100;                              // token major unit (like ether)
-    const minimumInvestment = 0.1;                             // ether
+    const walletAddress = '0x820A5C614847Fb92e91f2E061a85A315d43dC18e';
+    const presaleSupplyCap = 4750000;                              // TOKENS, major unit (like ether, not wei)
+    const minimumInvestment = 22;                           // ether
     const ethereumBlockDuration = 14;                          // seconds
-    const latestBlock = 2216920;                               // latest block number on respective network
+    const latestBlock = 1371981;                               // latest block number on respective network
 
     // Deployment
     const startBlock = latestBlock + Math.floor(timeFromStart / ethereumBlockDuration);

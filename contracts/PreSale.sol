@@ -7,8 +7,16 @@ import "./MiniMeToken.sol";
 contract PreSale is Controlled, TokenController {
   using SafeMath for uint256;
 
-  uint256 constant public exchangeRate = 1; // ETH-APT exchange rate
-  uint256 constant public investor_bonus = 25;
+  // Parameters
+  function getExchangeRate(uint contributionWei) public returns (uint256 exchangeRate) { // ETH-GOOD exchange rate
+    // 330+ eth bonus
+    if (contributionWei >= 330 ether) {
+      return 4290;
+    }
+
+    // 22+  eth bonus
+    return 3960;
+  }
 
   MiniMeToken public apt;
   address public place_holder;
@@ -158,6 +166,7 @@ contract PreSale is Controlled, TokenController {
 
     uint256 toFund = msg.value;
     uint256 leftForSale = tokensForSale();
+    uint256 exchangeRate = getExchangeRate(toFund);
     if (toFund > 0) {
       if (leftForSale > 0) {
         uint256 tokensGenerated = toFund.mul(exchangeRate);

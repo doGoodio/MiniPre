@@ -20,9 +20,9 @@ contract MainToken is MiniMeToken {
       _tokenFactory,
       0x0,                      // no parent token
       0,                        // no snapshot block number from parent
-      "MainToken",                 // Token name
+      "doGood",                 // Token name
       18,                       // Decimals
-      "MT",                    // Symbol
+      "GOOD",                   // Symbol
       true                      // Enable transfers
     ) {}
 
