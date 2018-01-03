@@ -78,6 +78,10 @@ contract PreSale is Controlled, TokenController {
 	endBlock = _endBlock;
   }
 
+  function setSupplyCap(uint256 _totalSupplyCap) public onlyController {
+	totalSupplyCap = _totalSupplyCap;
+  }
+
   function initialize(
       address _preSaleWallet,
       uint256 _totalSupplyCap,
