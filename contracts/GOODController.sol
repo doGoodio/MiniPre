@@ -17,7 +17,7 @@ contract GOODController is Controlled, TokenController, usingOraclize {
   function GOODController (address _good, uint _exchangeRate) {
     good = MiniMeToken(_good);
     exchangeRate = _exchangeRate;
-    require(good.generateTokens(address(good), good.totalSupply / 5));
+    require(good.generateTokens(address(good), good.totalSupply() / 5));
   }
 
   function () { require(false); }
