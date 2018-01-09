@@ -9,6 +9,7 @@ contract GOODController is Controlled, TokenController, usingOraclize {
   using SafeMath for uint256;
 
   MiniMeToken good;
+  bool once_finalTokenAllocation;           // Need this for final token allocation. Want to run only once
   uint public exchangeRate;                 // good = points * exchangeRate
   mapping (address => bool) userSyncState;  // Use this var to sync server and BC
 
@@ -17,7 +18,6 @@ contract GOODController is Controlled, TokenController, usingOraclize {
   function GOODController (address _good, uint _exchangeRate) {
     good = MiniMeToken(_good);
     exchangeRate = _exchangeRate;
-    require(good.generateTokens(address(good), good.totalSupply / 5));
   }
 
   function () { require(false); }
@@ -25,6 +25,12 @@ contract GOODController is Controlled, TokenController, usingOraclize {
   // ======
   // ADMIN:
   // ======
+
+  function finalTokenAllocation() onlyController {
+    require(once_finalTokenAllocation == false);
+    once_finalTokenAllocation = true;
+    require(good.generateTokens(address(good), good.totalSupply() / 5));
+  }
 
   /// @notice The owner of this contract can change the controller of the APT token
   ///  Please, be sure that the owner is a trusted agent or 0x0 address.

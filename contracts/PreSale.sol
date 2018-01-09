@@ -8,7 +8,7 @@ contract PreSale is Controlled, TokenController {
   using SafeMath for uint256;
 
   // Parameters
-  function getExchangeRate(uint contributionWei) public returns (uint256 exchangeRate) { // ETH-GOOD exchange rate
+  function getExchangeRate(uint contributionWei) public constant returns (uint256 exchangeRate) { // ETH-GOOD exchange rate
     // 330+ eth bonus
     if (contributionWei >= 330 ether) {
       return 4290;
