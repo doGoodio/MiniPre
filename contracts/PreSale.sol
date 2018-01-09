@@ -8,20 +8,26 @@ contract PreSale is Controlled, TokenController {
   using SafeMath for uint256;
 
   // Parameters
-  function getExchangeRate(uint contributionWei) public constant returns (uint256 exchangeRate) { // ETH-GOOD exchange rate
-    // 330+ eth bonus
-    if (contributionWei >= 330 ether) {
-      return 4290;
-    }
+  function getExchangeRate(uint256 contributionWei) public constant returns (uint256 exchangeRate) { // ETH-GOOD exchange rate
+    /*  · 35% bonus for purchases of at least 0.5 ETH
+	· 60% bonus for purchases of at least 6 ETH
+	· 80% bonus for purchases of at least 12 ETH
+	· 2 for 1 tokens for purchases of at least 37 ETH 
+    */
+    if (contributionWei   >= 37 ether) { return 8000; } // 100% bonus
+    if (contributionWei   >= 12 ether) { return 7200; } //  80% bonus
+    if (contributionWei   >= 6 ether)  { return 6400; } //  60% bonus
+    if (2*contributionWei >= 1 ether)  { return 5400; } //  35% bonus
 
-    // 22+  eth bonus
-    return 3960;
+    // Basic exchange rate: 4000 / eth
+    return 4000;
   }
 
   MiniMeToken public apt;
   address public place_holder;
   address public preSaleWallet;
 
+  // make flexible cap
   uint256 public totalSupplyCap;            // Total APT supply to be generated
   uint256 public totalSold;                 // How much tokens have been sold
 
@@ -37,6 +43,8 @@ contract PreSale is Controlled, TokenController {
   uint256 public finalizedBlock;
 
   bool public paused;
+
+  
 
   modifier initialized() {
     assert(initializedBlock != 0);
@@ -60,6 +68,18 @@ contract PreSale is Controlled, TokenController {
     require(_place_holder != 0x0);
     apt = MiniMeToken(_apt);
     place_holder = _place_holder;
+  }
+
+  function setStartBlock(uint256 _startBlock) public onlyController {
+	startBlock = _startBlock;
+  }
+
+  function setEndBlock(uint256 _endBlock) public onlyController {
+	endBlock = _endBlock;
+  }
+
+  function setSupplyCap(uint256 _totalSupplyCap) public onlyController {
+	totalSupplyCap = _totalSupplyCap;
   }
 
   function initialize(

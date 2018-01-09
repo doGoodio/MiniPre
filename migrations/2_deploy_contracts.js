@@ -41,14 +41,15 @@ module.exports = function (deployer, chain, accounts) {
 
     await deployer.deploy(MiniMeTokenFactory);
     const mmtf = await MiniMeTokenFactory.deployed();
-
+    
     await deployer.deploy(MainToken, mmtf.address);
     const mt = await MainToken.deployed();
-
+   
     await deployer.deploy(PlaceHolder, mt.address);
     const ph = await PlaceHolder.deployed();
-
+    
     await deployer.link(SafeMath, PreSale);
+    
     await deployer.deploy(PreSale, mt.address, ph.address);
     const ps = await PreSale.deployed();
 
